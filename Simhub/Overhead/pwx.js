@@ -41,3 +41,7 @@ const props = {
         position: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarPosition'
     }
 }
+
+function pwxSessionNumber(){
+    return _pwxInt($prop(props.session.number))
+}
