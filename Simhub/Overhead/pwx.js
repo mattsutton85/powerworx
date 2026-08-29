@@ -43,6 +43,7 @@ const props = {
     }
 }
 
+/** Session data **/
 function pwxSessionNumber(){
     return _pwxInt($prop(props.session.number))
 }
