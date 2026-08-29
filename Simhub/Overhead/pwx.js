@@ -44,7 +44,7 @@ const props = {
 }
 
 /**
-* Session data functions
+** Session data functions
 **/
 
 // Return the current session number (0 - x)
@@ -58,7 +58,7 @@ function pwxSessionName(){
 }
 
 /** 
-* Session helpers 
+** Session helpers 
 **/
 
 // Boolean if session is testing
