@@ -2,7 +2,8 @@ function _pwxString(value){
     return String(value)
 }
 
-function _pwxInt(value, fallback = 0){
-    const int = parseInt(value)
-    return (int) ? int : fallback
+function _pwxNumber( val, fallback = 0, decimals = 0 ){
+    if (val == null || val === "" || isNaN(val))
+        return fallback;
+    return Number(val).toFixed(decimals);
 }
