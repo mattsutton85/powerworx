@@ -50,3 +50,20 @@ function pwxSessionNumber(){
 function pwxSessionName(){
     return _pwxString($prop(props.session.name))
 }
+
+/** Session helpers **/
+function pwxSessionIsPractice(){
+    return (pwxSessionName() == 'PRACTICE')
+}
+
+function pwxSessionIsQualifying(){
+    return (pwxSessionName() == 'QUALIFY')
+}
+
+function pwxSessionIsFormation(){
+    return (pwxSessionName() == 'FORMATION_LAP')
+}
+
+function pwxSessionIsRace(){
+    return (pwxSessionName() == 'RACE')
+}
