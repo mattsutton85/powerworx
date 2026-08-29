@@ -62,7 +62,7 @@ function pwxSessionName(){
 **/
 
 // Boolean if session is testing
-function pwxSessionIsPractice(){
+function pwxSessionIsTesting(){
     return (pwxSessionName() == 'TEST')
 }
 
@@ -87,6 +87,6 @@ function pwxSessionIsRace(){
 }
 
 // Boolean if session is time attack
-function pwxSessionIsRace(){
+function pwxSessionIsTimeAttack(){
     return (pwxSessionName() == 'ATTACK')
 }
