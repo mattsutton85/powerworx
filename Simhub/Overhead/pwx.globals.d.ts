@@ -2,13 +2,13 @@ declare function $prop(
     name: string
 ): unknown
 
-declare function _apxNumber( 
+declare function _pwxNumber( 
     value: any, 
     fallback: number|string,
     decimals: number,
 ): number|string
 
-declare function _apxString(
+declare function _pwxString(
     value: any,
     fallback: string
 ): string
