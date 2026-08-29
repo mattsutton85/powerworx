@@ -43,28 +43,50 @@ const props = {
     }
 }
 
-/** Session data **/
+/**
+* Session data functions
+**/
+
+// Return the current session number (0 - x)
 function pwxSessionNumber(){
     return _pwxInt($prop(props.session.number))
 }
 
+// Return the current session name (PRACTICE,TEST,QUALIFY,FORMATION_LAP,RACE,ATTACK)
 function pwxSessionName(){
     return _pwxString($prop(props.session.name))
 }
 
-/** Session helpers **/
+/** 
+* Session helpers 
+**/
+
+// Boolean if session is testing
+function pwxSessionIsPractice(){
+    return (pwxSessionName() == 'TEST')
+}
+
+// Boolean if session is practice
 function pwxSessionIsPractice(){
     return (pwxSessionName() == 'PRACTICE')
 }
 
+// Boolean if session is qualifying
 function pwxSessionIsQualifying(){
     return (pwxSessionName() == 'QUALIFY')
 }
 
+// Boolean if session is formation lap
 function pwxSessionIsFormation(){
     return (pwxSessionName() == 'FORMATION_LAP')
 }
 
+// Boolean if session is race
 function pwxSessionIsRace(){
     return (pwxSessionName() == 'RACE')
+}
+
+// Boolean if session is time attack
+function pwxSessionIsRace(){
+    return (pwxSessionName() == 'ATTACK')
 }
