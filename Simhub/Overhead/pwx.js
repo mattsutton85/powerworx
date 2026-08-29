@@ -12,6 +12,7 @@ const props = {
         }
     },
     session: {
+        name: 'DataCorePlugin.GameData.SessionTypeName',
         number: 'DataCorePlugin.GameRawData.Telemetry.SessionNum',
         incident: {
             limit: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.WeekendOptions.IncidentLimit'
@@ -44,4 +45,8 @@ const props = {
 
 function pwxSessionNumber(){
     return _pwxInt($prop(props.session.number))
+}
+
+function pwxSessionName(){
+    return _pwxString($prop(props.session.name))
 }
