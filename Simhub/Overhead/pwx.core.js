@@ -71,6 +71,14 @@ const theme = {
 }
 
 /*
+Car data
+*/
+
+function pwxDataCarModel(){
+    return _pwxString($prop(props.car.model))
+}
+
+/*
 Circuit data
 */
 function pwxDataCircuitName(){
@@ -78,7 +86,7 @@ function pwxDataCircuitName(){
 }
 
 /*
-Session flags
+Session bools
  */
 function pwxFlagSessionIsPractice(){
     return ($prop(props.session.name) === 'Practice')
