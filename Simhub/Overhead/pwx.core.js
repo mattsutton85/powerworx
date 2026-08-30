@@ -2,6 +2,9 @@
 Simhub data props
  */
 const props = {
+    car: {
+        model: 'DataCorePlugin.GameData.CarModel'
+    },
     circuit: {
         name: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackDisplayName',
         layout: {
