@@ -116,6 +116,22 @@ function pwxDataTelemetryPosition(){
     return '-'
 }
 
+function pwxDataTelemetryLapBestTime(){
+    return _pwxTime($prop(props.telemetry.lap.best.time), 'LAP')
+}
+
+function pwxDataTelemetryLapBestDelta(){
+    return _pwxTime($prop(props.telemetry.lap.best.delta), 'DELTA')
+}
+
+function pwxDataTelemetryLapLastTime(){
+    return _pwxTime($prop(props.telemetry.lap.last.time), 'LAP')
+}
+
+function pwxDataTelemetryLapLastDelta(){
+    return _pwxTime($prop(props.telemetry.lap.best.delta), 'LAP')
+}
+
 /*
 Contextual colour
  */
