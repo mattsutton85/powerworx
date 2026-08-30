@@ -74,6 +74,7 @@ const theme = {
 Car data
 */
 
+// Car model
 function pwxDataCarModel(){
     return _pwxString($prop(props.car.model))
 }
@@ -81,6 +82,8 @@ function pwxDataCarModel(){
 /*
 Circuit data
 */
+
+// Circuit name
 function pwxDataCircuitName(){
     return _pwxString($prop(props.circuit.name))
 }
@@ -88,12 +91,18 @@ function pwxDataCircuitName(){
 /*
 Session bools
  */
+
+// If session is practice
 function pwxBoolSessionIsPractice(){
     return ($prop(props.session.name) === 'Practice')
 }
+
+// If session is qualifying
 function pwxBoolessionIsQualifying(){
     return ($prop(props.session.name) === 'Lone Qualify')
 }
+
+// If aession is race
 function pwxBoolSessionIsRace(){
     return ($prop(props.session.name) === 'Race')
 }
@@ -101,27 +110,41 @@ function pwxBoolSessionIsRace(){
 /*
 Session data
  */
+
+// Session name
 function pwxDataSessionName(){
     return _pwxString($prop(props.session.name))
 }
+
+// Session incident count
 function pwxDataSessionIncidentCount(){
     return _pwxNumber($prop(props.session.incident.count))
 }
+
+// Session incidient limit
 function pwxDataSessionIncidentLimit(){
     return _pwxNumber($prop(props.session.incident.limit))
 }
+
+// Session lap number
 function pwxDataSessionLapNumber(){
     const num = $prop(props.session.lap.number)
     if( num !== 0 )
         return _pwxNumber(num)
     return '-'
 }
+
+// Session lap limit
 function pwxDataSessionLapLimit(){
     return _pwxNumber($prop(props.session.lap.limit))
 }
+
+// Session laps remaining
 function pwxDataSessionLapRemaining(){
     return _pwxNumber(pwxDataSessionLapLimit() - pwxDataSessionLapNumber(), '-')
 }
+
+// Session time remaining
 function pwxDataSessionTimeRemaining(){
     return _pwxTime($prop(props.session.time.remaining), 'SESSION')
 }
