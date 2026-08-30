@@ -1,6 +1,6 @@
 /*
 Simhub data props
- */
+*/
 const props = {
     car: {
         model: 'DataCorePlugin.GameData.CarModel'
