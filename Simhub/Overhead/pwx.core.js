@@ -48,7 +48,7 @@ const props = {
 
 /*
 Theme colours
- */
+*/
 const theme = {
     background: {
         base: '#000000',
@@ -90,7 +90,7 @@ function pwxDataCircuitName(){
 
 /*
 Session bools
- */
+*/
 
 // If session is practice
 function pwxBoolSessionIsPractice(){
@@ -109,7 +109,7 @@ function pwxBoolSessionIsRace(){
 
 /*
 Session data
- */
+*/
 
 // Session name
 function pwxDataSessionName(){
@@ -151,7 +151,7 @@ function pwxDataSessionTimeRemaining(){
 
 /*
 Telemetry data
- */
+*/
 
 // Current position
 function pwxDataTelemetryPosition(){
@@ -183,7 +183,7 @@ function pwxDataTelemetryLapLastDelta(){
 
 /*
 Contextual colour
- */
+*/
 function pwxUiContextualColour( element, state ) {
     return _pwxUiColour( theme, element, state );
 }
