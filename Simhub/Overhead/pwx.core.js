@@ -49,38 +49,6 @@ const props = {
 /*
 Theme colours
  */
-
-const themea = {
-  core: {
-    red: {
-      background: '',
-      label: '',
-      value: ''
-    },
-    yellow: {
-      background: '',
-      label: '',
-      value: ''
-    },
-    green: {
-      background: '',
-      label: '',
-      value: ''
-    },
-    purple: {
-      background: '',
-      label: '',
-      value: ''
-    }
-  },
-  state: {
-    warning: {
-      background: '',
-      label: '',
-      value: ''
-    }
-  }
-}
 const theme = {
     background: {
         base: '#000000',
