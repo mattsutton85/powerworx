@@ -109,6 +109,8 @@ function pwxDataSessionTimeRemaining(){
 /*
 Telemetry data
  */
+
+// Current position
 function pwxDataTelemetryPosition(){
     const pos = $prop(props.telemetry.position)
     if( pos !== 0 )
@@ -116,20 +118,24 @@ function pwxDataTelemetryPosition(){
     return '-'
 }
 
+// Best sesstion lap time
 function pwxDataTelemetryLapBestTime(){
     return _pwxTime($prop(props.telemetry.lap.best.time), 'LAP')
 }
 
+// Best session lap time delta
 function pwxDataTelemetryLapBestDelta(){
     return _pwxTime($prop(props.telemetry.lap.best.delta), 'DELTA')
 }
 
+// Last session lap time
 function pwxDataTelemetryLapLastTime(){
     return _pwxTime($prop(props.telemetry.lap.last.time), 'LAP')
 }
 
+// Last session lap time delta
 function pwxDataTelemetryLapLastDelta(){
-    return _pwxTime($prop(props.telemetry.lap.best.delta), 'LAP')
+    return _pwxTime($prop(props.telemetry.lap.best.delta), 'DELTA')
 }
 
 /*
