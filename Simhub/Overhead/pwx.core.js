@@ -126,17 +126,9 @@ function pwxUiContextualColour( element, state ) {
 function pwxUiIncidentCount( element ){
     const limit = pwxDataSessionIncidentLimit()
     const current = pwxDataSessionIncidentCount()
-    let thresholds
-    if( !limit || isNaN(limit) || limit === 0 ){
-        thresholds = {
-            warning: 1,
-            danger: 10
-        }
-    }else{
-        thresholds = {
-            warning: 1,
-            danger: Math.round( limit * 0.75 )
-        }
+    const thresholds = {
+        warning: 1,
+        danger: (!limit || isNaN(limit) || limit === 0) ? 10 : Math.round( limit * 0.75 )
     }
     if( current >= thresholds.warning && current <= thresholds.danger ){
         return _pwxUiColour( theme, element, 'warning' )
