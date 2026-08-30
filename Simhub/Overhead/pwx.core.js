@@ -50,17 +50,20 @@ const theme = {
     background: {
         base: '#000000',
         warning: '#f7d00f',
-        danger: '#f43111'
+        danger: '#f43111',
+        purple: '#000000'
     },
     label: {
         base: '#bababa',
         warning: '#000000',
-        danger: '#ffffff'
+        danger: '#ffffff',
+        purple: '#bababa'
     },
     value: {
         base: '#ffffff',
         warning: '#000000',
-        danger: '#ffffff'
+        danger: '#ffffff',
+        purple: 'Purple'
     }
 }
 
