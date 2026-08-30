@@ -120,7 +120,7 @@ function pwxDataSessionLapLimit(){
     return _pwxNumber($prop(props.session.lap.limit))
 }
 function pwxDataSessionLapRemaining(){
-    return _pwxNumber( pwxDataSessionLapLimit() - pwxDataSessionLapNumber(), '-')
+    return _pwxNumber(pwxDataSessionLapLimit() - pwxDataSessionLapNumber(), '-')
 }
 function pwxDataSessionTimeRemaining(){
     return _pwxTime($prop(props.session.time.remaining), 'SESSION')
