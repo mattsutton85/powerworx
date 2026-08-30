@@ -88,13 +88,13 @@ function pwxDataCircuitName(){
 /*
 Session bools
  */
-function pwxFlagSessionIsPractice(){
+function pwxBoolSessionIsPractice(){
     return ($prop(props.session.name) === 'Practice')
 }
-function pwxFlagSessionIsQualifying(){
+function pwxBoolessionIsQualifying(){
     return ($prop(props.session.name) === 'Lone Qualify')
 }
-function pwxFlagSessionIsRace(){
+function pwxBoolSessionIsRace(){
     return ($prop(props.session.name) === 'Race')
 }
 
