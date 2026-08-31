@@ -1,40 +1,23 @@
 var pwx = pwx || {}
 pwx.flag = pwx.flag || {}
 
-var flagProps = {
-    black: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsBlack',
-    blue: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isblue',
-    caution: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iscaution',
-    cautionWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IscautionWaving',
-    checkered: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Ischeckered',
-    crossed: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iscrossed',
-    debris: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isdebris',
-    disqualify: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isdisqualify',
-    lapToGreen: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsoneLapToGreen',
-    red: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isred',
-    repair: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isrepair',
-    white: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iswhite',
-    yellow: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsYellow',
-    yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving',
-}
-
 pwx.flag.state = function(){
 
     const states = {
-        black: $prop( flagProps.black ),
-        blue: $prop( flagProps.blue ),
-        caution: $prop( flagProps.caution ),
-        cautionWaving: $prop( flagProps.cautionWaving ),
-        checkered: $prop( flagProps.checkered ),
-        crossed: $prop( flagProps.crossed ),
-        debris: $prop( flagProps.debris ),
-        disqualify: $prop( flagProps.disqualify),
-        lapToGreen: $prop( flagProps.lapToGreen ),
-        red: $prop( flagProps.red),
-        repair: $prop( flagProps.repair ),
-        white: $prop( flagProps.white),
-        yellow: $prop( flagProps.yellow),
-        yellowWaving: $prop( flagProps.yellowWaving ),
+        black: _pwxProp( pwx.config.flags.black ),
+        blue: _pwxProp( pwx.config.flags.blue ),
+        caution: _pwxProp( pwx.config.flags.caution ),
+        cautionWaving: _pwxProp( pwx.config.flags.cautionWaving ),
+        checkered: _pwxProp( pwx.config.flags.checkered ),
+        crossed: _pwxProp( pwx.config.flags.crossed ),
+        debris: _pwxProp( pwx.config.flags.debris ),
+        disqualify: _pwxProp( pwx.config.flags.disqualify),
+        lapToGreen: _pwxProp( pwx.config.flags.lapToGreen ),
+        red: _pwxProp( pwx.config.flags.red),
+        repair: _pwxProp( pwx.config.flags.repair ),
+        white: _pwxProp( pwx.config.flags.white),
+        yellow: _pwxProp( pwx.config.flags.yellow),
+        yellowWaving: _pwxProp( pwx.config.flags.yellowWaving ),
     }
 
     if( states.red ){

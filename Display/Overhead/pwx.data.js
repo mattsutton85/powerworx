@@ -59,62 +59,62 @@ const dataProps = {
 
 /** CAR DATA **/
 pwx.data.car.model = function(){
-    return _pwxString( _pwxProp( pwx.config.props.car.model ) )
+    return _pwxString( _pwxProp( pwx.config.data.car.model ) )
 }
 
 /** CIRCUIT DATA **/
 pwx.data.circuit.name = function(){
-    return _pwxString( $prop( dataProps.circuit.name ) )
+    return _pwxString( _pwxProp( pwx.config.data.circuit.name ) )
 }
 
 /** SESSION DATA **/
 pwx.data.session.name = function(){
-    return _pwxString( $prop( dataProps.session.name ) )
+    return _pwxString( _pwxProp( pwx.config.data.session.name ) )
 }
 pwx.data.session.number = function(){
-    return _pwxNumber( $prop( dataProps.session.number ) )
+    return _pwxNumber( _pwxProp( pwx.config.data.session.number ) )
 }
 pwx.data.session.isPractice = function(){
-    return ( [ 'Practice' ].includes( $prop( dataProps.session.name ) ) )
+    return ( [ 'Practice' ].includes( _pwxProp( pwx.config.data.session.name ) ) )
 }
 pwx.data.session.isQualifying = function(){
-    return ( [ 'Lone Qualify' ].includes( $prop( dataProps.session.name ) ) )
+    return ( [ 'Lone Qualify' ].includes( _pwxProp( pwx.config.data.session.name ) ) )
 }
 pwx.data.session.isRace = function(){
-    return ( [ 'Race' ].includes( $prop( dataProps.session.name ) ) )
+    return ( [ 'Race' ].includes( _pwxProp( pwx.config.data.session.name ) ) )
 }
 pwx.data.session.incident.count = function(){
-    return _pwxNumber( $prop( dataProps.session.incident.count ) )
+    return _pwxNumber( _pwxProp( pwx.config.data.session.incident.count ) )
 }
 pwx.data.session.incident.limit = function(){
-    return _pwxNumber( $prop( dataProps.session.incident.limit ) )
+    return _pwxNumber( _pwxProp( pwx.config.data.incident.limit ) )
 }
 pwx.data.session.lap.number = function(){
-    const lap = $prop( dataProps.session.lap.number )
+    const lap = _pwxProp( pwx.config.data.session.lap.number )
     if( lap <= 0 )
         return '-'
-    return _pwxNumber( $prop( dataProps.session.lap.number ) )
+    return _pwxNumber( _pwxProp( pwx.config.data.session.lap.number ) )
 }
 pwx.data.session.time.remaining = function(){
-    return $prop(dataProps.session.time.remaining)
+    return _pwxProp( pwx.config.data.session.time.remaining)
 }
 
 /** TELEMETRY DATA **/
 pwx.data.telemetry.position = function(){
-    const pos = $prop( dataProps.telemetry.position )
+    const pos = _pwxProp( pwx.config.data.telemetry.position )
     if( pos <= 0 )
         return '-'
     return _pwxNumber( pos )
 }
 pwx.data.telemetry.lap.last.time = function(){
-    return $prop(dataProps.telemetry.lap.last.time)
+    return _pwxProp( pwx.config.data.telemetry.lap.last.time)
 }
 pwx.data.telemetry.lap.last.delta = function(){
-    return $prop(dataProps.telemetry.lap.last.delta)
+    return _pwxProp( pwx.config.data.telemetry.lap.last.delta)
 }
 pwx.data.telemetry.lap.best.time = function(){
-    return $prop(dataProps.telemetry.lap.best.time)
+    return _pwxProp( pwx.config.data.telemetry.lap.best.time)
 }
 pwx.data.telemetry.lap.best.delta = function(){
-    return $prop(dataProps.telemetry.lap.best.delta)
+    return _pwxProp( pwx.config.data.telemetry.lap.best.delta)
 }
