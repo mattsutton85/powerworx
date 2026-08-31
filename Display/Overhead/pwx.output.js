@@ -12,6 +12,9 @@ function _pwxNumber(val, fallback = 0){
 
 function _pwxTimeSession(seconds){
   const time = __pwxPrepareTime(seconds)
+  if( !time.valid || time.zero )
+    return '--:--'
+  return _pwxString(time.minutes.padStart(2,'0') + ':' + time.seconds.padStart(2,'0'))
 }
 
 function _pwxTimeLap(seconds){
