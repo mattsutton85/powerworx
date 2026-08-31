@@ -23,17 +23,17 @@ function _pwxTimeDelta(seconds){
 }
 
 function __pwxPrepareTime(rawSeconds){
-  const seconds = Math.abs( Number(rawSeconds) );
-  const minutes = Math.floor(rawSeconds / 60);
-  const remainingSeconds = seconds % 60;
-
-  const wholeSeconds = Math.floor(remainingSeconds);
-  const milliseconds = Math.round((remainingSeconds - wholeSeconds) * 1000);
-
-  return {
-    raw: rawSeconds,
-    minutes: minutes,
-    seconds: wholeSeconds,
-    milliseconds: milliseconds
-  }
+    const raw = Number(rawSeconds);
+    const totalMilliseconds = Math.round(Math.abs(raw) * 1000);
+    const minutes = Math.floor(totalMilliseconds / 60000);
+    const seconds = Math.floor((totalMilliseconds % 60000) / 1000);
+    const milliseconds = totalMilliseconds % 1000;
+    return {
+        raw: raw,
+        negative: raw < 0,
+        zero: totalMilliseconds === 0,
+        minutes: minutes,
+        seconds: seconds,
+        milliseconds: milliseconds
+    };
 }
