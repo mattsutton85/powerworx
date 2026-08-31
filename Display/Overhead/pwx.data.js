@@ -96,7 +96,10 @@ pwx.data.session.lap.number = function(){
     return _pwxNumber( _pwxProp( pwx.config.data.session.lap.number ) )
 }
 pwx.data.session.time.remaining = function(){
-    return _pwxProp( pwx.config.data.session.time.remaining)
+    const time = _pwxNumber( _pwxProp( pwx.config.data.session.time.remaining) )
+    if( !time || isNaN( time ) || time <= 1 )
+        return '--:--'
+    return _pwxTime( time, 1, false )
 }
 
 /** TELEMETRY DATA **/

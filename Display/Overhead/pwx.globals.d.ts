@@ -3,10 +3,9 @@ declare function $prop(
 ): unknown
 
 declare function _pwxTime(
-    seconds: number,
-    format: | 'LAP'
-        | 'SESSION'
-        | 'DELTA'
+    rawSeconds: number,
+    millis: boolean,
+    symbol: boolean
 ): string
 
 declare function _pwxNumber(
