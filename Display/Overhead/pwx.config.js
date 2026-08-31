@@ -59,10 +59,8 @@ pwx.config.data = {
         white: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iswhite',
         yellow: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsYellow',
         yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving',
-    }
-}
-
-pwx.config.theme = {
+    },
+    theme: {
     background: {
         base: '#000000',
         warning: '#f7d00f',
@@ -87,8 +85,4 @@ pwx.config.theme = {
 
 function _pwxProp( prop ){
     return $prop( prop )
-}
-
-function _pwxColour( prop ){
-    return prop
 }
