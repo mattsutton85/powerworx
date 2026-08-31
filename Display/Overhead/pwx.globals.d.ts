@@ -20,4 +20,10 @@ declare function _pwxString(
     fallback?: string
 ): string
 
+declare function _pwxProp(
+    prop: any,
+): number|string
+
+declare function _pwxColour( prop: any): string
+
 declare function _pwxUiColour( theme: object, element: string, state: string ): string

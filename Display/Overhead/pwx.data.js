@@ -59,7 +59,7 @@ const dataProps = {
 
 /** CAR DATA **/
 pwx.data.car.model = function(){
-    return _pwxString( $prop( dataProps.car.model ) )
+    return _pwxString( _pwxProp( pwx.config.props.car.model ) )
 }
 
 /** CIRCUIT DATA **/

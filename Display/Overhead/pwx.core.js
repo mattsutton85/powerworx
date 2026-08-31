@@ -1,4 +1,5 @@
 var pwx = pwx || {}
+pwx.config = pwx.config || {}
 pwx.data = pwx.data || {}
-pwx.ui = pwx.ui || {}
 pwx.flag = pwx.flag || {}
+pwx.ui = pwx.ui || {}
