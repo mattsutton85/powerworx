@@ -1,16 +1,25 @@
-function _pwxString( val, fallback = '' ){
+function _pwxString(val, fallback = ''){
   if(val)
     return String(val)
   return fallback
 }
 
-function _pwxNumber( val, fallback = 0){
+function _pwxNumber(val, fallback = 0){
   if(!val || NaN(val))
     return fallback
   return Number(val)
 }
 
-function _pwxTime(seconds){
+function _pwxTimeSession(seconds){
+  const time = __pwxPrepareTime(seconds)
+}
+
+function _pwxTimeLap(seconds){
+  const time = __pwxPrepareTime(seconds)
+}
+
+function _pwxTimeDelta(seconds){
+  const time = __pwxPrepareTime(seconds)
 }
 
 function __pwxPrepareTime(rawSeconds){
