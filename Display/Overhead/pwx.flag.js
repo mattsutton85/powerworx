@@ -4,20 +4,20 @@ pwx.flag = pwx.flag || {}
 pwx.flag.state = function(){
 
     const states = {
-        black: _pwxProp( pwx.config.flags.black ),
-        blue: _pwxProp( pwx.config.flags.blue ),
-        caution: _pwxProp( pwx.config.flags.caution ),
-        cautionWaving: _pwxProp( pwx.config.flags.cautionWaving ),
-        checkered: _pwxProp( pwx.config.flags.checkered ),
-        crossed: _pwxProp( pwx.config.flags.crossed ),
-        debris: _pwxProp( pwx.config.flags.debris ),
-        disqualify: _pwxProp( pwx.config.flags.disqualify),
-        lapToGreen: _pwxProp( pwx.config.flags.lapToGreen ),
-        red: _pwxProp( pwx.config.flags.red),
-        repair: _pwxProp( pwx.config.flags.repair ),
-        white: _pwxProp( pwx.config.flags.white),
-        yellow: _pwxProp( pwx.config.flags.yellow),
-        yellowWaving: _pwxProp( pwx.config.flags.yellowWaving ),
+        black: _pwxProp( pwx.config.data.flag.black ),
+        blue: _pwxProp( pwx.config.data.flag.blue ),
+        caution: _pwxProp( pwx.config.data.flag.caution ),
+        cautionWaving: _pwxProp( pwx.config.data.flag.cautionWaving ),
+        checkered: _pwxProp( pwx.config.data.flag.checkered ),
+        crossed: _pwxProp( pwx.config.data.flag.crossed ),
+        debris: _pwxProp( pwx.config.data.flag.debris ),
+        disqualify: _pwxProp( pwx.config.data.flag.disqualify),
+        lapToGreen: _pwxProp( pwx.config.data.flag.lapToGreen ),
+        red: _pwxProp( pwx.config.data.flag.red),
+        repair: _pwxProp( pwx.config.data.flag.repair ),
+        white: _pwxProp( pwx.config.data.flag.white),
+        yellow: _pwxProp( pwx.config.data.flag.yellow),
+        yellowWaving: _pwxProp( pwx.config.data.flag.yellowWaving ),
     }
 
     if( states.red ){

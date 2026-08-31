@@ -43,24 +43,23 @@ pwx.config.data = {
             }
         },
         position: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarPosition'
+    },
+    flag: {
+        black: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsBlack',
+        blue: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isblue',
+        caution: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iscaution',
+        cautionWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IscautionWaving',
+        checkered: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Ischeckered',
+        crossed: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iscrossed',
+        debris: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isdebris',
+        disqualify: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isdisqualify',
+        lapToGreen: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsoneLapToGreen',
+        red: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isred',
+        repair: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isrepair',
+        white: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iswhite',
+        yellow: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsYellow',
+        yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving',
     }
-}
-
-pwx.config.flags = {
-    black: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsBlack',
-    blue: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isblue',
-    caution: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iscaution',
-    cautionWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IscautionWaving',
-    checkered: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Ischeckered',
-    crossed: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iscrossed',
-    debris: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isdebris',
-    disqualify: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isdisqualify',
-    lapToGreen: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsoneLapToGreen',
-    red: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isred',
-    repair: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isrepair',
-    white: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iswhite',
-    yellow: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsYellow',
-    yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving',
 }
 
 pwx.config.theme = {
