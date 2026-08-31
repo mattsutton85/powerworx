@@ -29,21 +29,29 @@ function __pwxPrepareTime(rawSeconds){
             raw: rawSeconds,
             valid: false,
             totalMilliseconds: 0,
+            totalSeconds: 0,
+            totalMinutes: 0,
             negative: false,
             zero: true,
+            hours: 0,
             minutes: 0,
             seconds: 0,
             milliseconds: 0
         };
     }
     const totalMilliseconds = Math.round(Math.abs(raw) * 1000);
+    const totalSeconds = Math.floor(totalMilliseconds / 1000);
+    const totalMinutes = Math.floor(totalMilliseconds / 60000);
     return {
         raw: raw,
         valid: true,
         totalMilliseconds: totalMilliseconds,
+        totalSeconds: totalSeconds,
+        totalMinutes: totalMinutes,
         negative: raw < 0,
         zero: totalMilliseconds === 0,
-        minutes: Math.floor(totalMilliseconds / 60000),
+        hours: Math.floor(totalMilliseconds / 3600000),
+        minutes: Math.floor((totalMilliseconds % 3600000) / 60000),
         seconds: Math.floor((totalMilliseconds % 60000) / 1000),
         milliseconds: totalMilliseconds % 1000
     };
