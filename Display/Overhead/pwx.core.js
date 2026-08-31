@@ -1,5 +1,5 @@
 /*
-Simhub data props
+Display data props
 */
 const props = {
     car: {
@@ -89,7 +89,7 @@ function pwxDataCircuitName(){
 }
 
 /*
-Session bools
+Session booleans
 */
 
 // If session is practice
@@ -98,11 +98,11 @@ function pwxBoolSessionIsPractice(){
 }
 
 // If session is qualifying
-function pwxBoolessionIsQualifying(){
+function pwxBoolSessionIsQualifying(){
     return ($prop(props.session.name) === 'Lone Qualify')
 }
 
-// If aession is race
+// If session is race
 function pwxBoolSessionIsRace(){
     return ($prop(props.session.name) === 'Race')
 }
@@ -121,7 +121,7 @@ function pwxDataSessionIncidentCount(){
     return _pwxNumber($prop(props.session.incident.count))
 }
 
-// Session incidient limit
+// Session incident limit
 function pwxDataSessionIncidentLimit(){
     return _pwxNumber($prop(props.session.incident.limit))
 }
@@ -161,7 +161,7 @@ function pwxDataTelemetryPosition(){
     return '-'
 }
 
-// Best sesstion lap time
+// Best session lap time
 function pwxDataTelemetryLapBestTime(){
     return _pwxTime($prop(props.telemetry.lap.best.time), 'LAP')
 }
@@ -178,7 +178,7 @@ function pwxDataTelemetryLapLastTime(){
 
 // Last session lap time delta
 function pwxDataTelemetryLapLastDelta(){
-    return _pwxTime($prop(props.telemetry.lap.best.delta), 'DELTA')
+    return _pwxTime($prop(props.telemetry.lap.last.delta), 'DELTA')
 }
 
 /*

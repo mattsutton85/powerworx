@@ -33,7 +33,7 @@ function _pwxTime( seconds, format )
 
     switch( format ){
         case 'LAP':
-            return String(minutes).padStart(2,"0") + ":" + String(wholeSeconds).padStart(2, "0") + "." + String(milliseconds).padStart(3, "0");
+            return String(minutes) + ":" + String(wholeSeconds).padStart(2, "0") + "." + String(milliseconds).padStart(3, "0");
         case 'SESSION':
             return String(minutes).padStart(2,"0") + ":" + String(wholeSeconds).padStart(2, "0");
         case 'DELTA':
