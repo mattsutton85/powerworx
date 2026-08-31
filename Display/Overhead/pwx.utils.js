@@ -10,10 +10,19 @@ function _pwxString( val, fallback = '' ){
 
 function _pwxTime( seconds, format )
 {
+    if( [ 'SESSION', 'DELTA' ].includes( format ) ){
+        if( typeof seconds === 'undefined' || !seconds || isNaN( seconds ) || seconds <= 1 ){
+            if( format === 'LAP' ){
+                return '-:--.---'
+            }else if( format === 'SESSION' ){
+                return '--:--'
+            }
+        }
+    }
     if (seconds == null || isNaN(seconds) || seconds === 0 ) {
         switch( format ){
             case 'LAP':
-                return '--:--.---'
+                return '-:--.---'
             case 'SESSION':
                 return '--:--'
             case 'DELTA':
@@ -24,9 +33,9 @@ function _pwxTime( seconds, format )
         }
     }
 
-    seconds = Math.abs( Number(seconds) );
+    const formattedSeconds = Math.abs( Number(seconds) );
     const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
+    const remainingSeconds = formattedSeconds % 60;
 
     const wholeSeconds = Math.floor(remainingSeconds);
     const milliseconds = Math.round((remainingSeconds - wholeSeconds) * 1000);
@@ -37,7 +46,7 @@ function _pwxTime( seconds, format )
         case 'SESSION':
             return String(minutes).padStart(2,"0") + ":" + String(wholeSeconds).padStart(2, "0");
         case 'DELTA':
-            const str = ( seconds < 0 ) ? '-' : '+'
+            const str = ( Number(seconds) < 0 ) ? '-' : '+'
             return str + String(wholeSeconds) + "." + String(milliseconds).padStart(3, "0");
     }
 }
