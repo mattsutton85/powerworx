@@ -1,28 +1,41 @@
 function _pwxString(val, fallback = ''){
-  if(val)
-    return String(val)
-  return fallback
+    if(val)
+        return String(val)
+    return fallback
 }
 
 function _pwxNumber(val, fallback = 0){
-  if(!val || NaN(val))
-    return fallback
-  return Number(val)
+    if(!val || isNaN(val))
+        return fallback
+    return Number(val)
 }
 
 function _pwxTimeSession(seconds){
-  const time = __pwxPrepareTime(seconds)
-  if( !time.valid || time.zero )
-    return '--:--'
-  return _pwxString(time.minutes.padStart(2,'0') + ':' + time.seconds.padStart(2,'0'))
+    const time = __pwxPrepareTime(seconds)
+    if( !time.valid || time.zero )
+        return '--:--'
+    let str = ''
+    if( time.hours > 0 )
+        str += String( time.hours ) + ':'
+    str += String( time.minutes ).padStart(2,'0') + ':' + String( time.seconds ).padStart(2,'0')
+    return _pwxString( str )
 }
 
 function _pwxTimeLap(seconds){
-  const time = __pwxPrepareTime(seconds)
+    const time = __pwxPrepareTime(seconds)
+    if( !time.valid || time.zero || time.seconds <= 1 )
+        return '-:--.---'
+    return _pwxString( String( time.minutes ) + ':' + String( time.seconds ).padStart(2,'0') + '.' + String( time.milliseconds ).padStart(3,'0') )
 }
 
 function _pwxTimeDelta(seconds){
-  const time = __pwxPrepareTime(seconds)
+    const time = __pwxPrepareTime(seconds)
+    if( !time.valid )
+        return '-.---'
+    if( time.zero )
+        return '±0.000'
+    const sign = ( time.negative ) ? '-' : '+'
+    return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds ).padStart(3,'0') )
 }
 
 function __pwxPrepareTime(rawSeconds){

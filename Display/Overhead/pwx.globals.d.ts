@@ -2,10 +2,16 @@ declare function $prop(
     name: string
 ): unknown
 
-declare function _pwxTime(
-    rawSeconds: number,
-    millis: boolean,
-    symbol: boolean
+declare function _pwxTimeSession(
+    rawSeconds: number
+): string
+
+declare function _pwxTimeLap(
+    rawSeconds: number
+): string
+
+declare function _pwxTimeDelta(
+    rawSeconds: number
 ): string
 
 declare function _pwxNumber(

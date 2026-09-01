@@ -11,6 +11,9 @@ pwx.data.telemetry = pwx.data.telemetry || {}
 pwx.data.telemetry.lap = pwx.data.telemetry.lap || {};
 pwx.data.telemetry.lap.best = pwx.data.telemetry.lap.best || {};
 pwx.data.telemetry.lap.last = pwx.data.telemetry.lap.last || {};
+pwx.data.opponent = pwx.data.opponent || {}
+pwx.data.opponent.ahead = pwx.data.opponent.ahead || {};
+pwx.data.opponent.behind = pwx.data.opponent.behind || {};
 
 const dataProps = {
     car: {
@@ -96,10 +99,7 @@ pwx.data.session.lap.number = function(){
     return _pwxNumber( _pwxProp( pwx.config.data.session.lap.number ) )
 }
 pwx.data.session.time.remaining = function(){
-    const time = _pwxNumber( _pwxProp( pwx.config.data.session.time.remaining) )
-    if( !time || isNaN( time ) || time <= 1 )
-        return '--:--'
-    return _pwxTime( time, 1, false )
+    return _pwxTimeSession( _pwxProp( pwx.config.data.session.time.remaining) )
 }
 
 /** TELEMETRY DATA **/
@@ -110,14 +110,35 @@ pwx.data.telemetry.position = function(){
     return _pwxNumber( pos )
 }
 pwx.data.telemetry.lap.last.time = function(){
-    return _pwxProp( pwx.config.data.telemetry.lap.last.time)
+    return _pwxTimeLap( _pwxProp( pwx.config.data.telemetry.lap.last.time) )
 }
 pwx.data.telemetry.lap.last.delta = function(){
-    return _pwxProp( pwx.config.data.telemetry.lap.last.delta)
+    return _pwxTimeDelta( _pwxProp( pwx.config.data.telemetry.lap.last.delta) )
 }
 pwx.data.telemetry.lap.best.time = function(){
-    return _pwxProp( pwx.config.data.telemetry.lap.best.time)
+    return _pwxTimeLap( _pwxProp( pwx.config.data.telemetry.lap.best.time) )
 }
 pwx.data.telemetry.lap.best.delta = function(){
-    return _pwxProp( pwx.config.data.telemetry.lap.best.delta)
+    return _pwxTimeDelta( _pwxProp( pwx.config.data.telemetry.lap.best.delta) )
+}
+
+/** OPPONENT DATA **/
+pwx.data.opponent.ahead.name = function( pos ){
+    const name = _pwxProp( pwx.config.data.opponent.ahead.name, pos )
+    if( name ){
+        return _pwxString( name.toUpperCase() )
+    }
+    return ''
+
+}
+pwx.data.opponent.ahead.irating = function( pos ){
+    var rating = Number( _pwxProp( pwx.config.data.opponent.ahead.irating, pos ) );
+    if (!rating || !isFinite(rating) || rating < 0)
+        return "";
+    if (rating < 1000)
+        return String(Math.round(rating));
+    return (rating / 1000).toFixed(1) + "k";
+}
+pwx.data.opponent.ahead.position = function( pos ){
+    return 'P' + _pwxProp( pwx.config.data.opponent.ahead.position, pos );
 }

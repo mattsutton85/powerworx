@@ -61,28 +61,48 @@ pwx.config.data = {
         yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving',
     },
     theme: {
-    background: {
-        base: '#000000',
-        warning: '#f7d00f',
-        danger: '#f43111',
-        purple: '#000000'
+        background: {
+            base: '#000000',
+            warning: '#f7d00f',
+            danger: '#f43111',
+            purple: '#000000'
+        },
+        label: {
+            base: '#bababa',
+            warning: '#000000',
+            danger: '#ffffff',
+            purple: '#bababa'
+        },
+        value: {
+            empty: '#bababa',
+            base: '#ffffff',
+            warning: '#000000',
+            danger: '#ffffff',
+            purple: '#ff03f9',
+            yellow: '#f7d00f',
+            green: '#6cfc17',
+        }
     },
-    label: {
-        base: '#bababa',
-        warning: '#000000',
-        danger: '#ffffff',
-        purple: '#bababa'
-    },
-    value: {
-        base: '#ffffff',
-        warning: '#000000',
-        danger: '#ffffff',
-        purple: '#ff03f9',
-        yellow: '#f7d00f',
-        green: '#6cfc17',
+    opponent: {
+        ahead: {
+            name: 'PersistantTrackerPlugin.DriverAhead_{X}_Name',
+            irating: 'PersistantTrackerPlugin.DriverAhead_{X}_IRating',
+            gap: 'PersistantTrackerPlugin.DriverAhead_{X}_Gap',
+            position: 'PersistantTrackerPlugin.DriverAhead_{X}_Position'
+        },
+        behind: {
+            name: 'PersistantTrackerPlugin.DriverBehind_{X}_Name',
+            irating: 'PersistantTrackerPlugin.DriverBehind_{X}_IRating',
+            gap: 'PersistantTrackerPlugin.DriverBehind_{X}_Gap',
+            position: 'PersistantTrackerPlugin.DriverBehind_{X}_Position'
+        }
     }
-}
+};
 
-function _pwxProp( prop ){
+function _pwxProp( prop, replace = null ){
+    if( replace ){
+        prop = prop.replaceAll( '{X}', replace )
+    }
+    //return prop
     return $prop( prop )
 }
