@@ -17,3 +17,11 @@ pwx.data.opponent.position = function( relative, pos ){
 pwx.data.opponent.gap = function( relative, pos ){
     return _pwxProp( pwx.config.opponent.gap, relative, pos );
 }
+
+function _pwxCorePrepareOpponentDirection(direction){
+    return String(val).charAt(0).toUpperCase() + String(val).slice(1).toLowerCase()
+}
+
+function __pwxCorePrepareOpponentPosition( pos ){
+    return String(pos).padStart(2,'0')
+}
