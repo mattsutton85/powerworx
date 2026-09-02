@@ -1,0 +1,19 @@
+var pwx = pwx || {}
+pwx.data = pwx.data || {}
+pwx.data.opponent = pwx.data.opponent || {}
+
+pwx.data.opponent.id = function( relative, pos ){
+    return _pwxProp( pwx.config.opponent.id, relative, pos );
+}
+pwx.data.opponent.name = function( relative, pos ){
+    return _pwxProp( pwx.config.opponent.name, relative, pos );
+}
+pwx.data.opponent.iRating = function( relative, pos ){
+    return _pwxProp( pwx.config.opponent.iRating, relative, pos );
+}
+pwx.data.opponent.position = function( relative, pos ){
+    return _pwxProp( pwx.config.opponent.position, relative, pos );
+}
+pwx.data.opponent.gap = function( relative, pos ){
+    return _pwxProp( pwx.config.opponent.gap, relative, pos );
+}
