@@ -10,6 +10,10 @@ function _pwxNumber(val, fallback = 0, decimals = 0){
     return Number(val).toFixed(decimals)
 }
 
+function _pwxBoolean(val){
+    return (val) ? true : false
+}
+
 function _pwxTimeSession(seconds){
     const time = __pwxPrepareTime(seconds)
     if( !time.valid || time.zero )
