@@ -4,9 +4,9 @@ declare function $prop(
 
 declare function _pwxProp(
     val: any,
-    x: any|null,
-    y: any|null,
-    z: any|null,
+    x: string|null,
+    y: string|null,
+    z: string|null,
 ): number|string|boolean
 
 declare function _pwxString(
