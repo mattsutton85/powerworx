@@ -1,10 +1,21 @@
 declare function $prop(
-    name: string
+    val: string
 ): unknown
 
 declare function _pwxProp(
-    prop: any,
+    val: any,
     x: any|null,
     y: any|null,
     z: any|null,
-): number|string
+): number|string|boolean
+
+declare function _pwxString(
+    val: any,
+    fallback: string
+): string
+
+declare function _pwxNumber(
+    val: any,
+    fallback: number,
+    decimals: number
+): number
