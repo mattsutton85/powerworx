@@ -11,7 +11,8 @@ declare function _pwxTimeLap(
 ): string
 
 declare function _pwxTimeDelta(
-    rawSeconds: number
+    rawSeconds: number,
+    padding: number
 ): string
 
 declare function _pwxNumber(

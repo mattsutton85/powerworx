@@ -15,51 +15,6 @@ pwx.data.opponent = pwx.data.opponent || {}
 pwx.data.opponent.ahead = pwx.data.opponent.ahead || {};
 pwx.data.opponent.behind = pwx.data.opponent.behind || {};
 
-const dataProps = {
-    car: {
-        model: 'DataCorePlugin.GameData.CarModel'
-    },
-    circuit: {
-        name: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackDisplayName',
-        layout: {
-            name: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackDisplayShortName',
-            length: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackLength',
-            corners: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackNumTurns'
-        },
-        pit: {
-            limit: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackPitSpeedLimit'
-        }
-    },
-    session: {
-        name: 'DataCorePlugin.GameData.SessionTypeName',
-        number: 'DataCorePlugin.GameRawData.Telemetry.SessionNum',
-        incident: {
-            count: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverIncidentCount',
-            limit: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.WeekendOptions.IncidentLimit'
-        },
-        lap: {
-            number: 'DataCorePlugin.GameRawData.Telemetry.Lap',
-            limit: 'DataCorePlugin.GameRawData.Telemetry.SessionLapsTotal'
-        },
-        time: {
-            remaining: 'DataCorePlugin.GameRawData.Telemetry.SessionTimeRemain',
-        }
-    },
-    telemetry: {
-        lap: {
-            best: {
-                time: 'DataCorePlugin.GameRawData.Telemetry.LapBestLapTime',
-                delta: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToBestLap'
-            },
-            last: {
-                time: 'DataCorePlugin.GameRawData.Telemetry.LapLastLapTime',
-                delta: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToSessionLastlLap'
-            }
-        },
-        position: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarPosition'
-    }
-}
-
 /** CAR DATA **/
 pwx.data.car.model = function(){
     return _pwxString( _pwxProp( pwx.config.data.car.model ) )
@@ -129,8 +84,13 @@ pwx.data.opponent.ahead.name = function( pos ){
         return _pwxString( name.toUpperCase() )
     }
     return ''
-
 }
+
+pwx.data.opponent.ahead.gap = function( pos ){
+    const prop = _pwxProp( pwx.config.data.opponent.ahead.gap, pos )
+    return _pwxTimeDelta( prop, 2 )
+}
+
 pwx.data.opponent.ahead.irating = function( pos ){
     var rating = Number( _pwxProp( pwx.config.data.opponent.ahead.irating, pos ) );
     if (!rating || !isFinite(rating) || rating < 0)
@@ -141,4 +101,29 @@ pwx.data.opponent.ahead.irating = function( pos ){
 }
 pwx.data.opponent.ahead.position = function( pos ){
     return 'P' + _pwxProp( pwx.config.data.opponent.ahead.position, pos );
+}
+
+pwx.data.opponent.behind.name = function( pos ){
+    const name = _pwxProp( pwx.config.data.opponent.behind.name, pos )
+    if( name ){
+        return _pwxString( name.toUpperCase() )
+    }
+    return ''
+}
+
+pwx.data.opponent.behind.gap = function( pos ){
+    const prop = _pwxProp( pwx.config.data.opponent.behind.gap, pos )
+    return _pwxTimeDelta( prop, 2 )
+}
+
+pwx.data.opponent.behind.irating = function( pos ){
+    var rating = Number( _pwxProp( pwx.config.data.opponent.behind.irating, pos ) );
+    if (!rating || !isFinite(rating) || rating < 0)
+        return "";
+    if (rating < 1000)
+        return String(Math.round(rating));
+    return (rating / 1000).toFixed(1) + "k";
+}
+pwx.data.opponent.behind.position = function( pos ){
+    return 'P' + _pwxProp( pwx.config.data.opponent.behind.position, pos );
 }

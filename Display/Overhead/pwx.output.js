@@ -28,14 +28,14 @@ function _pwxTimeLap(seconds){
     return _pwxString( String( time.minutes ) + ':' + String( time.seconds ).padStart(2,'0') + '.' + String( time.milliseconds ).padStart(3,'0') )
 }
 
-function _pwxTimeDelta(seconds){
+function _pwxTimeDelta(seconds, padding = 3){
     const time = __pwxPrepareTime(seconds)
     if( !time.valid )
         return '-.---'
     if( time.zero )
         return '±0.000'
     const sign = ( time.negative ) ? '-' : '+'
-    return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds ).padStart(3,'0') )
+    return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds ).padStart(padding,'0') )
 }
 
 function __pwxPrepareTime(rawSeconds){
