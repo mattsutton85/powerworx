@@ -1,7 +1,7 @@
 function _pwxString(val, fallback = ''){
     if(val)
         return String(val)
-    return fallback
+    return String(fallback)
 }
 
 function _pwxNumber(val, fallback = 0, decimals = 0){
