@@ -44,7 +44,7 @@ pwx.config = {
         id: '',
         name: '',
         iRating: '',
-        position: '',
+        position: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarPosition',
         incidents: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverIncidentCount'
     },
     flag: {
