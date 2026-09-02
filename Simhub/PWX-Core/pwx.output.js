@@ -4,10 +4,10 @@ function _pwxString(val, fallback = ''){
     return fallback
 }
 
-function _pwxNumber(val, fallback = 0){
+function _pwxNumber(val, fallback = 0, decimals = 0){
     if(!val || isNaN(val))
-        return fallback
-    return Number(val)
+        return Number(fallback).toFixed(decimals)
+    return Number(val).toFixed(decimals)
 }
 
 function _pwxTimeSession(seconds){
