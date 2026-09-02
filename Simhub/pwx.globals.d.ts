@@ -14,6 +14,10 @@ declare function _pwxString(
     fallback: string
 ): string
 
+declare function _pwxBoolean(
+    val: any
+): boolean
+
 declare function _pwxNumber(
     val: any,
     fallback: number,
