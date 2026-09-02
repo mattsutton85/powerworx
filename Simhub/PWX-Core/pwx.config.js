@@ -98,9 +98,16 @@ pwx.config = {
     }
 }
 
-function _pwxProp( prop, x = null, y = null, z = null ) {
-    if( x ){ prop = prop.replaceAll( '{X}', x ) }
-    if( y ){ prop = prop.replaceAll( '{Y}', y ) }
-    if( z ){ prop = prop.replaceAll( '{Z}', z ) }
-    return $prop( prop )
+function _pwxProp(prop, x, y, z) {
+    if (x !== null && x !== undefined) {
+        prop = prop.split('{X}').join(String(x));
+    }
+    if (y !== null && y !== undefined) {
+        prop = prop.split('{Y}').join(String(y));
+    }
+    if (z !== null && z !== undefined) {
+        prop = prop.split('{Z}').join(String(z));
+    }
+    return $prop(prop);
+
 }
