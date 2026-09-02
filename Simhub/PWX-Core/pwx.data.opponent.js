@@ -19,9 +19,10 @@ pwx.data.opponent.gap = function( relative, pos ){
 }
 
 function __pwxCorePrepareOpponentDirection(direction){
-    return String(val).charAt(0).toUpperCase() + String(val).slice(1).toLowerCase()
+    return String(direction).charAt(0).toUpperCase()
+        + String(direction).slice(1).toLowerCase();
 }
 
 function __pwxCorePrepareOpponentPosition( pos ){
-    return String(pos).padStart(2,'0')
+    return String(parseInt(pos, 10)).padStart(2, '0');
 }
