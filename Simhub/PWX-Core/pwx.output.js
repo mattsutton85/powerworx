@@ -10,8 +10,22 @@ function _pwxNumber(val, fallback = 0, decimals = 0){
     return Number(val).toFixed(decimals)
 }
 
-function _pwxBoolean(val){
-    return (val) ? true : false
+function _pwxBoolean(value, fallback) {
+    if (fallback === undefined) {
+        fallback = false;
+    }
+    if (value === true || value === 1)
+        return true;
+    if (value === false || value === 0)
+        return false;
+    if (typeof value === 'string') {
+        var normalised = value.toLowerCase().trim();
+        if (normalised === 'true' || normalised === '1')
+            return true;
+        if (normalised === 'false' || normalised === '0')
+            return false;
+    }
+    return fallback;
 }
 
 function _pwxTimeSession(seconds){
