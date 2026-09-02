@@ -42,7 +42,7 @@ pwx.config = {
     },
     driver: {
         id: '',
-        name: '',
+        name: 'DataCorePlugin.GameData.PlayerName',
         iRating: '',
         position: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarPosition',
         incidents: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverIncidentCount'
