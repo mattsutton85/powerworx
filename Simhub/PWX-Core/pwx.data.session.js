@@ -17,9 +17,16 @@ pwx.data.session.number = function(){
 pwx.data.session.name = function(){
     return _pwxProp( pwx.config.session.name )
 }
-pwx.data.session.is = function(state){
-    return _pwxBoolean( (_pwxCoreSessionStates[state].includes(_pwxProp(pwx.config.session.name))))
-}
+pwx.data.session.is = function(state) {
+    const states = _pwxCoreSessionStates[state];
+    if (!states)
+        return false;
+    return _pwxBoolean(
+        states.includes(
+            _pwxProp(pwx.config.session.name)
+        )
+    );
+};
 pwx.data.session.incident.limit = function(){
     return _pwxProp( pwx.config.session.incident.limit )
 }
