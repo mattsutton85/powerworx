@@ -7,7 +7,7 @@ pwx.data.session.time = pwx.data.time || {}
 
 const _pwxCoreSessionStates = {
     practice: ['Practice'],
-    qualifying: ['Lone Qualify'],
+    qualifying: ['Lone Qualify','Open Qualify'],
     race: ['Race']
 }
 
