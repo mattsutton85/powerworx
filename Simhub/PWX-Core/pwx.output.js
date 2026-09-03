@@ -29,7 +29,7 @@ function _pwxBoolean(value, fallback) {
 }
 
 function _pwxTimeSession(seconds){
-    const time = __pwxPrepareTime(seconds)
+    const time = __pwxCorePrepareTime(seconds)
     if( !time.valid || time.zero )
         return '--:--'
     let str = ''
@@ -40,14 +40,14 @@ function _pwxTimeSession(seconds){
 }
 
 function _pwxTimeLap(seconds){
-    const time = __pwxPrepareTime(seconds)
+    const time = __pwxCorePrepareTime(seconds)
     if( !time.valid || time.zero || time.seconds <= 1 )
         return '-:--.---'
     return _pwxString( String( time.minutes ) + ':' + String( time.seconds ).padStart(2,'0') + '.' + String( time.milliseconds ).padStart(3,'0') )
 }
 
 function _pwxTimeDelta(seconds, padding = 3){
-    const time = __pwxPrepareTime(seconds)
+    const time = __pwxCorePrepareTime(seconds)
     if( !time.valid )
         return '-.---'
     if( time.zero )
@@ -56,7 +56,7 @@ function _pwxTimeDelta(seconds, padding = 3){
     return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds ).padStart(padding,'0') )
 }
 
-function __pwxPrepareTime(rawSeconds){
+function __pwxCorePrepareTime(rawSeconds){
     const raw = Number(rawSeconds);
     if (!isFinite(raw)) {
         return {
