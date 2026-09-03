@@ -7,6 +7,7 @@ pwx.overhead.lap = pwx.overhead.lap || {}
 pwx.overhead.remaining = pwx.overhead.remaining || {}
 pwx.overhead.position = pwx.overhead.position || {}
 
+/* Incident count */
 pwx.overhead.incident.value = function(){
     return _pwxString( pwx.core.data.driver.incidents(), '0' )
 }
@@ -20,6 +21,17 @@ pwx.overhead.incident.colourLabel = function(){
     return 'White'
 }
 
-pwx.overhead.incident.lap = function(){
+/* Lap number */
+pwx.overhead.lap.value = function(){
     return _pwxString( pwx.core.data.lap.number(), '-' )
+}
+
+/* Remaining time */
+pwx.overhead.remaining.value = function(){
+    return _pwxString( pwx.core.data.session.time.remaining() )
+}
+
+/* Car position */
+pwx.overhead.position.value = function(){
+    return _pwxString( pwx.core.data.driver.position(), '-' )
 }
