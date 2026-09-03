@@ -1,7 +1,8 @@
 var pwx = pwx || {}
-pwx.config = pwx.config || {}
+pwx.core = pwx.core || {}
+pwx.core.config = pwx.core.config || {}
 
-pwx.config = {
+pwx.core.config = {
     car: {
         id: '',
         class: '',

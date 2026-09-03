@@ -1,3 +1,4 @@
 var pwx = pwx || {}
-pwx.config = pwx.config || {}
-pwx.data = pwx.data || {}
+pwx.core = pwx.core || {}
+pwx.core.config = pwx.core.config || {}
+pwx.core.data = pwx.core.data || {}
