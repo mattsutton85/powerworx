@@ -1,12 +1,21 @@
 # PWX SimHub Core
-PWX Core is the base binding engine for all PWX displays and hardware interfaces.
-
-## Installation
+PWX Core is the base binding engine for all PWX displays and hardware interfaces. 
 PWX Core files must be placed in the global Simhub extensions folder eg `C:\Program Files (x86)\SimHub\JavascriptExtensions`
 
 ---
 
-## Car data
+## API format
+PWX Core's API is broken into the following components:
+- [Car data](#carData)
+- [Circuit data](#circuitData)
+- [Driver data](#driverData)
+- [Lap data](#lapData)
+- [Opponent data](#opponentData)
+- [Session data](#sessionData)
+
+---
+
+## <a id="carData"></a>Car data
 The car data api provides generic car details as well as telemetry on brakes, engine, traction control and gearbox
 
 ### pwx.core.data.car
@@ -57,3 +66,23 @@ The car data api provides generic car details as well as telemetry on brakes, en
 | `pwx.core.data.car.tc.fitted()`  | boolean     |
 | `pwx.core.data.car.tc.active()`  | boolean     |
 | `pwx.core.data.car.tc.setting()` | string      |
+
+---
+
+## <a id="circuitData"></a> Circuit data
+
+---
+
+## <a id="driverData"></a>Driver data
+
+---
+
+## <a id="lapData"></a>Lap data
+
+---
+
+## <a id="opponentData"></a>Opponent data
+
+---
+
+## <a id="sessionData"></a>Session data
