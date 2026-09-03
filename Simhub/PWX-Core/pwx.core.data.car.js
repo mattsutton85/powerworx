@@ -84,7 +84,7 @@ pwx.core.data.car.gearbox.shift.point = function (){
 pwx.core.data.car.gearbox.shift.blink = function (){
     return _pwxProp( pwx.core.config.car.gearbox.shift.blink )
 }
-pwx.core.data.car.gearbox.progress = function(){
+pwx.core.data.car.gearbox.shift.progress = function(){
     var rpm = pwx.core.data.car.engine.rpm.current()
     var first = pwx.core.data.car.gearbox.shift.first()
     var last = pwx.core.data.car.gearbox.shift.last()
