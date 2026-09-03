@@ -27,12 +27,12 @@ pwx.core.config = {
                 kmh: 'DataCorePlugin.GameData.Speed',
                 mph: 'DataCorePlugin.GameData.Speed',
             },
-            map: 'TODO',
-            tc: {
-                fitted: 'TODO',
-                active: 'TODO',
-                setting: 'TODO'
-            }
+            map: 'TODO'
+        },
+        tc: {
+            fitted: 'TODO',
+            active: 'TODO',
+            setting: 'TODO'
         },
         gearbox: {
             gear: 'DataCorePlugin.GameData.Gear',
@@ -56,9 +56,7 @@ pwx.core.config = {
     driver: {
         id: '',
         name: 'DataCorePlugin.GameData.PlayerName',
-        iRating: '',
-        position: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarPosition',
-        incidents: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverIncidentCount'
+        iRating: ''
     },
     flag: {
         black: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsBlack',
@@ -99,7 +97,9 @@ pwx.core.config = {
     session: {
         name: 'DataCorePlugin.GameData.SessionTypeName',
         number: 'DataCorePlugin.GameRawData.Telemetry.SessionNum',
+        position: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarPosition',
         incident: {
+            count: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverIncidentCount',
             limit: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.WeekendOptions.IncidentLimit'
         },
         lap: {

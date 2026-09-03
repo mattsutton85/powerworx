@@ -18,12 +18,18 @@ pwx.core.data.session.number = function(){
 pwx.core.data.session.name = function(){
     return _pwxString( _pwxProp( pwx.core.config.session.name ), '' )
 }
+pwx.core.data.session.position = function(){
+    return _pwxNumber( _pwxProp( pwx.core.config.session.position ) )
+}
 pwx.core.data.session.is = function(state) {
     const states = __pwxCoreSessionStates[state];
     if (!states)
         return false;
     return _pwxBoolean( states.includes( _pwxProp(pwx.core.config.session.name) ) );
 };
+pwx.core.data.session.incident.count = function(){
+    return _pwxNumber( _pwxProp( pwx.core.config.session.incident.count ) )
+}
 pwx.core.data.session.incident.limit = function(){
     return _pwxNumber( _pwxProp( pwx.core.config.session.incident.limit ) )
 }

@@ -61,13 +61,13 @@ pwx.core.data.car.engine.map = function (){
 
 /* Traction */
 pwx.core.data.car.tc.fitted = function (){
-    return _pwxProp( pwx.core.config.car.engine.tc.fitted )
+    return _pwxProp( pwx.core.config.car.tc.fitted )
 }
 pwx.core.data.car.tc.active = function (){
-    return _pwxProp( pwx.core.config.car.engine.tc.active )
+    return _pwxProp( pwx.core.config.car.tc.active )
 }
 pwx.core.data.car.tc.setting = function (){
-    return _pwxProp( pwx.core.config.car.engine.tc.setting )
+    return _pwxProp( pwx.core.config.car.tc.setting )
 }
 
 /* Gearbox */
