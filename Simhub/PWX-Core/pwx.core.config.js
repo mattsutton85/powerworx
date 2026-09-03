@@ -8,11 +8,11 @@ pwx.core.config = {
         class: '',
         model: 'DataCorePlugin.GameData.CarModel',
         brake: {
-            bias: '',
+            bias: 'TODO',
             abs: {
-                fitted: '',
-                active: '',
-                setting: ''
+                fitted: 'TODO',
+                active: 'TODO',
+                setting: 'TODO'
             }
         },
         engine: {
@@ -27,11 +27,11 @@ pwx.core.config = {
                 kmh: 'DataCorePlugin.GameData.Speed',
                 mph: 'DataCorePlugin.GameData.Speed',
             },
-            map: '',
+            map: 'TODO',
             tc: {
-                fitted: '',
-                active: '',
-                setting: ''
+                fitted: 'TODO',
+                active: 'TODO',
+                setting: 'TODO'
             }
         },
         gearbox: {
@@ -81,12 +81,12 @@ pwx.core.config = {
         time: {
             best: 'DataCorePlugin.GameRawData.Telemetry.LapBestLapTime',
             last: 'DataCorePlugin.GameRawData.Telemetry.LapLastLapTime',
-            allTime: ''
+            allTime: 'TODO'
         },
         delta: {
             best: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToBestLap',
             last: 'DataCorePlugin.GameRawData.Telemetry.LapLastLapTime',
-            allTime: ''
+            allTime: 'TODO'
         }
     },
     opponent: {

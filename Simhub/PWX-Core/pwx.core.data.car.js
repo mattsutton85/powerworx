@@ -13,18 +13,18 @@ pwx.core.data.car.gearbox.shift = pwx.core.data.car.gearbox.shift || {}
 
 /* Generic car data */
 pwx.core.data.car.id = function (){
-    return _pwxString( _pwxProp( pwx.config.car.id ))
+    return _pwxString( _pwxProp( pwx.core.config.car.id ))
 }
 pwx.core.data.car.class = function (){
-    return _pwxString( _pwxProp( pwx.config.car.class ))
+    return _pwxString( _pwxProp( pwx.core.config.car.class ))
 }
 pwx.core.data.car.model = function (){
-    return _pwxString( _pwxProp( pwx.config.car.model ))
+    return _pwxString( _pwxProp( pwx.core.config.car.model ))
 }
 
 /* Brakes */
 pwx.core.data.car.brake.bias = function (){
-    return _pwxNumber( _pwxProp( pwx.config.car.brake.bias ))
+    return _pwxNumber( _pwxProp( pwx.core.config.car.brake.bias ))
 }
 pwx.core.data.car.brake.abs.fitted = function (){
     return _pwxProp( pwx.core.config.car.abs.fitted )
@@ -84,9 +84,3 @@ pwx.core.data.car.gearbox.shift.point = function (){
 pwx.core.data.car.gearbox.shift.blink = function (){
     return _pwxProp( pwx.core.config.car.gearbox.shift.blink )
 }
-
-
-
-
-
-
