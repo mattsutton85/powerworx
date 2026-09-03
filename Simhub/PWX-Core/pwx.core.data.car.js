@@ -6,8 +6,10 @@ pwx.core.data.car.brake = pwx.core.data.car.brake || {}
 pwx.core.data.car.brake.abs = pwx.core.data.car.brake.abs || {}
 pwx.core.data.car.engine = pwx.core.data.car.engine || {}
 pwx.core.data.car.engine.speed = pwx.core.data.car.engine.speed || {}
+pwx.core.data.car.engine.rpm = pwx.core.data.car.engine.rpm || {}
 pwx.core.data.car.engine.tc = pwx.core.data.car.engine.tc || {}
 pwx.core.data.car.gearbox = pwx.core.data.car.gearbox || {}
+pwx.core.data.car.gearbox.shift = pwx.core.data.car.gearbox.shift || {}
 
 /* Generic car data */
 pwx.core.data.car.id = function (){
@@ -35,8 +37,17 @@ pwx.core.data.car.brake.abs.setting = function (){
 }
 
 /* Engine */
-pwx.core.data.car.engine.rpm = function (){
-    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.rpm ))
+pwx.core.data.car.engine.rpm.current = function (){
+    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.rpm.current ))
+}
+pwx.core.data.car.engine.rpm.idle = function (){
+    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.rpm.idle ))
+}
+pwx.core.data.car.engine.rpm.max = function (){
+    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.rpm.max ))
+}
+pwx.core.data.car.engine.rpm.redline = function (){
+    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.rpm.redline ))
 }
 pwx.core.data.car.engine.speed.kmh = function (){
     return _pwxNumber( _pwxProp( pwx.core.config.car.engine.speed.kmh ) ).toFixed(0)
@@ -61,3 +72,21 @@ pwx.core.data.car.engine.tc.setting = function (){
 pwx.core.data.car.gearbox.gear = function (){
     return _pwxString( _pwxProp( pwx.core.config.car.gearbox.gear ), '-' )
 }
+pwx.core.data.car.gearbox.shift.first = function (){
+    return _pwxProp( pwx.core.config.car.gearbox.shift.first )
+}
+pwx.core.data.car.gearbox.shift.last = function (){
+    return _pwxProp( pwx.core.config.car.gearbox.shift.last )
+}
+pwx.core.data.car.gearbox.shift.point = function (){
+    return _pwxProp( pwx.core.config.car.gearbox.shift.point )
+}
+pwx.core.data.car.gearbox.shift.blink = function (){
+    return _pwxProp( pwx.core.config.car.gearbox.shift.blink )
+}
+
+
+
+
+
+

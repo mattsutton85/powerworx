@@ -16,7 +16,13 @@ pwx.core.config = {
             }
         },
         engine: {
-            rpm: 'DataCorePlugin.GameData.Rpms',
+            rpm: {
+                current: 'DataCorePlugin.GameData.Rpms',
+                idle: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverCarIdleRPM',
+                max: 'DataCorePlugin.GameData.CarSettings_MaxRPM',
+                redline: 'GameData.CarSettings_RedlineRPM'
+            },
+            rpmIdle: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverCarIdleRPM',
             speed: {
                 kmh: 'DataCorePlugin.GameData.Speed',
                 mph: 'DataCorePlugin.GameData.Speed',
@@ -29,7 +35,13 @@ pwx.core.config = {
             }
         },
         gearbox: {
-            gear: 'DataCorePlugin.GameData.Gear'
+            gear: 'DataCorePlugin.GameData.Gear',
+            shift: {
+                first: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLFirstRPM',
+                point: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLShiftRPM',
+                last: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLLastRPM',
+                blink: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLBlinkRPM'
+            }
         }
     },
     circuit: {
@@ -110,5 +122,4 @@ function _pwxProp(prop, x, y, z) {
         prop = prop.split('{Z}').join(String(z));
     }
     return $prop(prop);
-
 }
