@@ -1,6 +1,10 @@
 # PWX SimHub Core
 PWX Core is the base binding engine for all PWX displays and hardware interfaces. 
-PWX Core files must be placed in the global Simhub extensions folder eg `C:\Program Files (x86)\SimHub\JavascriptExtensions`
+
+If using multiple PWX dashboards or PWX hardware, it is recommended the 
+PWX Core files be placed in the global Simhub extensions folder (eg `C:\Program Files (x86)\SimHub\JavaScriptExtensions`).
+
+Alternatively, the files can be included in the local `DashTemplates/[NAME]/JavaScriptExtensions` folder as they are designed to be type safe against other item specific PWX files
 
 ---
 
