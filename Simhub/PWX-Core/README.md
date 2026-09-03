@@ -1,1 +1,59 @@
 # PWX SimHub Core
+PWX Core is the base binding engine for all PWX displays and hardware interfaces.
+
+## Installation
+PWX Core files must be placed in the global Simhub extensions folder eg `C:\Program Files (x86)\SimHub\JavascriptExtensions`
+
+---
+
+## Car data
+The car data api provides generic car details as well as telemetry on brakes, engine, traction control and gearbox
+
+### pwx.core.data.car
+
+| Function                                 | Return type |
+|------------------------------------------|-------------|
+| `pwx.core.data.car.id()`                 | string      |
+| `pwx.core.data.car.class()`              | string      |
+| `pwx.core.data.car.model()`              | string      |
+
+### pwx.core.data.car.brake
+
+| Function                                 | Return type |
+|------------------------------------------|-------------|
+| `pwx.core.data.car.brake.bias()`         | number      |
+| `pwx.core.data.car.brake.abs.fitted()`   | boolean     |
+| `pwx.core.data.car.brake.abs.active()`   | boolean     |
+| `pwx.core.data.car.brake.abs.setting()`  | string      |
+
+### pwx.core.data.car.engine
+
+| Function                                 | Return type |
+|------------------------------------------|-------------|
+| `pwx.core.data.car.engine.rpm.current()` | number      |
+| `pwx.core.data.car.engine.rpm.idle()`    | number      |
+| `pwx.core.data.car.engine.rpm.max()`     | number      |
+| `pwx.core.data.car.engine.rpm.redline()` | number      |
+| `pwx.core.data.car.engine.rpm.current()` | number      |
+| `pwx.core.data.car.engine.speed.kmh()`   | number      |
+| `pwx.core.data.car.engine.speed.mph()`   | number      |
+| `pwx.core.data.car.engine.map()`         | string      |
+
+### pwx.core.data.car.gearbox
+
+| Function                                              | Return type |
+|-------------------------------------------------------|-------------|
+| `pwx.core.data.car.gearbox.gear()`                    | number      |
+| `pwx.core.data.car.gearbox.shift.first()`             | number      |
+| `pwx.core.data.car.gearbox.shift.last()`              | number      |
+| `pwx.core.data.car.gearbox.shift.point()`             | number      |
+| `pwx.core.data.car.gearbox.shift.blink()`             | number      |
+| `pwx.core.data.car.gearbox.shift.progress( numLeds )` | boolean     |
+
+### pwx.core.data.car.tc
+
+| Function                         | Return type |
+|----------------------------------|-------------|
+| `pwx.core.data.car.tc.fitted()`  | boolean     |
+| `pwx.core.data.car.tc.active()`  | boolean     |
+| `pwx.core.data.car.tc.setting()` | string      |
