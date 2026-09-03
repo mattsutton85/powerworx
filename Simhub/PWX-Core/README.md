@@ -16,9 +16,9 @@ PWX Core's API is broken into the following components:
 ---
 
 ## <a id="carData"></a>Car data
-The car data api provides generic car details as well as telemetry on brakes, engine, traction control and gearbox
 
 ### pwx.core.data.car
+General car information
 
 | Function                                 | Return type |
 |------------------------------------------|-------------|
@@ -27,6 +27,7 @@ The car data api provides generic car details as well as telemetry on brakes, en
 | `pwx.core.data.car.model()`              | string      |
 
 ### pwx.core.data.car.brake
+Braking system data
 
 | Function                                 | Return type |
 |------------------------------------------|-------------|
@@ -36,6 +37,7 @@ The car data api provides generic car details as well as telemetry on brakes, en
 | `pwx.core.data.car.brake.abs.setting()`  | string      |
 
 ### pwx.core.data.car.engine
+Engine data
 
 | Function                                 | Return type |
 |------------------------------------------|-------------|
@@ -49,6 +51,7 @@ The car data api provides generic car details as well as telemetry on brakes, en
 | `pwx.core.data.car.engine.map()`         | string      |
 
 ### pwx.core.data.car.gearbox
+Gearbox data
 
 | Function                                              | Return type |
 |-------------------------------------------------------|-------------|
@@ -60,6 +63,7 @@ The car data api provides generic car details as well as telemetry on brakes, en
 | `pwx.core.data.car.gearbox.shift.progress( numLeds )` | boolean     |
 
 ### pwx.core.data.car.tc
+Traction control data
 
 | Function                         | Return type |
 |----------------------------------|-------------|

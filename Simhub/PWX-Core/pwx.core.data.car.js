@@ -7,7 +7,7 @@ pwx.core.data.car.brake.abs = pwx.core.data.car.brake.abs || {}
 pwx.core.data.car.engine = pwx.core.data.car.engine || {}
 pwx.core.data.car.engine.speed = pwx.core.data.car.engine.speed || {}
 pwx.core.data.car.engine.rpm = pwx.core.data.car.engine.rpm || {}
-pwx.core.data.car.engine.tc = pwx.core.data.car.engine.tc || {}
+pwx.core.data.car.tc = pwx.core.data.car.tc || {}
 pwx.core.data.car.gearbox = pwx.core.data.car.gearbox || {}
 pwx.core.data.car.gearbox.shift = pwx.core.data.car.gearbox.shift || {}
 
@@ -58,13 +58,15 @@ pwx.core.data.car.engine.speed.mph = function (){
 pwx.core.data.car.engine.map = function (){
     return _pwxProp( pwx.core.config.car.engine.map )
 }
-pwx.core.data.car.engine.tc.fitted = function (){
+
+/* Traction */
+pwx.core.data.car.tc.fitted = function (){
     return _pwxProp( pwx.core.config.car.engine.tc.fitted )
 }
-pwx.core.data.car.engine.tc.active = function (){
+pwx.core.data.car.tc.active = function (){
     return _pwxProp( pwx.core.config.car.engine.tc.active )
 }
-pwx.core.data.car.engine.tc.setting = function (){
+pwx.core.data.car.tc.setting = function (){
     return _pwxProp( pwx.core.config.car.engine.tc.setting )
 }
 
