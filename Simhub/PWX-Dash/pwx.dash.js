@@ -9,8 +9,13 @@ pwx.dash.shift.led.state = function( ledNum ){
         4: 'Yelo'
     }
     const value = pwx.core.data.car.gearbox.shift.progress()
+    const shiftPoint = pwx.core.data.car.gearbox.shift.point()
+    const currentRpm = pwx.core.data.car.engine.rpm.current()
+
     let on = false
     let colour = 'Transparent'
+    let blink = false
+
     if( value >= ledNum ){
         on = true
         if( ledNum <= 7 ){
@@ -21,10 +26,16 @@ pwx.dash.shift.led.state = function( ledNum ){
             colour = 'Red'
         }
     }
+
+    if( currentRpm >= shiftPoint ){
+        colour = 'Green'
+        blink = true
+    }
+
     return {
         num: ledNum,
         on: on,
         colour: colour,
-        blink: false
+        blink: blink
     }
 }
