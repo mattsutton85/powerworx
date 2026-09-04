@@ -44,6 +44,7 @@ pwx.core.config = {
             }
         },
         tyre: {
+            compound: 'TODO',
             temperature: {
                 frontLeft: 'DataCorePlugin.GameData.TyreTemperatureFrontLeft',
                 frontRight: 'DataCorePlugin.GameData.TyreTemperatureFrontRight',
