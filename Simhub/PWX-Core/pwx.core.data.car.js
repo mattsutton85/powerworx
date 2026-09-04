@@ -101,14 +101,14 @@ pwx.core.data.car.gearbox.shift.progress = function(){
 
 /* Tyres */
 pwx.core.data.car.tyre.temperature.frontLeft = function (){
-    return _pwxNumber( pwx.core.config.car.tyre.temperature.frontLeft )
+    return _pwxNumber( _pwxProp( pwx.core.config.car.tyre.temperature.frontLeft ) )
 }
 pwx.core.data.car.tyre.temperature.frontRight = function (){
-    return _pwxNumber( pwx.core.config.car.tyre.temperature.frontRight )
+    return _pwxNumber( _pwxProp(pwx.core.config.car.tyre.temperature.frontRight ) )
 }
 pwx.core.data.car.tyre.temperature.rearLeft = function (){
-    return _pwxNumber( pwx.core.config.car.tyre.temperature.rearLeft )
+    return _pwxNumber( _pwxProp( pwx.core.config.car.tyre.temperature.rearLeft ) )
 }
 pwx.core.data.car.tyre.temperature.rearRight = function (){
-    return _pwxNumber( pwx.core.config.car.tyre.temperature.rearRight )
+    return _pwxNumber( _pwxProp( pwx.core.config.car.tyre.temperature.rearRight ) )
 }
