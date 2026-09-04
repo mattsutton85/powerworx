@@ -4,44 +4,45 @@ pwx.dash.shift = pwx.dash.shift || {}
 pwx.dash.shift.led = pwx.dash.shift.led || {}
 
 pwx.dash.shift.led.state = function( ledNum ){
-    const colourThresholds = {
-        7: 'Green',
-        4: 'Yelo'
-    }
     const progress = pwx.core.data.car.gearbox.shift.progress()
     const shiftPoint = pwx.core.data.car.gearbox.shift.point()
     const shiftBlink = pwx.core.data.car.gearbox.shift.blink()
     const currentRpm = pwx.core.data.car.engine.rpm.current()
 
-    let on = false
-    let colour = 'Transparent'
-    let blink = false
+    const colourOff = 'Transparent'
+    const colourGreen = '#6cfc17'
+    const colourYellow = '#f7d00f'
+    const colourRed = '#ff000d'
+
+    let ledOn = false
+    let ledColour = 'Transparent'
+    let ledBlink = false
 
     if( progress >= ledNum ){
-        on = true
+        ledOn = true
         if( ledNum <= 7 ){
-            colour = 'Green'
+            ledColour = colourGreen
         }else if( ledNum > 7 && ledNum <= 12 ){
-            colour = 'Yellow'
+            ledColour = colourYellow
         }else if( ledNum > 12 ){
-            colour = 'Red'
+            ledColour = colourRed
         }
     }
 
-    if( on && currentRpm >= shiftPoint ){
-        blink = true
+    if( ledOn && currentRpm >= shiftPoint ){
+        ledBlink = true
     }
 
     if( currentRpm >= shiftBlink ){
-        on = true
-        colour = 'Red'
-        blink = true
+        ledOn = true
+        ledColour = colourRed
+        ledBlink = true
     }
 
     return {
         num: ledNum,
-        on: on,
-        colour: colour,
-        blink: blink
+        on: ledOn,
+        colour: ledColour,
+        blink: ledBlink
     }
 }
