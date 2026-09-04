@@ -21,10 +21,10 @@ pwx.core.data.opponent.name = function( relative, pos ){
 
 // Retrieve opponent iRating
 pwx.core.data.opponent.iRating = function( relative, pos ){
-    return _pwxProp( pwx.core.config.opponent.iRating,
+    return _pwxIRating( _pwxProp( pwx.core.config.opponent.iRating,
         __pwxCorePrepareOpponentDirection( relative ),
         __pwxCorePrepareOpponentPosition( pos )
-    )
+    ) )
 }
 
 // Retrieve opponent position
@@ -37,10 +37,10 @@ pwx.core.data.opponent.position = function( relative, pos ){
 
 // Retrieve opponent gap
 pwx.core.data.opponent.gap = function( relative, pos ){
-    return _pwxProp( pwx.core.config.opponent.gap,
+    return _pwxTimeDelta( _pwxProp( pwx.core.config.opponent.gap,
         __pwxCorePrepareOpponentDirection( relative ),
         __pwxCorePrepareOpponentPosition( pos )
-    )
+    ), 1 )
 }
 
 /*

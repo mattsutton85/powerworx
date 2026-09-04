@@ -53,7 +53,15 @@ function _pwxTimeDelta(seconds, padding = 3){
     if( time.zero )
         return '±0.000'
     const sign = ( time.negative ) ? '-' : '+'
-    return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds ).padStart(padding,'0') )
+    return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds.toFixed( padding ) ).padStart(padding,'0') )
+}
+
+function _pwxIRating( rating ){
+    if (!rating || !isFinite(rating) || rating < 0)
+        return "";
+    if (rating < 1000)
+        return String(Math.round(rating));
+    return (rating / 1000).toFixed(1) + "k";
 }
 
 function __pwxCorePrepareTime(rawSeconds){

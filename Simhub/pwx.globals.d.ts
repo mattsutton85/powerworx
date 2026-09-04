@@ -23,3 +23,7 @@ declare function _pwxNumber(
     fallback: number,
     decimals: number
 ): number
+
+declare function _pwxIRating(
+    val: any
+): string
