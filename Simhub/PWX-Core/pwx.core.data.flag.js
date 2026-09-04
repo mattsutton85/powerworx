@@ -29,32 +29,31 @@ pwx.core.data.flag.current = function(){
     }
 
     if( states.red ){
-        flag.name = 'red'
-        flag.warning = true
+        return _pwxFlag( 'red', false, true )
     }else if( states.black ){
-        flag.name = 'penalty'
-        flag.warning = true
+        return _pwxFlag( 'penalty', false, true )
     }else if( states.repair ){
-        flag.name = 'meatball'
-        flag.warning = true
+        return _pwxFlag( 'meatball', false, true )
     }else if( states.caution || states.cautionWaving || states.yellow || states.yellowWaving ){
-        flag.name = 'yellow'
-        flag.warning = true
+        return _pwxFlag( 'yellow', false, true )
     }else if( states.debris ){
-        flag.name = 'debris'
-        flag.warning = true
+        return _pwxFlag( 'debris', false, true )
     }else if( states.blue ){
-        flag.name = 'blue'
-        flag.warning = true
+        return _pwxFlag( 'blue', false, true )
     }else if( states.lapToGreen ){
-        flag.name = 'formation'
-        flag.informational = true
+        return _pwxFlag( 'formation', true, false )
     }else if( states.white ){
-        flag.name = 'white'
-        flag.informational = true
+        return _pwxFlag( 'white', true, false )
     }else if( states.checkered ){
-        flag.name = 'checkered'
-        flag.informational = true
+        return _pwxFlag( 'checkered', true, false )
     }
-    return flag
+    return _pwxFlag( flag.name, flag.informational, flag.warning )
+}
+
+function _pwxFlag( name, informational, warning){
+    return {
+        name: name,
+        informational: informational,
+        warning: warning
+    }
 }

@@ -27,3 +27,9 @@ declare function _pwxNumber(
 declare function _pwxIRating(
     val: any
 ): string
+
+declare function _pwxFlag(
+    name: string,
+    informational: boolean,
+    warning: boolean
+): object
