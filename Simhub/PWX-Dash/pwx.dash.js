@@ -4,10 +4,18 @@ pwx.dash.shift = pwx.dash.shift || {}
 pwx.dash.shift.led = pwx.dash.shift.led || {}
 
 pwx.dash.shift.led.state = function( ledNum ){
+
+    const value = pwx.core.data.car.gearbox.shift.progress()
+
+    let on = false
+    if( value <= ledNum ){
+        on = true
+    }
+
     return {
         num: ledNum,
-        on: false,
-        color: null,
+        on: on,
+        colour: '#ffffff',
         blink: false
     }
 }
