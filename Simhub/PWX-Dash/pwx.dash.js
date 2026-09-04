@@ -15,7 +15,7 @@ pwx.dash.shift.led.state = function( ledNum ){
     return {
         num: ledNum,
         on: on,
-        colour: '#ffffff',
+        colour: 'Transparent',
         blink: false
     }
 }
