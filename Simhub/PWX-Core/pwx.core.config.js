@@ -24,8 +24,8 @@ pwx.core.config = {
             },
             rpmIdle: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverCarIdleRPM',
             speed: {
-                kmh: 'DataCorePlugin.GameData.Speed',
-                mph: 'DataCorePlugin.GameData.Speed',
+                kmh: 'DataCorePlugin.GameData.SpeedKmh',
+                mph: 'DataCorePlugin.GameData.SpeedMph',
             },
             map: 'TODO'
         },
