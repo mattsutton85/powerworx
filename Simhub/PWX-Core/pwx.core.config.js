@@ -116,6 +116,10 @@ pwx.core.config = {
         time: {
             remaining: 'DataCorePlugin.GameRawData.Telemetry.SessionTimeRemain',
         }
+    },
+    pit: {
+        limiter: 'DataCorePlugin.GameData.PitLimiterOn',
+        inPit: 'DataCorePlugin.GameData.IsInPit',
     }
 }
 
