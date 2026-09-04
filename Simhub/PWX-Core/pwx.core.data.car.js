@@ -10,6 +10,8 @@ pwx.core.data.car.engine.rpm = pwx.core.data.car.engine.rpm || {}
 pwx.core.data.car.tc = pwx.core.data.car.tc || {}
 pwx.core.data.car.gearbox = pwx.core.data.car.gearbox || {}
 pwx.core.data.car.gearbox.shift = pwx.core.data.car.gearbox.shift || {}
+pwx.core.data.car.tyre = pwx.core.data.car.tyre || {}
+pwx.core.data.car.temperature = pwx.core.data.car.temperature || {}
 
 /* Generic car data */
 pwx.core.data.car.id = function (){
@@ -24,7 +26,7 @@ pwx.core.data.car.model = function (){
 
 /* Brakes */
 pwx.core.data.car.brake.bias = function (){
-    return _pwxNumber( _pwxProp( pwx.core.config.car.brake.bias ).toFixed(1) )
+    return _pwxNumber( _pwxProp( pwx.core.config.car.brake.bias ), undefined, 1 )
 }
 pwx.core.data.car.brake.abs.fitted = function (){
     return _pwxProp( pwx.core.config.car.abs.fitted )
@@ -95,4 +97,18 @@ pwx.core.data.car.gearbox.shift.progress = function(){
         Math.min(1, (rpm - first) / (last - first))
     );
     return Math.ceil(progress * 16);
+}
+
+/* Tyres */
+pwx.core.data.car.tyre.temperature.frontLeft = function (){
+    return _pwxNumber( pwx.core.config.car.tyre.temperature.frontLeft, 0, 1 )
+}
+pwx.core.data.car.tyre.temperature.frontRight = function (){
+    return _pwxNumber( pwx.core.config.car.tyre.temperature.frontRight, 0, 1 )
+}
+pwx.core.data.car.tyre.temperature.rearLeft = function (){
+    return _pwxNumber( pwx.core.config.car.tyre.temperature.rearLeft, 0, 1 )
+}
+pwx.core.data.car.tyre.temperature.rearRight = function (){
+    return _pwxNumber( pwx.core.config.car.tyre.temperature.rearRight, 0, 1 )
 }

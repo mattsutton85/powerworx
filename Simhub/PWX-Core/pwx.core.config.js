@@ -42,6 +42,14 @@ pwx.core.config = {
                 last: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLLastRPM',
                 blink: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLBlinkRPM'
             }
+        },
+        tyre: {
+            temperature: {
+                frontLeft: 'DataCorePlugin.GameData.TyreTemperatureFrontLeft',
+                frontRight: 'DataCorePlugin.GameData.TyreTemperatureFrontRight',
+                rearLeft: 'DataCorePlugin.GameData.TyreTemperatureRearLeft',
+                rearRight: 'DataCorePlugin.GameData.TyreTemperatureRearRight'
+            }
         }
     },
     circuit: {
