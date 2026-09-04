@@ -8,11 +8,13 @@ pwx.dash.shift.led.state = function( ledNum ){
     const shiftPoint = pwx.core.data.car.gearbox.shift.point()
     const shiftBlink = pwx.core.data.car.gearbox.shift.blink()
     const currentRpm = pwx.core.data.car.engine.rpm.current()
+    const limiterOn = pwx.core.data.pit.limiterOn()
 
     const colourOff = 'Transparent'
     const colourGreen = '#6cfc17'
     const colourYellow = '#f7d00f'
     const colourRed = '#ff000d'
+    const colourPurple = '#ff03f9';
 
     let ledOn = false
     let ledColour = colourOff
@@ -39,6 +41,14 @@ pwx.dash.shift.led.state = function( ledNum ){
         ledOn = true
         ledColour = colourRed
         ledBlink = true
+    }
+
+    if( limiterOn ){
+        if( [ 1, 2, 15, 16 ].includes( ledNum ) ){
+            ledOn = true
+            ledColour = colourPurple
+            ledBlink = true
+        }
     }
 
     return {
