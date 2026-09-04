@@ -49,11 +49,3 @@ pwx.core.data.flag.current = function(){
     }
     return _pwxFlag( flag.name, flag.informational, flag.warning )
 }
-
-function _pwxFlag( name, informational, warning){
-    return {
-        name: name,
-        informational: informational,
-        warning: warning
-    }
-}
