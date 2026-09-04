@@ -22,23 +22,39 @@ pwx.core.data.flag.current = function(){
         yellowWaving: _pwxProp( pwx.core.config.flag.yellowWaving ),
     }
 
-    if( states.red )
-        return 'red'
-    if( states.black || states.disqualify )
-        return 'black'
-    if( states.caution || states.cautionWaving || states.yellow || states.yellowWaving )
-        return 'yellow'
-    if( states.debris )
-        return 'debris'
-    if( states.blue )
-        return 'blue'
-    if( states.repair )
-        return 'meatball'
-    if( states.lapToGreen )
-        return 'formation'
-    if( states.white )
-        return 'white'
-    if( states.checkered )
-        return 'checkered'
-    return 'green'
+    let flag = {
+        name: 'green',
+        informational: false,
+        warning: false
+    }
+
+    if( states.red ){
+        flag.name = 'red'
+        flag.warning = true
+    }else if( states.black ){
+        flag.name = 'penalty'
+        flag.warning = true
+    }else if( states.repair ){
+        flag.name = 'meatball'
+        flag.warning = true
+    }else if( states.caution || states.cautionWaving || states.yellow || states.yellowWaving ){
+        flag.name = 'yellow'
+        flag.warning = true
+    }else if( states.debris ){
+        flag.name = 'debris'
+        flag.warning = true
+    }else if( states.blue ){
+        flag.name = 'blue'
+        flag.warning = true
+    }else if( states.lapToGreen ){
+        flag.name = 'formation'
+        flag.informational = true
+    }else if( states.white ){
+        flag.name = 'white'
+        flag.informational = true
+    }else if( states.checkered ){
+        flag.name = 'checkered'
+        flag.informational = true
+    }
+    return flag
 }
