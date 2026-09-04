@@ -29,7 +29,6 @@ pwx.dash.shift.led.state = function( ledNum ){
     }
 
     if( on && currentRpm >= shiftPoint ){
-        colour = 'Green'
         blink = true
     }
 
