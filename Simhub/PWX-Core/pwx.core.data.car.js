@@ -50,10 +50,10 @@ pwx.core.data.car.engine.rpm.redline = function (){
     return _pwxNumber( _pwxProp( pwx.core.config.car.engine.rpm.redline ))
 }
 pwx.core.data.car.engine.speed.kmh = function (){
-    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.speed.kmh ) ).toFixed(0)
+    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.speed.kmh ) )
 }
 pwx.core.data.car.engine.speed.mph = function (){
-    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.speed.mph ) ).toFixed(0)
+    return _pwxNumber( _pwxProp( pwx.core.config.car.engine.speed.mph ) )
 }
 pwx.core.data.car.engine.map = function (){
     return _pwxProp( pwx.core.config.car.engine.map )
