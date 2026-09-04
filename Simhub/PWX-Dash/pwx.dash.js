@@ -7,10 +7,19 @@ pwx.dash.state = function(){
     const flag = pwx.core.data.flag.current()
     const limiter = pwx.core.data.pit.limiterOn()
     if( limiter )
-        return 'pit'
+        return {
+            name: 'pit',
+            flag: null
+        }
     if ( flag.warning )
-        return 'flag'
-    return 'normal'
+        return {
+            name: 'flag',
+            flag: flag.name
+        }
+    return {
+        name: 'normal',
+        flag: null
+    }
 }
 
 pwx.dash.shift.led.state = function( ledNum ){
@@ -43,31 +52,47 @@ pwx.dash.shift.led.state = function( ledNum ){
         }
     }
 
+    // Shift point - flash all LEDS green
     if( rpm >= shift.point ){
         led.on = true
         led.colour = pwx.core.theme.colour.green
         led.blink = true
     }
-
+    
+    // Redline - flash all LEDS red
     if( rpm >= shift.blink ){
         led.on = true
         led.colour = pwx.core.theme.colour.red
         led.blink = true
     }
 
-    if( state === 'flag' ){
+    // Pit / Flag mode - 
+    if( [ 'pit', 'flag' ].includes( state.name ) ){
         if( led.outer ){
             led.on = true
-            led.colour = pwx.core.theme.colour.yellow
             led.blink = true
-        }
-    }
-
-    if( state === 'pit' ){
-        if( led.outer ){
-            led.on = true
-            led.colour = pwx.core.theme.colour.purple
-            led.blink = true
+            if( state.name === 'pit'{
+                led.colour = pwx.core.theme.colour.purple
+            }else{
+                switch( state.flag ){
+                    case 'red':
+                        led.colour = pwx.core.theme.colour.red
+                        break
+                    case 'debris':
+                    case 'yellow':
+                        led.colour = pwx.core.theme.colour.yellow
+                        break
+                    case 'meatball':
+                        led.colour = pwx.core.theme.colour.orange
+                        break
+                    case 'blue':
+                        led.colour = pwx.core.theme.colour.blue
+                        break
+                    default:
+                        led.colour = pwx.core.theme.colour.white
+                        break
+                }
+            }
         }
     }
 
