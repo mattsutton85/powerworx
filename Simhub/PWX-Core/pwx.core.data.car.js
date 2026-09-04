@@ -11,7 +11,6 @@ pwx.core.data.car.tc = pwx.core.data.car.tc || {}
 pwx.core.data.car.gearbox = pwx.core.data.car.gearbox || {}
 pwx.core.data.car.gearbox.shift = pwx.core.data.car.gearbox.shift || {}
 pwx.core.data.car.tyre = pwx.core.data.car.tyre || {}
-pwx.core.data.car.tyre.temperature = pwx.core.data.car.tyre.temperature || {}
 
 /* Generic car data */
 pwx.core.data.car.id = function (){
@@ -100,15 +99,9 @@ pwx.core.data.car.gearbox.shift.progress = function(){
 }
 
 /* Tyres */
-pwx.core.data.car.tyre.temperature.frontLeft = function (){
-    return _pwxNumber( _pwxProp( pwx.core.config.car.tyre.temperature.frontLeft ), undefined, 1 )
-}
-pwx.core.data.car.tyre.temperature.frontRight = function (){
-    return _pwxNumber( _pwxProp(pwx.core.config.car.tyre.temperature.frontRight ), undefined, 1 )
-}
-pwx.core.data.car.tyre.temperature.rearLeft = function (){
-    return _pwxNumber( _pwxProp( pwx.core.config.car.tyre.temperature.rearLeft ), undefined, 1 )
-}
-pwx.core.data.car.tyre.temperature.rearRight = function (){
-    return _pwxNumber( _pwxProp( pwx.core.config.car.tyre.temperature.rearRight ), undefined, 1 )
+pwx.core.data.car.tyre.temperature = function ( tyre ){
+    // Get the live avg carcass tempe
+    // Get the car class
+    // Get the tyre type
+    // return { value, state (if class & tyre type exist in assumptions
 }
