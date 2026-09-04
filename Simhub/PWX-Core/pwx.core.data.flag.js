@@ -22,12 +22,6 @@ pwx.core.data.flag.current = function(){
         yellowWaving: _pwxProp( pwx.core.config.flag.yellowWaving ),
     }
 
-    let flag = {
-        name: 'green',
-        informational: false,
-        warning: false
-    }
-
     if( states.red ){
         return _pwxFlag( 'red', false, true )
     }else if( states.black ){
@@ -47,5 +41,5 @@ pwx.core.data.flag.current = function(){
     }else if( states.checkered ){
         return _pwxFlag( 'checkered', true, false )
     }
-    return _pwxFlag( flag.name, flag.informational, flag.warning )
+    return _pwxFlag( 'green', false, false )
 }
