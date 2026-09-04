@@ -7,6 +7,7 @@ pwx.core.data.session.lap = pwx.core.data.lap || {}
 pwx.core.data.session.time = pwx.core.data.time || {}
 
 const __pwxCoreSessionStates = {
+    test: ['Offline Test'],
     practice: ['Practice','Test'],
     qualifying: ['Lone Qualify','Open Qualify'],
     race: ['Race']
