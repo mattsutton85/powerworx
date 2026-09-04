@@ -120,6 +120,42 @@ pwx.core.config = {
     pit: {
         limiter: 'DataCorePlugin.GameData.PitLimiterOn',
         inPit: 'DataCorePlugin.GameData.IsInPit',
+    },
+    theme: {
+        colour: {
+            red: '#ff000d',
+            yellow: '#ffda00',
+            orange: '#ff6700',
+            green: '#6cfc17',
+            purple: '#d300ff',
+            transparent: 'Transparent'
+        }
+    },
+    assumption: {
+        gt4: {
+            tyre: {
+                dry:{
+                    temperature: {
+                        warm: 50,
+                        ready: 65,
+                        hot: 96,
+                        overheat: 105
+                    }
+                }
+            }
+        },
+        tcr: {
+            tyre: {
+                dry:{
+                    temperature: {
+                        warm: 45,
+                        ready: 60,
+                        hot: 91,
+                        overheat: 100
+                    }
+                }
+            }
+        }
     }
 }
 
