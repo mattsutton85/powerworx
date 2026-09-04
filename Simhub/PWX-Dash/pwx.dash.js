@@ -15,7 +15,7 @@ pwx.dash.shift.led.state = function( ledNum ){
     const colourRed = '#ff000d'
 
     let ledOn = false
-    let ledColour = 'Transparent'
+    let ledColour = colourOff
     let ledBlink = false
 
     if( progress >= ledNum ){
@@ -29,7 +29,9 @@ pwx.dash.shift.led.state = function( ledNum ){
         }
     }
 
-    if( ledOn && currentRpm >= shiftPoint ){
+    if( currentRpm >= shiftPoint ){
+        ledOn = true
+        ledColour = colourGreen
         ledBlink = true
     }
 
