@@ -11,7 +11,7 @@ pwx.core.data.car.tc = pwx.core.data.car.tc || {}
 pwx.core.data.car.gearbox = pwx.core.data.car.gearbox || {}
 pwx.core.data.car.gearbox.shift = pwx.core.data.car.gearbox.shift || {}
 pwx.core.data.car.tyre = pwx.core.data.car.tyre || {}
-pwx.core.data.car.temperature = pwx.core.data.car.temperature || {}
+pwx.core.data.car.tyre.temperature = pwx.core.data.car.tyre.temperature || {}
 
 /* Generic car data */
 pwx.core.data.car.id = function (){
