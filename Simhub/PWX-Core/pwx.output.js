@@ -56,6 +56,16 @@ function _pwxTimeDelta(seconds, padding = 3){
     return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds ).padStart(padding,'0') )
 }
 
+function _pwxTimeGap( seconds ){
+    const time = __pwxCorePrepareTime(seconds)
+    if( !time.valid )
+        return '-.-'
+    if( time.zero )
+        return '±0.0'
+    const sign = ( time.negative ) ? '-' : '+'
+    return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds.toFixed(1) ).padStart(padding,'0') )
+}
+
 function _pwxIRating( rating ){
     if (!rating || !isFinite(rating) || rating < 0)
         return "";
