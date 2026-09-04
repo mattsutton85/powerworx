@@ -8,7 +8,7 @@ pwx.core.config = {
         class: '',
         model: 'DataCorePlugin.GameData.CarModel',
         brake: {
-            bias: 'TODO',
+            bias: 'DataCorePlugin.GameData.BrakeBias',
             abs: {
                 fitted: 'TODO',
                 active: 'TODO',

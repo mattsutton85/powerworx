@@ -24,7 +24,7 @@ pwx.core.data.car.model = function (){
 
 /* Brakes */
 pwx.core.data.car.brake.bias = function (){
-    return _pwxNumber( _pwxProp( pwx.core.config.car.brake.bias ))
+    return _pwxNumber( _pwxProp( pwx.core.config.car.brake.bias ) ).toFixed(1)
 }
 pwx.core.data.car.brake.abs.fitted = function (){
     return _pwxProp( pwx.core.config.car.abs.fitted )
