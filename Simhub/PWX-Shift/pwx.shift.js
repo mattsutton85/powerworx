@@ -28,6 +28,7 @@ pwx.shift.state = function( numLeds ){
             outer: outerLeds.includes( i )
         }
         
+        // Standard shift progress
         if( i <= shift.progress ){
             led.on = true
             led.blink = false
@@ -38,6 +39,20 @@ pwx.shift.state = function( numLeds ){
             }else{
                 led.colour = __pwxShiftLedColour( 'red' )
             }
+        }
+        
+        // Shift point override
+        if( rpm === shift.point ){
+            led.on = true
+            led.blink = true
+            led.blinkRate = pwx.
+            led.colour = __pwxShiftLedColour( 'green' )
+        }
+        
+        // Redline override
+        if( rpm === shift.blink ){
+            led.on = true
+            led.colour = __pwxShiftLedColour( 'green' )
         }
 
         // Logic
