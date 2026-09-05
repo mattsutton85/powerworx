@@ -38,5 +38,5 @@ pwx.core.data.session.lap.limit = function(){
     return _pwxNumber( _pwxProp( pwx.core.config.session.lap.limit ) )
 }
 pwx.core.data.session.time.remaining = function(){
-    return _pwxTimeSession( pwx.core.config.session.time.remaining )
+    return _pwxTimeSession( _pwxProp( pwx.core.config.session.time.remaining ) )
 }
