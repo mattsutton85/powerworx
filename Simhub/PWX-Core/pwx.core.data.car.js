@@ -114,5 +114,20 @@ pwx.core.data.car.tyre.temperature = function ( tyre ){
     state.car = carClass
     state.type = _pwxString( _pwxProp( pwx.core.config.car.tyre.type ) ).toLowerCase()
 
+    const assumption = pwx.core.config.assumption[state.car].tyre[state.type].temperature
+    if( assumption && state.temp > 0 ){
+        if( state.temp < assumption.warm ){
+            state.state = 'cold'
+        }else if( state.temp < assumption.ready ){
+            state.state = 'warm'
+        }else if( state.temp < assumption.hot ){
+            state.state = 'ready'
+        }else if( state.temp < assumption.overheat ){
+            state.state = 'hot'
+        }else{
+            state.state = 'overheat'
+        }
+    }
+
     return state
 }
