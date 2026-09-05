@@ -37,7 +37,7 @@ pwx.dash.shift.led.state = function( ledNum ){
     let led = {
         num: ledNum,
         on: false,
-        colour: pwx.core.theme.colour.transparent,
+        colour: pwx.core.theme.colour.transparent.hex,
         blink: false,
         outer: [ 1, 2, 15, 16 ].includes( ledNum )
     }
@@ -46,25 +46,25 @@ pwx.dash.shift.led.state = function( ledNum ){
     if( shift.progress >= ledNum ){
         led.on = true
         if( ledNum <= 7 ){
-            led.colour = pwx.core.theme.colour.green
+            led.colour = pwx.core.config.theme.colour.green.hex
         }else if( ledNum <= 12 ){
-            led.colour = pwx.core.theme.colour.yellow
+            led.colour = pwx.core.config.theme.colour.yellow.hex
         }else{
-            led.colour = pwx.core.theme.colour.red
+            led.colour = pwx.core.config.theme.colour.red.hex
         }
     }
 
     // Shift point
     if( rpm >= shift.point ){
         led.on = true
-        led.colour = pwx.core.theme.colour.green
+        led.colour = pwx.core.config.theme.colour.green.hex
         led.blink = true
     }
 
     // Redline takes priority over shift point
     if( rpm >= shift.blink ){
         led.on = true
-        led.colour = pwx.core.theme.colour.red
+        led.colour = pwx.core.config.theme.colour.red.hex
         led.blink = true
     }
 
@@ -72,27 +72,27 @@ pwx.dash.shift.led.state = function( ledNum ){
     if( led.outer ){
         if( state.name === 'pit' ){
             led.on = true
-            led.colour = pwx.core.theme.colour.purple
+            led.colour = pwx.core.config.theme.colour.purple.hex
             led.blink = true
         }else if( state.name === 'flag' ){
             led.on = true
             led.blink = true
             switch( state.flag ){
                 case 'red':
-                    led.colour = pwx.core.theme.colour.red
+                    led.colour = pwx.core.config.theme.colour.red.hex
                     break
                 case 'debris':
                 case 'yellow':
-                    led.colour = pwx.core.theme.colour.yellow
+                    led.colour = pwx.core.config.theme.colour.yellow.hex
                     break
                 case 'meatball':
-                    led.colour = pwx.core.theme.colour.orange
+                    led.colour = pwx.core.config.theme.colour.orange.hex
                     break
                 case 'blue':
-                    led.colour = pwx.core.theme.colour.blue
+                    led.colour = pwx.core.config.theme.colour.blue.hex
                     break
                 default:
-                    led.colour = pwx.core.theme.colour.white
+                    led.colour = pwx.core.config.theme.colour.white.hex
                     break
             }
         }

@@ -46,10 +46,26 @@ pwx.core.config = {
         tyre: {
             compound: 'TODO',
             temperature: {
-                frontLeft: 'DataCorePlugin.GameData.TyreTemperatureFrontLeft',
-                frontRight: 'DataCorePlugin.GameData.TyreTemperatureFrontRight',
-                rearLeft: 'DataCorePlugin.GameData.TyreTemperatureRearLeft',
-                rearRight: 'DataCorePlugin.GameData.TyreTemperatureRearRight'
+                fl: {
+                    left: '',
+                    center: 'TODO',
+                    right: ''
+                },
+                fr: {
+                    left: '',
+                    center: 'TODO',
+                    right: ''
+                },
+                rl: {
+                    left: '',
+                    center: 'TODO',
+                    right: ''
+                },
+                rr: {
+                    left: '',
+                    center: 'TODO',
+                    right: ''
+                }
             }
         }
     },
@@ -124,12 +140,48 @@ pwx.core.config = {
     },
     theme: {
         colour: {
-            red: '#ff000d',
-            yellow: '#ffda00',
-            orange: '#ff6700',
-            green: '#6cfc17',
-            purple: '#d300ff',
-            transparent: 'Transparent'
+            red: {
+                hex: '#ff000d',
+                r: '',
+                g: '',
+                b: ''
+            },
+            yellow: {
+                hex: '#ffda00',
+                r: '',
+                g: '',
+                b: ''
+            },
+            orange: {
+                hex: '#ff6700',
+                r: '',
+                g: '',
+                b: ''
+            },
+            green: {
+                hex: '#6cfc17',
+                r: '',
+                g: '',
+                b: ''
+            },
+            purple: {
+                hex: '#d300ff',
+                r: '',
+                g: '',
+                b: ''
+            },
+            white: {
+                hex: '#ffffff',
+                r: '',
+                g: '',
+                b: ''
+            },
+            transparent: {
+                hex: 'Transparent',
+                r: '',
+                g: '',
+                b: ''
+            }
         }
     },
     assumption: {
