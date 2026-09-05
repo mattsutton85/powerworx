@@ -37,9 +37,6 @@ pwx.shift.state = function( numLeds ){
                 led.colour = __pwxShiftLedColour( 'yellow' )
             }else{
                 led.colour = __pwxShiftLedColour( 'red' )
-                if ( i == 16 ){
-                    led.blink = true
-                }
             }
         }
 
