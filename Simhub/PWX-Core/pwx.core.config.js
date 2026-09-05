@@ -108,7 +108,7 @@ pwx.core.config = {
         },
         delta: {
             best: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToBestLap',
-            last: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToLastLap',
+            last: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToSessionLastLap',
             allTime: 'TODO'
         }
     },
