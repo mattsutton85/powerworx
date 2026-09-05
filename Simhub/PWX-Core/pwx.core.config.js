@@ -131,7 +131,7 @@ pwx.core.config = {
     },
     pit: {
         limiter: 'DataCorePlugin.GameData.PitLimiterOn',
-        inPit: 'DataCorePlugin.GameData.IsInPit',
+        in: 'DataCorePlugin.GameData.IsInPit',
     },
     theme: {
         colour: {
