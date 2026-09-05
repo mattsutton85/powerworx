@@ -37,8 +37,13 @@ pwx.dash.shift.led.state = function( ledNum ){
         }
         blink: pwx.core.data.car.gearbox.shift.blink()
     }
-
+    
     const rpm = pwx.core.data.car.engine.rpm.current()
+    
+    const isShiftWindow = (
+        ( rpm >= ( shift.point.target - shift.point.lead ) ) &&
+        ( rpm <= ( shift.point.target + shift.point.overrun ) )
+    )
 
     let led = {
         num: ledNum,
@@ -52,22 +57,22 @@ pwx.dash.shift.led.state = function( ledNum ){
     if( shift.progress >= ledNum ){
         led.on = true
         if( ledNum <= 7 ){
-            led.colour = pwx.core.config.theme.colour.green.hex
-        }else if( ledNum <= 12 ){
+            led.colour = pwx.core.config.theme.colour.cyan.hex
+        }else if( ledNum <= 13 ){
             led.colour = pwx.core.config.theme.colour.yellow.hex
         }else{
             led.colour = pwx.core.config.theme.colour.red.hex
         }
     }
 
-    // Shift point
-    if( rpm >= shift.point ){
+    // Shift point override
+    if( isShiftWindow ){
         led.on = true
         led.colour = pwx.core.config.theme.colour.green.hex
         led.blink = true
     }
 
-    // Redline takes priority over shift point
+    // Redline override
     if( rpm >= shift.blink ){
         led.on = true
         led.colour = pwx.core.config.theme.colour.red.hex
