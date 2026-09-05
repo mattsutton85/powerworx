@@ -6,7 +6,7 @@ pwx.dash.firmware = pwx.dash.firmware || {}
 
 pwx.dash.state = function(){
     const flag = pwx.core.data.flag.current()
-    const limiter = pwx.core.data.pit.limiterOn()
+    const pitLimiter = pwx.core.data.pit.limiter()
     if( limiter )
         return {
             name: 'pit'
