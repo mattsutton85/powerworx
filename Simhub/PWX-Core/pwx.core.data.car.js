@@ -27,9 +27,6 @@ pwx.core.data.car.model = function (){
 pwx.core.data.car.brake.bias = function (){
     return _pwxNumber( _pwxProp( pwx.core.config.car.brake.bias ), undefined, 1 )
 }
-pwx.core.data.car.brake.abs.fitted = function (){
-    return _pwxProp( pwx.core.config.car.abs.fitted )
-}
 pwx.core.data.car.brake.abs.active = function (){
     return _pwxProp( pwx.core.config.car.abs.active )
 }
@@ -61,9 +58,6 @@ pwx.core.data.car.engine.map = function (){
 }
 
 /* Traction */
-pwx.core.data.car.tc.fitted = function (){
-    return _pwxProp( pwx.core.config.car.tc.fitted )
-}
 pwx.core.data.car.tc.active = function (){
     return _pwxProp( pwx.core.config.car.tc.active )
 }
@@ -100,8 +94,17 @@ pwx.core.data.car.gearbox.shift.progress = function(){
 
 /* Tyres */
 pwx.core.data.car.tyre.temperature = function ( tyre ){
-    // Get the live avg carcass tempe
-    // Get the car class
-    // Get the tyre type
-    // return { value, state (if class & tyre type exist in assumptions
+
+    let state = {
+        tyre: tyre,
+        temp: 0,
+        state: null
+    }
+
+    const tyreLeft = _pwxProp( pwx.core.config.car.tyre.temperature[tyre].left )
+    const tyreCenter = _pwxProp( pwx.core.config.car.tyre.temperature[tyre].center )
+    const tyreRight = _pwxProp( pwx.core.config.car.tyre.temperature[tyre].right )
+
+    state.temp = _pwxNumber( ( tyreLeft + tyreCenter + tyreRight ) / 3, 0, 1 )
+    return state
 }
