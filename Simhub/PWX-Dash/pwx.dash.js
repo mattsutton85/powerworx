@@ -65,17 +65,17 @@ pwx.dash.shift.led.state = function( ledNum ){
         }
     }
 
-    // Shift point override
-    if( isShiftWindow ){
-        led.on = true
-        led.colour = pwx.core.config.theme.colour.green.hex
-        led.blink = true
-    }
-
-    // Redline override
+    // Redline bar priortiy
     if( rpm >= shift.blink ){
         led.on = true
         led.colour = pwx.core.config.theme.colour.red.hex
+        led.blink = true
+    }
+    
+    // Shift point takes final priority of the bar
+    if( isShiftWindow ){
+        led.on = true
+        led.colour = pwx.core.config.theme.colour.green.hex
         led.blink = true
     }
 
