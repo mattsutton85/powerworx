@@ -22,7 +22,7 @@ pwx.shift.state = function( numLeds ){
         let led = {
             num: i,
             on: false,
-            colour: __pwxShiftLedColour( 'Transparent' ),
+            colour: __pwxShiftLedColour( 'transparent' ),
             blink: false,
             blinkRate: null,
             outer: outerLeds.includes( i )
@@ -30,8 +30,16 @@ pwx.shift.state = function( numLeds ){
         
         if( i <= shift.progress ){
             led.on = true
+            led.blink = false
             if ( i <= 7 ){
-                led.colour = __pwxShiftLedColour( 'Transparent' )
+                led.colour = __pwxShiftLedColour( 'cyan' )
+            }else if ( i <= 13 ){
+                led.colour = __pwxShiftLedColour( 'yellow' )
+            }else{
+                led.colour = __pwxShiftLedColour( 'red' )
+                if ( i == 16 ){
+                    led.blink = true
+                }
             }
         }
 
@@ -44,6 +52,7 @@ pwx.shift.state = function( numLeds ){
 }
 
 function __pwxShiftLedColour( colour ){
+    colour = colour.toLowerCase()
     return {
         hex: pwx.core.theme.colour[colour].hex,
         r: pwx.core.theme.colour[colour].r,
