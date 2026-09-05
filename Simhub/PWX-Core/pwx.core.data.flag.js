@@ -31,7 +31,7 @@ pwx.core.data.flag.current = function(){
     }else if( states.caution || states.cautionWaving || states.yellow || states.yellowWaving ){
         return _pwxFlag( 'yellow', 'warning' )
     }else if( states.debris ){
-        return _pwxFlag( 'debris', 'warning'e )
+        return _pwxFlag( 'debris', 'warning' )
     }else if( states.blue ){
         return _pwxFlag( 'blue', 'warning' )
     }else if( states.lapToGreen ){
