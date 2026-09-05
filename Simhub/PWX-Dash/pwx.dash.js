@@ -9,20 +9,18 @@ pwx.dash.state = function(){
     const limiter = pwx.core.data.pit.limiterOn()
     if( limiter )
         return {
-            name: 'pit',
-            flag: null
+            name: 'pit'
         }
-    if ( flag.warning )
+    if ( flag )
         return {
             name: 'flag',
             flag: {
                 name: flag.name,
-                critical: flag.critical
+                type: flag.type
             }
         }
     return {
-        name: 'normal',
-        flag: null
+        name: 'normal'
     }
 }
 
@@ -81,7 +79,7 @@ pwx.dash.shift.led.state = function( ledNum ){
         }else if( state.name === 'flag' ){
             led.on = true
             led.blink = true
-            switch( state.flag ){
+            switch( state.flag.name ){
                 case 'red':
                     led.colour = pwx.core.config.theme.colour.red.hex
                     break
