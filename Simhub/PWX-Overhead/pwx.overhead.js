@@ -6,10 +6,11 @@ pwx.overhead.incident = pwx.overhead.incident || {}
 pwx.overhead.lap = pwx.overhead.lap || {}
 pwx.overhead.remaining = pwx.overhead.remaining || {}
 pwx.overhead.position = pwx.overhead.position || {}
+pwx.overhead.firmware = pwx.overhead.firmware || {}
 
 /* Incident count */
 pwx.overhead.incident.value = function(){
-    return _pwxString( pwx.core.data.driver.incidents(), '0' )
+    return _pwxString( pwx.core.data.session.incident.count, '0' )
 }
 pwx.overhead.incident.colourBackground = function(){
     return 'Red'
@@ -33,5 +34,9 @@ pwx.overhead.remaining.value = function(){
 
 /* Car position */
 pwx.overhead.position.value = function(){
-    return _pwxString( pwx.core.data.driver.position(), '-' )
+    return _pwxString( pwx.core.data.session.position(), '-' )
+}
+
+pwx.overhead.firmware.version = function(){
+    return _pwxString( '1.0' )
 }

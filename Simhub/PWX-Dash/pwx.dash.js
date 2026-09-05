@@ -2,6 +2,7 @@ var pwx = pwx || {}
 pwx.dash = pwx.dash || {}
 pwx.dash.shift = pwx.dash.shift || {}
 pwx.dash.shift.led = pwx.dash.shift.led || {}
+pwx.dash.firmware = pwx.dash.firmware || {}
 
 pwx.dash.state = function(){
     const flag = pwx.core.data.flag.current()
@@ -98,4 +99,8 @@ pwx.dash.shift.led.state = function( ledNum ){
         }
     }
     return led
+}
+
+pwx.dash.firmware.version = function(){
+    return _pwxString( '1.0' )
 }
