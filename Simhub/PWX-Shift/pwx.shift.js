@@ -41,21 +41,16 @@ pwx.shift.state = function( numLeds ){
             }
         }
         
-        // Shift point override
-        if( rpm === shift.point ){
-            led.on = true
-            led.blink = true
-            led.blinkRate = pwx.
-            led.colour = __pwxShiftLedColour( 'green' )
-        }
-        
         // Redline override
         if( rpm === shift.blink ){
             led.on = true
-            led.colour = __pwxShiftLedColour( 'green' )
+            led.colour = __pwxShiftLedColour( 'red' )
+            led.blink = true
         }
+        
+        // Shift point override
 
-        // Logic
+        // Outer LED flag mode override
 
         state.leds.push( led )
     }
