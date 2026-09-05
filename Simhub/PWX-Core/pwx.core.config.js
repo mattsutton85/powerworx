@@ -4,15 +4,14 @@ pwx.core.config = pwx.core.config || {}
 
 pwx.core.config = {
     car: {
-        id: '',
-        class: '',
+        id: 'DataCorePlugin.GameData.CarID',
+        class: 'DataCorePlugin.GameData.CarClass',
         model: 'DataCorePlugin.GameData.CarModel',
         brake: {
             bias: 'DataCorePlugin.GameData.BrakeBias',
             abs: {
-                fitted: 'TODO',
-                active: 'TODO',
-                setting: 'TODO'
+                active: 'DataCorePlugin.GameRawData.Telemetry.BrakeABSactive',
+                setting: 'DataCorePlugin.GameRawData.Telemetry.dcABS'
             }
         },
         engine: {
@@ -26,13 +25,11 @@ pwx.core.config = {
             speed: {
                 kmh: 'DataCorePlugin.GameData.SpeedKmh',
                 mph: 'DataCorePlugin.GameData.SpeedMph',
-            },
-            map: 'TODO'
+            }
         },
         tc: {
-            fitted: 'TODO',
             active: 'TODO',
-            setting: 'TODO'
+            setting: 'DataCorePlugin.GameData.TCLevel'
         },
         gearbox: {
             gear: 'DataCorePlugin.GameData.Gear',
@@ -44,33 +41,33 @@ pwx.core.config = {
             }
         },
         tyre: {
-            compound: 'TODO',
+            type: 'DataCorePlugin.GameRawData.SessionData.CarSetup.Tires.TireType.TireType',
             temperature: {
                 fl: {
-                    left: '',
-                    center: 'TODO',
-                    right: ''
+                    left: 'DataCorePlugin.GameRawData.Telemetry.LFtempCL',
+                    center: 'DataCorePlugin.GameRawData.Telemetry.LFtempCM',
+                    right: 'DataCorePlugin.GameRawData.Telemetry.LFtempCR',
                 },
                 fr: {
-                    left: '',
-                    center: 'TODO',
-                    right: ''
+                    left: 'DataCorePlugin.GameRawData.Telemetry.RFtempCL',
+                    center: 'DataCorePlugin.GameRawData.Telemetry.RFtempCM',
+                    right: 'DataCorePlugin.GameRawData.Telemetry.RFtempCR',
                 },
                 rl: {
-                    left: '',
-                    center: 'TODO',
-                    right: ''
+                    left: 'DataCorePlugin.GameRawData.Telemetry.LRtempCL',
+                    center: 'DataCorePlugin.GameRawData.Telemetry.LRtempCM',
+                    right: 'DataCorePlugin.GameRawData.Telemetry.LRtempCR',
                 },
                 rr: {
-                    left: '',
-                    center: 'TODO',
-                    right: ''
+                    left: 'DataCorePlugin.GameRawData.Telemetry.RRtempCL',
+                    center: 'DataCorePlugin.GameRawData.Telemetry.RRtempCM',
+                    right: 'DataCorePlugin.GameRawData.Telemetry.RRtempCR',
                 }
             }
         }
     },
     circuit: {
-        id: '',
+        id: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackID',
         name: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackDisplayName',
         length: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackLength',
         corners: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackNumTurns',
@@ -79,9 +76,7 @@ pwx.core.config = {
         }
     },
     driver: {
-        id: '',
-        name: 'DataCorePlugin.GameData.PlayerName',
-        iRating: ''
+        name: 'DataCorePlugin.GameData.PlayerName'
     },
     flag: {
         black: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsBlack',
@@ -190,7 +185,7 @@ pwx.core.config = {
         critical: 150
     },
     assumption: {
-        gt4: {
+        gt4class: {
             tyre: {
                 dry:{
                     temperature: {
@@ -202,7 +197,7 @@ pwx.core.config = {
                 }
             }
         },
-        tcr: {
+        tcrclass: {
             tyre: {
                 dry:{
                     temperature: {
