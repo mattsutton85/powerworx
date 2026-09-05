@@ -30,7 +30,11 @@ pwx.dash.shift.led.state = function( ledNum ){
 
     const shift = {
         progress: pwx.core.data.car.gearbox.shift.progress(),
-        point: pwx.core.data.car.gearbox.shift.point(),
+        point: {
+            target: pwx.core.data.car.gearbox.shift.point(),
+            lead: 150,
+            overrun: 100
+        }
         blink: pwx.core.data.car.gearbox.shift.blink()
     }
 
