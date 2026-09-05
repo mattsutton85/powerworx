@@ -27,6 +27,13 @@ pwx.shift.state = function( numLeds ){
             blinkRate: null,
             outer: outerLeds.includes( i )
         }
+        
+        if( i <= shift.progress ){
+            led.on = true
+            if ( i <= 7 ){
+                led.colour = __pwxShiftLedColour( 'Transparent' )
+            }
+        }
 
         // Logic
 
