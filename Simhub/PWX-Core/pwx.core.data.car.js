@@ -96,7 +96,9 @@ pwx.core.data.car.gearbox.shift.progress = function(){
 pwx.core.data.car.tyre.temperature = function ( tyre ){
 
     let state = {
-        tyre: tyre,
+        corner: tyre,
+        type: '',
+        car: '',
         temp: 0,
         state: null
     }
@@ -106,5 +108,11 @@ pwx.core.data.car.tyre.temperature = function ( tyre ){
     const tyreRight = _pwxProp( pwx.core.config.car.tyre.temperature[tyre].right )
 
     state.temp = _pwxNumber( ( tyreLeft + tyreCenter + tyreRight ) / 3, 0, 1 )
+
+    let carClass = _pwxString( _pwxProp( pwx.core.config.car.class ) ).toLowerCase()
+    carClass = carClass.split( ' ' ).join( '' )
+    state.car = carClass
+    state.type = _pwxString( _pwxProp( pwx.core.config.car.tyre.type ) ).toLowerCase()
+
     return state
 }
