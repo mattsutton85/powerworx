@@ -184,6 +184,11 @@ pwx.core.config = {
             }
         }
     },
+    blink: {
+        slow: 500,
+        warning: 250,
+        critical: 150
+    },
     assumption: {
         gt4: {
             tyre: {
