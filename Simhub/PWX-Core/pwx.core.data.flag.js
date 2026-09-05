@@ -23,23 +23,23 @@ pwx.core.data.flag.current = function(){
     }
 
     if( states.red ){
-        return _pwxFlag( 'red', false, true )
+        return _pwxFlag( 'red', 'critical' )
     }else if( states.black ){
-        return _pwxFlag( 'penalty', false, true )
+        return _pwxFlag( 'penalty', 'warning' )
     }else if( states.repair ){
-        return _pwxFlag( 'meatball', false, true )
+        return _pwxFlag( 'meatball', 'warning' )
     }else if( states.caution || states.cautionWaving || states.yellow || states.yellowWaving ){
-        return _pwxFlag( 'yellow', false, true )
+        return _pwxFlag( 'yellow', 'warning' )
     }else if( states.debris ){
-        return _pwxFlag( 'debris', false, true )
+        return _pwxFlag( 'debris', 'warning'e )
     }else if( states.blue ){
-        return _pwxFlag( 'blue', false, true )
+        return _pwxFlag( 'blue', 'warning' )
     }else if( states.lapToGreen ){
-        return _pwxFlag( 'formation', true, false )
+        return _pwxFlag( 'formation', 'informational' )
     }else if( states.white ){
-        return _pwxFlag( 'white', true, false )
+        return _pwxFlag( 'white', 'informational' )
     }else if( states.checkered ){
-        return _pwxFlag( 'checkered', true, false )
+        return _pwxFlag( 'checkered', 'informational' )
     }
-    return _pwxFlag( 'green', false, false )
+    return _pwxFlag( 'green', 'informational' )
 }
