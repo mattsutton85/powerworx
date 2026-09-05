@@ -66,11 +66,10 @@ function _pwxTimeGap( seconds ){
     return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds.toFixed(1) ).padStart(padding,'0') )
 }
 
-function _pwxFlag( name, informational, warning){
+function _pwxFlag( name, type ){
     return {
         name: name,
-        informational: informational,
-        warning: warning
+        type: type
     }
 }
 
