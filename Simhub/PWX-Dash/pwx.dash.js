@@ -15,7 +15,10 @@ pwx.dash.state = function(){
     if ( flag.warning )
         return {
             name: 'flag',
-            flag: flag.name
+            flag: {
+                name: flag.name,
+                critical: flag.critical
+            }
         }
     return {
         name: 'normal',
