@@ -14,7 +14,10 @@ pwx.dash.state = function(){
             name: 'pit',
             limiter: pitLimiter,
             flagShown: false,
-            flag: null
+            flag: {
+                name: null,
+                type: null
+            }
         }
     else if ( flag.name !== 'green' )
         return {
@@ -30,7 +33,10 @@ pwx.dash.state = function(){
         name: 'normal',
         limiter: pitLimiter,
         flagShown: false,
-        flag: null
+        flag: {
+            name: null,
+            type: null
+        }
     }
 }
 
