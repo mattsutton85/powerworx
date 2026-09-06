@@ -35,7 +35,28 @@ pwx.dash.led = function( ledNum ){
         colour: pwx.core.config.theme.colour.transaprent.hex,
         flash: false,
         flashInterval: null
-    } 
+    }
+    
+    // Standard RPM curve
+    if( ledNum <= state.shift.progress ){
+        led.on = true
+        if( ledNum <= 7 ){
+            led.colour = pwx.core.config.theme.colour.cyan.hex
+        }else if( ledNum <= 10 ){
+            led.colour = pwx.core.config.theme.colour.yellow.hex
+        }else if( ledNum <= 13 ){
+            led.colour = pwx.core.config.theme.colour.orange.hex
+        }else{
+            led.colour = pwx.core.config.theme.colour.red.hex
+        }
+    }
+    
+    // Redline priority mode
+    if( ( state.rpm >= state.shift.redline ) || ( ){
+        led.on = true
+        led.colour = pwx.core.config.theme.colour.red.hex
+        
+    }
 }
 
 pwx.dash.flag = function(){
