@@ -7,20 +7,24 @@ pwx.dash.firmware = pwx.dash.firmware || {}
 pwx.dash.state = function(){
     const flag = pwx.core.data.flag.current()
     const pitLimiter = pwx.core.data.pit.limiter()
-    if( limiter )
+    const inPit = pwx.core.data.pit.in()
+    if( inPit )
         return {
-            name: 'pit'
+            name: 'pit',
+            limiter: pitLimiter
         }
     if ( flag )
         return {
             name: 'flag',
+            limiter: pitLimiter,
             flag: {
                 name: flag.name,
                 type: flag.type
             }
         }
     return {
-        name: 'normal'
+        name: 'normal',
+        limiter: pitLimiter
     }
 }
 
@@ -34,7 +38,7 @@ pwx.dash.shift.led.state = function( ledNum ){
             target: pwx.core.data.car.gearbox.shift.point(),
             lead: 150,
             overrun: 100
-        }
+        },
         blink: pwx.core.data.car.gearbox.shift.blink()
     }
     
@@ -65,7 +69,7 @@ pwx.dash.shift.led.state = function( ledNum ){
         }
     }
 
-    // Redline bar priortiy
+    // Redline bar priority
     if( rpm >= shift.blink ){
         led.on = true
         led.colour = pwx.core.config.theme.colour.red.hex
@@ -81,7 +85,7 @@ pwx.dash.shift.led.state = function( ledNum ){
 
     // Context mode takes priority on outer LEDs
     if( led.outer ){
-        if( state.name === 'pit' ){
+        if( state.limiter ){
             led.on = true
             led.colour = pwx.core.config.theme.colour.purple.hex
             led.blink = true
