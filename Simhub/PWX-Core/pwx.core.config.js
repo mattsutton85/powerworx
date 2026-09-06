@@ -135,6 +135,12 @@ pwx.core.config = {
     },
     theme: {
         colour: {
+            cyan: {
+                hex: '#00dbff',
+                r: '',
+                g: '',
+                b: ''
+            },
             red: {
                 hex: '#ff000d',
                 r: '',

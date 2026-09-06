@@ -54,6 +54,7 @@ pwx.dash.shift.led.state = function( ledNum ){
         on: false,
         colour: pwx.core.theme.colour.transparent.hex,
         blink: false,
+        blinkRate: null,
         outer: [ 1, 2, 15, 16 ].includes( ledNum )
     }
 
@@ -74,6 +75,7 @@ pwx.dash.shift.led.state = function( ledNum ){
         led.on = true
         led.colour = pwx.core.config.theme.colour.red.hex
         led.blink = true
+        led.blinkRate = pwx.core.config.blink.critical
     }
     
     // Shift point takes final priority of the bar
@@ -81,6 +83,7 @@ pwx.dash.shift.led.state = function( ledNum ){
         led.on = true
         led.colour = pwx.core.config.theme.colour.green.hex
         led.blink = true
+        led.blinkRate = pwx.core.config.blink.critical
     }
 
     // Context mode takes priority on outer LEDs
@@ -92,6 +95,7 @@ pwx.dash.shift.led.state = function( ledNum ){
         }else if( state.name === 'flag' ){
             led.on = true
             led.blink = true
+            led.blinkRate = pwx.core.config.blink.warning
             switch( state.flag.name ){
                 case 'red':
                     led.colour = pwx.core.config.theme.colour.red.hex
