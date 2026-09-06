@@ -11,7 +11,7 @@ pwx.dash.layers = function(){
         pitBox: pitBox,
         pitLane: pitLane,
         pitLimiter: pitLimiter,
-        flag: ( flag && flag.name !== 'green' )
+        flag: ( flag.name !== 'green' )
     }
     return layers
 }
