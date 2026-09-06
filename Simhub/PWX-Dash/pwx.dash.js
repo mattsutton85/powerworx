@@ -1,4 +1,5 @@
 var pwx = pwx || {}
+pwx.core = pwx.core || {}
 pwx.dash = pwx.dash || {}
 pwx.dash.shift = pwx.dash.shift || {}
 pwx.dash.shift.led = pwx.dash.shift.led || {}
