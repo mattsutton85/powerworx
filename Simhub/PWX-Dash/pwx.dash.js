@@ -14,7 +14,7 @@ pwx.dash.state = function(){
             name: 'pit',
             limiter: pitLimiter
         }
-    if ( flag )
+    if ( flag && flag.name !== 'green' )
         return {
             name: 'flag',
             limiter: pitLimiter,
