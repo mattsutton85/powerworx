@@ -31,6 +31,9 @@ pwx.dash.state = function(){
 
 pwx.dash.shift.led.state = function( ledNum ){
 
+    return JSON.stringify(pwx.core.config)
+
+    /*
     const state = pwx.dash.state()
 
     const shift = {
@@ -117,7 +120,7 @@ pwx.dash.shift.led.state = function( ledNum ){
             }
         }
     }
-    return led
+    return led*/
 }
 
 pwx.dash.firmware.version = function(){
