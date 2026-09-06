@@ -61,9 +61,9 @@ pwx.shift.state = function( numLeds ){
 function __pwxShiftLedColour( colour ){
     colour = colour.toLowerCase()
     return {
-        hex: pwx.core.theme.colour[colour].hex,
-        r: pwx.core.theme.colour[colour].r,
-        g: pwx.core.theme.colour[colour].g,
-        b: pwx.core.theme.colour[colour].b
+        hex: pwx.core.config.theme.colour[colour].hex,
+        r: pwx.core.config.theme.colour[colour].r,
+        g: pwx.core.config.theme.colour[colour].g,
+        b: pwx.core.config.theme.colour[colour].b
     }
 }
