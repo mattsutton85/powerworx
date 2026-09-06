@@ -12,12 +12,15 @@ pwx.dash.state = function(){
     if( inPit )
         return {
             name: 'pit',
-            limiter: pitLimiter
+            limiter: pitLimiter,
+            flagShown: false,
+            flag: null
         }
-    if ( flag.name !== 'green' )
+    else if ( flag.name !== 'green' )
         return {
             name: 'flag',
             limiter: pitLimiter,
+            flagShown: true,
             flag: {
                 name: flag.name,
                 type: flag.type
@@ -25,7 +28,9 @@ pwx.dash.state = function(){
         }
     return {
         name: 'normal',
-        limiter: pitLimiter
+        limiter: pitLimiter,
+        flagShown: false,
+        flag: null
     }
 }
 
@@ -93,7 +98,7 @@ pwx.dash.shift.led.state = function( ledNum ){
             led.on = true
             led.colour = pwx.core.config.theme.colour.purple.hex
             led.blink = true
-        }else if( state.name === 'flag' ){
+        }else if( state.flagShown ){
             led.on = true
             led.blink = true
             led.blinkRate = pwx.core.config.blink.warning
