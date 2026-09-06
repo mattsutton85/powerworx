@@ -17,6 +17,8 @@ pwx.dash.layers = function(){
 }
 
 pwx.dash.led = function( ledNum ){
+    
+    // Config state
     const state = {
         rpm: pwx.core.data.engine.rpm(),
         shift: {
@@ -28,8 +30,9 @@ pwx.dash.led = function( ledNum ){
             },
             redline: pwx.core.data.car.gearbox.shift.blink()
         },
-        ledOuter = ([1,2,15,16]).includes(ledNum)
     }
+    
+    // Led object
     let led = {
         on: false,
         colour: pwx.core.config.theme.colour.transaprent.hex,
@@ -51,12 +54,42 @@ pwx.dash.led = function( ledNum ){
         }
     }
     
-    // Redline priority mode
-    if( ( state.rpm >= state.shift.redline ) || ( ){
+    // RPM priority mode
+    const isRedline = ( state.rpm >= state.shift.redline )
+    const isShiftpoint = (
+        ( rpm >= ( shift.point.target - shift.point.lead ) ) &&
+        ( rpm <= ( shift.point.target + shift.point.overrun ) )
+    )
+    if( isRedline || isShiftpoint ){
         led.on = true
-        led.colour = pwx.core.config.theme.colour.red.hex
+        led.colour = pwx.config.theme.colour.red.hex
+        led.flash = true
+        led.flashInterval = pwx.core.config.flash.critical
         
+        // Shift point priority
+        if( isShiftpoint ){
+            led.colour = pwx.config.theme.colour.green.hex
+        }
     }
+    
+    // Outer LED priority
+    if( ([1,2,15,16]).includes(ledNum) ){
+        
+        // Flag / Pit limiter priority
+        const flag = pwx.core.data.flag.current()
+        const limiter = pwx.core.data.pit.limiter()
+        if( ( flag.type !== 'informational' ) || limiter ){
+            led.on = true
+            led.colour = pwx.core.config.theme.colour.yellow.hex
+            led.flash = true
+            led.flashInterval = pwx.core.config.flash.warning
+            if( limiter ){
+                led.colour = pwx.core.config.theme.colour.purple.hex
+            }
+        }
+    }
+    
+    return led
 }
 
 pwx.dash.flag = function(){
