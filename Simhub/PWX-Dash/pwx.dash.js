@@ -52,7 +52,7 @@ pwx.dash.shift.led.state = function( ledNum ){
     let led = {
         num: ledNum,
         on: false,
-        colour: pwx.core.theme.colour.transparent.hex,
+        colour: pwx.core.config.theme.colour.transparent.hex,
         blink: false,
         blinkRate: null,
         outer: [ 1, 2, 15, 16 ].includes( ledNum )
