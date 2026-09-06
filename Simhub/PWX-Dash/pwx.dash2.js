@@ -83,6 +83,8 @@ pwx.dash.led = function( ledNum ){
             led.colour = pwx.core.config.theme.colour.yellow.hex
             led.flash = true
             led.flashInterval = pwx.core.config.flash.warning
+            
+            // Limiter final outer priority
             if( limiter ){
                 led.colour = pwx.core.config.theme.colour.purple.hex
             }
