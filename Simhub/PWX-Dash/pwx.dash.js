@@ -104,7 +104,7 @@ pwx.dash.shift.led.state = function( ledNum ){
             led.on = true
             led.colour = pwx.core.config.theme.colour.purple.hex
             led.blink = true
-        }else if( state.flagShown ){
+        }else if( state.flagShown && state.flag.type !== 'informational' ){
             led.on = true
             led.blink = true
             led.blinkRate = pwx.core.config.blink.warning
