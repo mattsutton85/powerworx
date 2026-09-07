@@ -1,136 +1,103 @@
 var pwx = pwx || {}
 pwx.core = pwx.core || {}
 pwx.dash = pwx.dash || {}
-pwx.dash.shift = pwx.dash.shift || {}
-pwx.dash.shift.led = pwx.dash.shift.led || {}
-pwx.dash.firmware = pwx.dash.firmware || {}
 
-pwx.dash.state = function(){
-    const flag = pwx.core.data.flag.current()
+pwx.dash.layers = function(){
+    const pitBox = pwx.core.data.pit.box()
+    const pitLane = pwx.core.data.pit.lane()
     const pitLimiter = pwx.core.data.pit.limiter()
-    const inPit = pwx.core.data.pit.in()
-    if( inPit )
-        return {
-            name: 'pit',
-            limiter: pitLimiter,
-            flagShown: false,
-            flag: {
-                name: null,
-                type: null
-            }
-        }
-    else if ( flag.name !== 'green' )
-        return {
-            name: 'flag',
-            limiter: pitLimiter,
-            flagShown: true,
-            flag: {
-                name: flag.name,
-                type: flag.type
-            }
-        }
+    const flag = pwx.core.data.flag.current()
     return {
-        name: 'normal',
-        limiter: pitLimiter,
-        flagShown: false,
-        flag: {
-            name: null,
-            type: null
-        }
+        pitBox: pitBox,
+        pitLane: pitLane,
+        pitLimiter: pitLimiter,
+        flag: ( flag.name !== 'green' )
     }
 }
 
-pwx.dash.shift.led.state = function( ledNum ){
-
-    const state = pwx.dash.state()
-
-    const shift = {
-        progress: pwx.core.data.car.gearbox.shift.progress(),
-        point: {
-            target: pwx.core.data.car.gearbox.shift.point(),
-            lead: 150,
-            overrun: 100
+pwx.dash.led = function( ledNum ){
+    
+    // Config state
+    const state = {
+        rpm: pwx.core.data.car.engine.rpm(),
+        shift: {
+            progress: pwx.core.data.car.gearbox.shift.progress(),
+            point: {
+                target: pwx.core.data.car.gearbox.shift.point(),
+                lead: 150,
+                overrun: 100
+            },
+            redline: pwx.core.data.car.gearbox.shift.blink()
         },
-        blink: pwx.core.data.car.gearbox.shift.blink()
     }
     
-    const rpm = pwx.core.data.car.engine.rpm.current()
-    
-    const isShiftWindow = (
-        ( rpm >= ( shift.point.target - shift.point.lead ) ) &&
-        ( rpm <= ( shift.point.target + shift.point.overrun ) )
-    )
-
+    // Led object
     let led = {
-        num: ledNum,
         on: false,
-        colour: pwx.core.config.theme.colour.transparent.hex,
-        blink: false,
-        blinkRate: null,
-        outer: [ 1, 2, 15, 16 ].includes( ledNum )
+        colour: pwx.core.config.theme.colour.transaprent.hex,
+        flash: false,
+        flashInterval: null
     }
-
-    // Normal progressive shift LEDs
-    if( shift.progress >= ledNum ){
+    
+    // Standard RPM curve
+    if( ledNum <= state.shift.progress ){
         led.on = true
         if( ledNum <= 7 ){
             led.colour = pwx.core.config.theme.colour.cyan.hex
-        }else if( ledNum <= 13 ){
+        }else if( ledNum <= 10 ){
             led.colour = pwx.core.config.theme.colour.yellow.hex
+        }else if( ledNum <= 13 ){
+            led.colour = pwx.core.config.theme.colour.orange.hex
         }else{
             led.colour = pwx.core.config.theme.colour.red.hex
         }
     }
-
-    // Redline bar priority
-    if( rpm >= shift.blink ){
+    
+    // RPM priority mode
+    const isRedline = ( state.rpm >= state.shift.redline )
+    const isShiftPoint = (
+        ( state.rpm >= ( shift.point.target - shift.point.lead ) ) &&
+        ( state.rpm <= ( shift.point.target + shift.point.overrun ) )
+    )
+    if( isRedline || isShiftPoint ){
         led.on = true
-        led.colour = pwx.core.config.theme.colour.red.hex
-        led.blink = true
-        led.blinkRate = pwx.core.config.blink.critical
+        led.colour = pwx.config.theme.colour.red.hex
+        led.flash = true
+        led.flashInterval = pwx.core.config.theme.flash.critical
+        
+        // Shift point priority
+        if( isShiftPoint ){
+            led.colour = pwx.config.theme.colour.green.hex
+        }
     }
     
-    // Shift point takes final priority of the bar
-    if( isShiftWindow ){
-        led.on = true
-        led.colour = pwx.core.config.theme.colour.green.hex
-        led.blink = true
-        led.blinkRate = pwx.core.config.blink.critical
-    }
-
-    // Context mode takes priority on outer LEDs
-    if( led.outer ){
-        if( state.limiter ){
+    // Outer LED priority
+    if( ([1,2,15,16]).includes(ledNum) ){
+        
+        // Flag / Pit limiter priority
+        const flag = pwx.core.data.flag.current()
+        const limiter = pwx.core.data.pit.limiter()
+        if( ( flag.type !== 'informational' ) || limiter ){
             led.on = true
-            led.colour = pwx.core.config.theme.colour.purple.hex
-            led.blink = true
-        }else if( state.flagShown && state.flag.type !== 'informational' ){
-            led.on = true
-            led.blink = true
-            led.blinkRate = pwx.core.config.blink.warning
-            switch( state.flag.name ){
-                case 'red':
-                    led.colour = pwx.core.config.theme.colour.red.hex
-                    break
-                case 'debris':
-                case 'yellow':
-                    led.colour = pwx.core.config.theme.colour.yellow.hex
-                    break
-                case 'meatball':
-                    led.colour = pwx.core.config.theme.colour.orange.hex
-                    break
-                case 'blue':
-                    led.colour = pwx.core.config.theme.colour.blue.hex
-                    break
-                default:
-                    led.colour = pwx.core.config.theme.colour.white.hex
-                    break
+            led.colour = pwx.core.config.theme.colour.yellow.hex
+            led.flash = true
+            led.flashInterval = pwx.core.config.theme.flash.warning
+            
+            // Limiter final outer priority
+            if( limiter ){
+                led.colour = pwx.core.config.theme.colour.purple.hex
             }
         }
     }
+    
     return led
 }
 
-pwx.dash.firmware.version = function(){
-    return _pwxString( '1.0' )
+pwx.dash.flag = function(){
+    return pwx.core.data.flag.current()
 }
+
+pwx.dash.version = function(){
+    return _pwxString( '1.0.1' )
+}
+
