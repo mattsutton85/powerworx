@@ -34,7 +34,7 @@ pwx.dash.led = function( ledNum ){
     // Led object
     let led = {
         on: false,
-        colour: pwx.core.config.theme.colour.transaprent.hex,
+        colour: pwx.core.config.theme.colour.transparent.hex,
         flash: false,
         flashInterval: null
     }
@@ -56,8 +56,8 @@ pwx.dash.led = function( ledNum ){
     // RPM priority mode
     const isRedline = ( state.rpm >= state.shift.redline )
     const isShiftPoint = (
-        ( state.rpm >= ( shift.point.target - shift.point.lead ) ) &&
-        ( state.rpm <= ( shift.point.target + shift.point.overrun ) )
+        ( state.rpm >= ( state.shift.point.target - state.shift.point.lead ) ) &&
+        ( state.rpm <= ( state.shift.point.target + state.shift.point.overrun ) )
     )
     if( isRedline || isShiftPoint ){
         led.on = true
