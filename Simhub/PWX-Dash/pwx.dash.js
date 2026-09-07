@@ -8,9 +8,9 @@ pwx.dash.layers = function(){
     const pitLimiter = pwx.core.data.pit.limiter()
     const flag = pwx.core.data.flag.current()
     return {
-        pitBox: pitBox,
-        pitLane: pitLane,
-        pitLimiter: pitLimiter,
+        pitBox: !!pitBox,
+        pitLane: !!pitLane,
+        pitLimiter: !!pitLimiter,
         flag: ( flag.name !== 'green' )
     }
 }

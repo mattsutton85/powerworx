@@ -131,7 +131,8 @@ pwx.core.config = {
     },
     pit: {
         limiter: 'DataCorePlugin.GameData.PitLimiterOn',
-        in: 'DataCorePlugin.GameData.IsInPit',
+        box: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarInPitStall',
+        lane: 'DataCorePlugin.GameRawData.Telemetry.OnPitRoad',
     },
     theme: {
         colour: {
