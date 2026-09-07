@@ -183,12 +183,12 @@ pwx.core.config = {
                 g: '',
                 b: ''
             }
+        },
+        flash: {
+            slow: 500,
+            warning: 250,
+            critical: 150
         }
-    },
-    blink: {
-        slow: 500,
-        warning: 250,
-        critical: 150
     },
     assumption: {
         gt4class: {
