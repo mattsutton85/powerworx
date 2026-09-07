@@ -19,7 +19,7 @@ pwx.dash.led = function( ledNum ){
     
     // Config state
     const state = {
-        rpm: pwx.core.data.car.engine.rpm(),
+        rpm: pwx.core.data.car.engine.rpm.current(),
         shift: {
             progress: pwx.core.data.car.gearbox.shift.progress(),
             point: {
