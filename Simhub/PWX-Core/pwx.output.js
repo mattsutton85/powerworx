@@ -63,7 +63,7 @@ function _pwxTimeGap( seconds ){
     if( time.zero )
         return '±0.0'
     const sign = ( time.negative ) ? '-' : '+'
-    return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds.toFixed(1) ).padStart(padding,'0') )
+    return _pwxString( sign + String( time.seconds ) + '.' + String( time.milliseconds.toFixed(1) ) )
 }
 
 function _pwxFlag( name, type ){
