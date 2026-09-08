@@ -37,10 +37,10 @@ pwx.core.data.opponent.position = function( relative, pos ){
 
 // Retrieve opponent gap
 pwx.core.data.opponent.gap = function( relative, pos ){
-    return _pwxTimeDelta( _pwxProp( pwx.core.config.opponent.gap,
+    return _pwxTimeGap( _pwxProp( pwx.core.config.opponent.gap,
         __pwxCorePrepareOpponentDirection( relative ),
         __pwxCorePrepareOpponentPosition( pos )
-    ), 1 )
+    ))
 }
 
 /*
