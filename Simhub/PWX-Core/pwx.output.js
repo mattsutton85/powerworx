@@ -76,8 +76,6 @@ function _pwxFlag( name, type ){
 function _pwxIRating( rating ){
     if (!rating || !isFinite(rating) || rating < 0)
         return "";
-    if (rating < 1000)
-        return String(Math.round(rating));
     return (rating / 1000).toFixed(1) + "k";
 }
 
