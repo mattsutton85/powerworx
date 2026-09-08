@@ -25,9 +25,18 @@ pwx.core.data.circuit.corners = function(){
 }
 
 // iRacing circuit pit lane speed limit
-pwx.core.data.circuit.pit.limit = function( unit ){
-    let val = _pwxProp( pwx.core.config.circuit.pit.limit )
-    return val
-    val = val.replace(/\D/g,'');
-    return _pwxNumber( val )
+pwx.core.data.circuit.pit.limit = function( preferredUnit ){
+    const val = _pwxProp( pwx.core.config.circuit.pit.limit )
+    let num = Number( val.substring(0, val.indexOf(' ')) );
+    const unit = val.substring(val.indexOf(' ') + 1).toLowerCase();
+
+    if( typeof preferredUnit === 'undefined' ){
+        preferredUnit = 'mph'
+    }
+    if( preferredUnit === 'mph' && unit === 'kph' ){
+        num = num * 0.621
+    }else if( preferredUnit === 'kph' && unit === 'mph' ){
+        num = num * 1.609
+    }
+    _pwxNumber( num, 0, 0 )
 }
