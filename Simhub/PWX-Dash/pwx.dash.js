@@ -102,16 +102,16 @@ pwx.dash.flag = function(){
     return pwx.core.data.flag.current()
 }
 
-pwx.dash.layer.pitLimiter.speed = function(){
-    return _pwxNumber( pwx.core.data.car.engine.speed.mph() );
+pwx.dash.layer.pitLimiter.speed = function( preferredUnit ){
+    return _pwxNumber( pwx.core.data.car.engine.speed[preferredUnit]() );
 }
 
 pwx.dash.layer.pitLimiter.limit = function(){
     return pwx.core.data.circuit.pit.limit();
 }
 
-pwx.dash.layer.pitLimiter.speeding = function(){
-    return _pwxBoolean( ( pwx.core.data.car.engine.speed.kmh() > pwx.core.data.circuit.pit.limit() ) )
+pwx.dash.layer.pitLimiter.speeding = function( preferredUnit ){
+    return _pwxBoolean( ( pwx.core.data.car.engine.speed[preferredUnit]() > pwx.core.data.circuit.pit.limit( preferredUnit) ) )
 }
 
 pwx.dash.version = function(){
