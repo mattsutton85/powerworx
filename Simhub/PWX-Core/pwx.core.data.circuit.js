@@ -27,6 +27,7 @@ pwx.core.data.circuit.corners = function(){
 // iRacing circuit pit lane speed limit
 pwx.core.data.circuit.pit.limit = function( unit ){
     let val = _pwxProp( pwx.core.config.circuit.pit.limit )
+    return val
     val = val.replace(/\D/g,'');
     return _pwxNumber( val )
 }
