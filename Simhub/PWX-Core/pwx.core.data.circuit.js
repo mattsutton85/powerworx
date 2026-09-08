@@ -38,5 +38,5 @@ pwx.core.data.circuit.pit.limit = function( preferredUnit ){
     }else if( preferredUnit === 'kph' && unit === 'mph' ){
         num = num * 1.609
     }
-    _pwxNumber( num, 0, 0 )
+    return _pwxNumber( num, 0, 0 )
 }
