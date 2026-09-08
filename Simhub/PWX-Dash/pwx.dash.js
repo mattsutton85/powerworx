@@ -107,7 +107,7 @@ pwx.dash.layer.pitLimiter.speed = function(){
 }
 
 pwx.dash.layer.pitLimiter.limit = function(){
-    return _pwxNumber( pwx.core.data.circuit.pit.limit() );
+    return pwx.core.data.circuit.pit.limit();
 }
 
 pwx.dash.layer.pitLimiter.speeding = function(){
