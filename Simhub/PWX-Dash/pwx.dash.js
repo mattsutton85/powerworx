@@ -1,6 +1,11 @@
 var pwx = pwx || {}
 pwx.core = pwx.core || {}
 pwx.dash = pwx.dash || {}
+pwx.dash.layer = pwx.dash.layer || {}
+pwx.dash.layer.pitBox = pwx.dash.layer.pitBox || {}
+pwx.dash.layer.pitLane = pwx.dash.layer.pitLane || {}
+pwx.dash.layer.pitLimiter = pwx.dash.layer.pitLimiter || {}
+pwx.dash.layer.flag = pwx.dash.layer.flag || {}
 
 pwx.dash.layers = function(){
     const pitBox = pwx.core.data.pit.box()
@@ -95,6 +100,18 @@ pwx.dash.led = function( ledNum ){
 
 pwx.dash.flag = function(){
     return pwx.core.data.flag.current()
+}
+
+pwx.dash.layer.pitLimiter.speed = function(){
+    return _pwxNumber( pwx.core.data.car.engine.speed.mph() );
+}
+
+pwx.dash.layer.pitLimiter.limit = function(){
+    return _pwxNumber( pwx.core.data.circuit.pit.limit() );
+}
+
+pwx.dash.layer.pitLimiter.speeding = function(){
+    return _pwxBoolean( ( pwx.core.data.car.engine.speed.kmh() > pwx.core.data.circuit.pit.limit() ) )
 }
 
 pwx.dash.version = function(){
