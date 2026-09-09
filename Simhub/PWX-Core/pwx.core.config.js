@@ -10,8 +10,8 @@ pwx.core.config = {
         brake: {
             bias: 'DataCorePlugin.GameData.BrakeBias',
             abs: {
-                active: 'DataCorePlugin.GameRawData.Telemetry.BrakeABSactive',
-                setting: 'DataCorePlugin.GameRawData.Telemetry.dcABS'
+                active: 'DataCorePlugin.GameData.ABSActive',
+                setting: 'DataCorePlugin.GameData.ABSLevel'
             }
         },
         engine: {
@@ -25,7 +25,8 @@ pwx.core.config = {
             speed: {
                 kmh: 'DataCorePlugin.GameData.SpeedKmh',
                 mph: 'DataCorePlugin.GameData.SpeedMph',
-            }
+            },
+            map: 'DataCorePlugin.GameRawData.SessionData.CarSetup.Chassis.InCarDials.EngineMapSetting',
         },
         tc: {
             active: 'TODO',
