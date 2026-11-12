@@ -1,4 +1,4 @@
-# PWX Rig OS V2
+# PWX RaceOS V2
 
 A small **ES5-compatible** SimHub JavaScript extension library with independently editable modules and one generated distribution file.
 
@@ -42,8 +42,6 @@ Add a **JavaScript** Dash Studio binding with:
 return PWX.format.speed(PWX.telemetry.speedMph());
 ```
 
-We intentionally use `PWX` instead of legacy `pwx` during the V1 → V2 migration, so both can coexist while you progressively update bindings.
-
 ## Important scope limitation
 
 `JavascriptExtensions` provides shared **functions**, not a guaranteed global shared state or single central update loop. SimHub may pool JavaScript hosts. Do not use variables on `PWX` to coordinate persistent values between dashboards. Read telemetry with `$prop()` **inside functions**, and use `root` only for state local to an individual formula, or a real published-property/plugin solution for cross-device shared state.
@@ -55,7 +53,6 @@ We intentionally use `PWX` instead of legacy `pwx` during the V1 → V2 migratio
 3. Add a test for its behaviour and run `npm test`.
 4. Deploy the rebuilt bundle.
 
-The flag, timing, fuel and weather modules intentionally contain TODOs, **not speculative game-specific calculations**. Validate current SimHub/iRacing properties before moving V1 logic.
 
 ## Reference
 
