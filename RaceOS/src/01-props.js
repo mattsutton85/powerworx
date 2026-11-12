@@ -3,5 +3,10 @@
  */
 
 PWX.props = {
-    speedKmh: 'DataCorePlugin.GameData.NewData.SpeedKmh'
+    gearbox: {
+        gear: 'DataCorePlugin.GameData.NewData.Gear'
+    },
+    speed: {
+        kmh: 'DataCorePlugin.GameData.NewData.SpeedKmh',
+    }
 }

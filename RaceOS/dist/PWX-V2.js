@@ -44,7 +44,12 @@ PWX.core.number = function (propertyName) {
  */
 
 PWX.props = {
-    speedKmh: 'DataCorePlugin.GameData.NewData.SpeedKmh'
+    gearbox: {
+        gear: 'DataCorePlugin.GameData.NewData.Gear'
+    },
+    speed: {
+        kmh: 'DataCorePlugin.GameData.NewData.SpeedKmh',
+    }
 }
 
 
@@ -54,9 +59,13 @@ PWX.props = {
  * Depends on PWX.core from 00-core.js.
  */
 PWX.telemetry.speedMph = function () {
-    var kmh = PWX.core.number( PWX.props.speedKmh );
+    var kmh = PWX.core.number( PWX.props.speed.kmh );
     return kmh === null ? null : kmh * 0.621371;
 };
+
+PWX.telemetry.gear = function () {
+    return PWX.core.read( PWX.props.gearbox.gear )
+}
 
 
 /* ===== src/20-session.js ===== */
