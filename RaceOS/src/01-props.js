@@ -3,10 +3,15 @@
  */
 
 PWX.props = {
-    gearbox: {
-        gear: 'DataCorePlugin.GameData.NewData.Gear'
+    engine: {
+        rpm: {
+            current: 'DataCorePlugin.GameData.Rpms'
+        },
+        speed: {
+            kmh: 'DataCorePlugin.GameData.NewData.SpeedKmh',
+        },
+        gearbox: {
+            gear: 'DataCorePlugin.GameData.NewData.Gear'
+        }
     },
-    speed: {
-        kmh: 'DataCorePlugin.GameData.NewData.SpeedKmh',
-    }
 }

@@ -1,10 +1,21 @@
 /*
  * Presentation-only helpers. No telemetry reads in this file.
  */
-PWX.format.speed = function (speedMph) {
-    if (speedMph === null || speedMph === undefined ||
-            speedMph === '' || !isFinite(Number(speedMph))) {
-        return '---';
-    }
-    return String(Math.round(Number(speedMph)));
+PWX.format.engine.speed = function (speedMph) {
+    return PWXNumber( speedMph, '---' )
 };
+
+PWX.format.engine.rpm = function (rpm) {
+    return PWXNumber( rpm, '----' )
+};
+
+/*
+* Utility functions
+ */
+function PWXNumber( number, fallback, decimals = 0 ) {
+    if ( number === null || number === undefined ||
+        number === '' || !isFinite(Number(number))) {
+        return fallback;
+    }
+    return String(Math.round(Number(number)).toFixed(decimals));
+}
