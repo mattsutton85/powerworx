@@ -5,6 +5,7 @@
  */
 var PWX = {
     version: '2.0.0',
+    props: {},
     core: {},
     telemetry: {},
     session: {},
