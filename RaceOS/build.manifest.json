@@ -1,0 +1,10 @@
+[
+  "src/00-core.js",
+  "src/10-telemetry.js",
+  "src/20-session.js",
+  "src/30-flags.js",
+  "src/40-timing.js",
+  "src/50-fuel.js",
+  "src/60-weather.js",
+  "src/90-format.js"
+]
