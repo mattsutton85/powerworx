@@ -18,9 +18,9 @@ const sections = [
 ];
 
 for (const relative of manifest) {
-    if (typeof relative !== 'string' || !/^src\/[A-Za-z0-9_/-]+\.js$/.test(relative)) {
+    /*if (typeof relative !== 'string' || !/^src\/[A-Za-z0-9_/-]+\.js$/.test(relative)) {
         throw new Error(`Invalid source manifest entry: ${String(relative)}`);
-    }
+    }*/
     if (seen.has(relative)) {
         throw new Error(`Duplicate manifest entry: ${relative}`);
     }

@@ -1,11 +1,9 @@
 [
-  "src/00-core.js",
-  "src/01-props.js",
-  "src/10-telemetry.js",
-  "src/20-session.js",
-  "src/30-flags.js",
-  "src/40-timing.js",
-  "src/50-fuel.js",
-  "src/60-weather.js",
-  "src/90-format.js"
+  "src/core/PWX.core.js",
+  "src/core/PWX.core.props.js",
+  "src/core/PWX.core.parse.js",
+  "src/data/PWX.data.car.js",
+  "src/data/PWX.data.circuit.js",
+  "src/data/PWX.data.driver.js",
+  "src/data/PWX.data.session.js"
 ]

@@ -1,120 +1,199 @@
 /* GENERATED FILE - DO NOT EDIT. Edit src/ and run npm run build. */
 /* PWX Rig OS V2 | SimHub ECMAScript 5.1 */
 
-/* ===== src/00-core.js ===== */
-/*
- * PWX Rig OS V2 - core
- * Runtime: SimHub Jint / ECMAScript 5.1
- * This is the ONLY source file that initializes the namespace.
- */
+/* ===== src/core/PWX.core.js ===== */
 var PWX = {
-    version: '2.0.0',
-    props: {},
-    core: {},
-    telemetry: {},
-    session: {},
-    flags: {},
-    timing: {},
-    fuel: {},
-    weather: {},
+    data: {
+        car: {
+            speed: {},
+            engine: {
+                rpm: {
+                    current: {}
+                },
+                oil: {},
+                water: {}
+            },
+            brake: {},
+            assists: {},
+            fuel: {
+                remaining: {}
+            },
+        },
+        circuit: {},
+        driver: {},
+        session: {}
+    },
     format: {}
-};
+}
 
-// Read properties at call time, not when the extension file is loaded.
-PWX.core.read = function (propertyName) {
-    var value = $prop(propertyName);
+var _PWXCore = {
+    parse: {}
+}
+
+_PWXCore.read = function( property ){
+    var value = $prop( property );
     return value == null ? null : value;
-};
+}
 
-// Guard against unavailable, blank or non-numeric telemetry.
-// This is deliberately simple; game-specific coercion can be added later.
-PWX.core.number = function (propertyName) {
-    var value = PWX.core.read(propertyName);
+
+/* ===== src/core/PWX.core.props.js ===== */
+_PWXCore.props = {
+    car: {
+        id: 'DataCorePlugin.GameData.CarID',
+        class: 'DataCorePlugin.GameData.CarClass',
+        model: 'DataCorePlugin.GameData.CarModel',
+        speedKmh: 'DataCorePlugin.GameData.SpeedKmh',
+        engine: {
+            rpm: {
+                current: 'DataCorePlugin.GameData.Rpms',
+                idle: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverCarIdleRPM',
+                max: 'DataCorePlugin.GameData.CarSettings_MaxRPM',
+                redline: 'DataCorePlugin.GameData.CarSettings_CurrentGearRedLineRPM',
+                percent: 'DataCorePlugin.GameData.CarSettings_CurrentDisplayedRPMPercent',
+            },
+            oil: {
+                temperature: 'DataCorePlugin.GameData.OilTemperature',
+                pressure: 'DataCorePlugin.GameData.OilPressure',
+            },
+            water: {
+                temperature: 'DataCorePlugin.GameData.WaterTemperature',
+            },
+
+        },
+        fuel: {
+            remaining: {
+                litres: 'DataCorePlugin.GameData.Fuel',
+                laps: 'DataCorePlugin.Computed.Fuel_RemainingLaps',
+            },
+            pressure: 'DataCorePlugin.GameRawData.Telemetry.FuelPress',
+        },
+        assists: {
+            abs: {
+                setting: 'DataCorePlugin.GameData.ABSLevel',
+            },
+            tractionControl: {
+                setting: 'DataCorePlugin.GameData.TCLevel',
+            }
+        },
+        brake: {
+            bias: 'DataCorePlugin.GameData.BrakeBias',
+            percent: 'DataCorePlugin.GameData.Brake',
+        },
+        gearbox: {
+            gear: 'DataCorePlugin.GameData.Gear',
+        },
+        throttle: {
+            percent: 'DataCorePlugin.GameData.Throttle',
+        }
+    },
+    circuit: {
+        id: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackID',
+        name: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackDisplayName',
+        length: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackLength',
+        corners: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackNumTurns',
+        pit: {
+            speedKmh: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackPitSpeedLimit'
+        }
+    },
+    driver: {
+        name: 'DataCorePlugin.GameData.PlayerName'
+    },
+    incident: {
+        count: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarMyIncidentCount',
+        limit: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.WeekendOptions.IncidentLimit'
+    },
+    flag: {
+        black: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsBlack',
+        blue: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isblue',
+        caution: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iscaution',
+        cautionWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IscautionWaving',
+        checkered: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Ischeckered',
+        crossed: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iscrossed',
+        debris: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isdebris',
+        disqualify: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isdisqualify',
+        lapToGreen: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsoneLapToGreen',
+        red: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isred',
+        repair: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Isrepair',
+        white: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iswhite',
+        yellow: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsYellow',
+        yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving'
+    }
+}
+
+
+/* ===== src/core/PWX.core.parse.js ===== */
+/*
+Simple data parser
+ */
+
+_PWXCore.parse.number = function( property ){
+    var value = _PWXCore.read( property );
     if (value === null || value === '') {
         return null;
     }
     var number = Number(value);
     return isFinite(number) ? number : null;
-};
+}
 
-
-/* ===== src/01-props.js ===== */
-/*
- * Centralised SimHub properties
- */
-
-PWX.props = {
-    gearbox: {
-        gear: 'DataCorePlugin.GameData.NewData.Gear'
-    },
-    speed: {
-        kmh: 'DataCorePlugin.GameData.NewData.SpeedKmh',
-    }
+_PWXCore.parse.string = function( property ){
+    return String( _PWXCore.read( property ) )
 }
 
 
-/* ===== src/10-telemetry.js ===== */
+/* ===== src/data/PWX.data.car.js ===== */
 /*
- * Raw and normalized telemetry accessors.
- * Depends on PWX.core from 00-core.js.
+Raw car telemetry
  */
-PWX.telemetry.speedMph = function () {
-    var kmh = PWX.core.number( PWX.props.speed.kmh );
-    return kmh === null ? null : kmh * 0.621371;
-};
 
-PWX.telemetry.gear = function () {
-    return PWX.core.read( PWX.props.gearbox.gear )
+PWX.data.car.id = function () {
+    return _PWXCore.parse.string( _PWXCore.props.car.id )
+}
+
+PWX.data.car.model = function(){
+    return _PWXCore.parse.string( _PWXCore.props.car.model )
+}
+
+PWX.data.car.class = function(){
+    return _PWXCore.parse.string( _PWXCore.props.car.class )
+}
+
+PWX.data.car.speed.kph = function(){
+    return _PWXCore.parse.number( _PWXCore.props.car.speedKmh )
+}
+
+PWX.data.car.speed.mph = function(){
+    return _PWXCore.parse.number( _PWXCore.props.car.speedKmh ) === null ? null : value * 0.621371;
+}
+
+PWX.data.car.engine.rpm.current.value = function(){
+    return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.current )
+}
+
+PWX.data.car.engine.rpm.current.percent = function(){
+    return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.percent )
+}
+
+PWX.data.car.engine.rpm.idle = function(){
+    return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.idle )
+}
+
+PWX.data.car.engine.rpm.max = function(){
+    return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.max )
+}
+
+PWX.data.car.engine.rpm.redline = function(){
+    return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.redline )
 }
 
 
-/* ===== src/20-session.js ===== */
-/*
- * Session information: practice, qualifying, race, transitions.
- * TODO: Choose and verify SimHub/iRacing properties before implementing.
- * Keep functions stateless unless they receive explicit inputs.
- */
+/* ===== src/data/PWX.data.circuit.js ===== */
 
 
-/* ===== src/30-flags.js ===== */
-/*
- * Flag interpretation and display priority.
- * TODO: Capture live raw flag properties and define tested masks/precedence.
- * Do not assume our old V1 bitmasks still reflect the telemetry source.
- */
+
+/* ===== src/data/PWX.data.driver.js ===== */
 
 
-/* ===== src/40-timing.js ===== */
-/*
- * On-track relatives, standings, lap and gap information.
- * TODO: Distinguish iRacing F3 relative, on-track gap, position gap.
- * Avoid introducing smoothing until the raw source has been verified.
- */
 
+/* ===== src/data/PWX.data.session.js ===== */
 
-/* ===== src/50-fuel.js ===== */
-/*
- * Fuel consumption and forecasts.
- * TODO: Design pure calculations that accept inputs when possible.
- */
-
-
-/* ===== src/60-weather.js ===== */
-/*
- * Rain risk, track conditions and future weather context.
- * TODO: Inspect available iRacing/SimHub data before implementation.
- */
-
-
-/* ===== src/90-format.js ===== */
-/*
- * Presentation-only helpers. No telemetry reads in this file.
- */
-PWX.format.speed = function (speedMph) {
-    if (speedMph === null || speedMph === undefined ||
-            speedMph === '' || !isFinite(Number(speedMph))) {
-        return '---';
-    }
-    return String(Math.round(Number(speedMph)));
-};
 

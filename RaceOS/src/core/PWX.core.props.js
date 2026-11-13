@@ -1,21 +1,10 @@
-/*
- * Centralised SimHub properties
- */
-
-PWX.props = {
+_PWXCore.props = {
     car: {
         id: 'DataCorePlugin.GameData.CarID',
         class: 'DataCorePlugin.GameData.CarClass',
         model: 'DataCorePlugin.GameData.CarModel',
         speedKmh: 'DataCorePlugin.GameData.SpeedKmh',
         engine: {
-            fuel: {
-                remaining: {
-                    litres: 'DataCorePlugin.GameData.Fuel',
-                    laps: 'DataCorePlugin.Computed.Fuel_RemainingLaps',
-                },
-                pressure: 'DataCorePlugin.GameRawData.Telemetry.FuelPress',
-            },
             rpm: {
                 current: 'DataCorePlugin.GameData.Rpms',
                 idle: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverCarIdleRPM',
@@ -30,14 +19,24 @@ PWX.props = {
             water: {
                 temperature: 'DataCorePlugin.GameData.WaterTemperature',
             },
+
+        },
+        fuel: {
+            remaining: {
+                litres: 'DataCorePlugin.GameData.Fuel',
+                laps: 'DataCorePlugin.Computed.Fuel_RemainingLaps',
+            },
+            pressure: 'DataCorePlugin.GameRawData.Telemetry.FuelPress',
+        },
+        assists: {
+            abs: {
+                setting: 'DataCorePlugin.GameData.ABSLevel',
+            },
             tractionControl: {
-                level: 'DataCorePlugin.GameData.TCLevel',
+                setting: 'DataCorePlugin.GameData.TCLevel',
             }
         },
         brake: {
-            abs: {
-                level: 'DataCorePlugin.GameData.ABSLevel',
-            },
             bias: 'DataCorePlugin.GameData.BrakeBias',
             percent: 'DataCorePlugin.GameData.Brake',
         },
@@ -79,5 +78,5 @@ PWX.props = {
         white: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iswhite',
         yellow: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsYellow',
         yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving'
-    },
+    }
 }
