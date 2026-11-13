@@ -1,11 +1,11 @@
 /*
  * Presentation-only helpers. No telemetry reads in this file.
  */
-PWX.format.engine.speed = function (speedMph) {
-    return PWXNumber( speedMph, '---' )
+PWX.format.speed = function (speedMph) {
+    return PWXNumber( speedMph, '--' )
 };
 
-PWX.format.engine.rpm = function (rpm) {
+PWX.format.rpm = function (rpm) {
     return PWXNumber( rpm, '----' )
 };
 
