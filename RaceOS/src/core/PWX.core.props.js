@@ -10,7 +10,7 @@ _PWXCore.props = {
                 idle: 'DataCorePlugin.GameRawData.SessionData.DriverInfo.DriverCarIdleRPM',
                 max: 'DataCorePlugin.GameData.CarSettings_MaxRPM',
                 redline: 'DataCorePlugin.GameData.CarSettings_CurrentGearRedLineRPM',
-                percent: 'DataCorePlugin.GameData.CarSettings_CurrentDisplayedRPMPercent',
+                percentage: 'DataCorePlugin.GameData.CarSettings_CurrentDisplayedRPMPercent',
             },
             oil: {
                 temperature: 'DataCorePlugin.GameData.OilTemperature',
@@ -32,19 +32,19 @@ _PWXCore.props = {
             abs: {
                 setting: 'DataCorePlugin.GameData.ABSLevel',
             },
-            tractionControl: {
+            tc: {
                 setting: 'DataCorePlugin.GameData.TCLevel',
             }
         },
         brake: {
             bias: 'DataCorePlugin.GameData.BrakeBias',
-            percent: 'DataCorePlugin.GameData.Brake',
+            percentage: 'DataCorePlugin.GameData.Brake',
         },
         gearbox: {
             gear: 'DataCorePlugin.GameData.Gear',
         },
         throttle: {
-            percent: 'DataCorePlugin.GameData.Throttle',
+            percentage: 'DataCorePlugin.GameData.Throttle',
         }
     },
     circuit: {
