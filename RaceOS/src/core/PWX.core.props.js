@@ -1,3 +1,7 @@
+/*
+SimHub / iRacing telemetry mapping
+*/
+
 _PWXCore.props = {
     car: {
         id: 'DataCorePlugin.GameData.CarID',
