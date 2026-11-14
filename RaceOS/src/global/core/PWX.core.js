@@ -1,3 +1,13 @@
+/*
+ * PWX RaceOS core.
+ * This file builds first in the compiler.
+ * It is the only place the global namespace PWX is declared,
+ * along with an internal utility namespace of _PWXCore.
+ * This is to allow other files in the global JS library to
+ * reference non SimHub used bindings without combining them
+ * into the main PWX namespace
+ */
+
 var PWX = {
     data: {
         car: {
@@ -23,7 +33,8 @@ var PWX = {
         driver: {},
         session: {}
     },
-    format: {}
+    format: {},
+    theme: {}
 }
 
 var _PWXCore = {

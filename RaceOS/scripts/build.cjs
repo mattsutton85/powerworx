@@ -98,12 +98,18 @@ for (const relative of manifest) {
 }
 
 // ---------------------------------------
-// Add the formatter
+// 2. Add the formatter
+// ---------------------------------------
 
 coreFiles.push( 'src/global/format/PWX.format.js' );
 
 // ---------------------------------------
-// 2. Global data (auto-discovered)
+// 3. Add the theme
+// ---------------------------------------
+coreFiles.push( 'src/global/theme/PWX.theme.js' );
+
+// ---------------------------------------
+// 4. Global data (auto-discovered)
 // ---------------------------------------
 
 const dataDir = path.join(src, 'global', 'data');
@@ -119,7 +125,7 @@ const dataFiles = fs.readdirSync(dataDir, {
     .sort();
 
 // ---------------------------------------
-// 3. Build global PWX bundle
+// 5. Build global PWX bundle
 // ---------------------------------------
 
 const files = [...coreFiles, ...dataFiles];
@@ -152,7 +158,7 @@ fs.mkdirSync(path.dirname(globalDestination), {
 fs.writeFileSync(globalDestination, output, 'utf8');
 
 // ---------------------------------------
-// 4. Copy system files recursively
+// 6. Copy system files recursively
 // ---------------------------------------
 
 const systemsSource = path.join(src, 'systems');
@@ -196,7 +202,7 @@ if (fs.existsSync(systemsSource)) {
 }
 
 // ---------------------------------------
-// 5. Summary
+// 7. Summary
 // ---------------------------------------
 
 console.log('');

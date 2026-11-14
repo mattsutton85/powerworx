@@ -4,7 +4,7 @@
 PWX.format.number = function(value, decimals, placeholder) {
     decimals = decimals == null ? 0 : decimals;
     placeholder = placeholder == null ? '---' : placeholder;
-    var number = PWX.parse.number(value);
+    var number = _PWXCore.parse.number(value);
     if (number === null) {
         return placeholder;
     }
@@ -17,7 +17,7 @@ PWX.format.number = function(value, decimals, placeholder) {
  */
 PWX.format.time = function(value, placeholder) {
     placeholder = placeholder == null ? '--:--' : placeholder;
-    var seconds = PWX.parse.number(value);
+    var seconds = _PWXCore.parse.number(value);
     if (seconds === null || seconds < 0) {
         return placeholder;
     }
@@ -40,7 +40,7 @@ PWX.format.time = function(value, placeholder) {
 PWX.format.delta = function(value, decimals, placeholder) {
     decimals = decimals == null ? 3 : decimals;
     placeholder = placeholder == null ? '---' : placeholder;
-    var number = PWX.parse.number(value);
+    var number = _PWXCore.parse.number(value);
     if (number === null) {
         return placeholder;
     }

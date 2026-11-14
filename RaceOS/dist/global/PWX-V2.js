@@ -27,7 +27,8 @@ var PWX = {
         driver: {},
         session: {}
     },
-    format: {}
+    format: {},
+    theme: {}
 }
 
 var _PWXCore = {
@@ -144,7 +145,7 @@ _PWXCore.parse.string = function( property ){
 PWX.format.number = function(value, decimals, placeholder) {
     decimals = decimals == null ? 0 : decimals;
     placeholder = placeholder == null ? '---' : placeholder;
-    var number = PWX.parse.number(value);
+    var number = _PWXCore.parse.number(value);
     if (number === null) {
         return placeholder;
     }
@@ -157,7 +158,7 @@ PWX.format.number = function(value, decimals, placeholder) {
 
 PWX.format.time = function(value, placeholder) {
     placeholder = placeholder == null ? '--:--' : placeholder;
-    var seconds = PWX.parse.number(value);
+    var seconds = _PWXCore.parse.number(value);
     if (seconds === null || seconds < 0) {
         return placeholder;
     }
@@ -180,7 +181,7 @@ PWX.format.time = function(value, placeholder) {
 PWX.format.delta = function(value, decimals, placeholder) {
     decimals = decimals == null ? 3 : decimals;
     placeholder = placeholder == null ? '---' : placeholder;
-    var number = PWX.parse.number(value);
+    var number = _PWXCore.parse.number(value);
     if (number === null) {
         return placeholder;
     }
@@ -190,6 +191,14 @@ PWX.format.delta = function(value, decimals, placeholder) {
     }
     return (number > 0 ? '+' : '-') + absolute;
 };
+
+
+;/* ===== src/global/theme/PWX.theme.js ===== */
+PWX.theme = {
+    success: 'green',
+    danger: 'red',
+    warning: 'yellow'
+}
 
 
 ;/* ===== src/global/data/PWX.data.car.js ===== */

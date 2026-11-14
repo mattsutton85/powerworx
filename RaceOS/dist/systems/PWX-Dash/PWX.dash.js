@@ -1,0 +1,5 @@
+/*
+ * PWX Dash
+ */
+
+var PWXDash = {}
