@@ -82,5 +82,22 @@ _PWXCore.props = {
         white: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iswhite',
         yellow: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsYellow',
         yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving'
+    },
+    session: {
+        lap: {
+            number: 'DataCorePlugin.GameRawData.Telemetry.Lap',
+            limit: 'DataCorePlugin.GameRawData.Telemetry.SessionLapsTotal',
+            time: {
+                best: 'DataCorePlugin.GameRawData.Telemetry.LapBestLapTime',
+                last: 'DataCorePlugin.GameRawData.Telemetry.LapLastLapTime',
+            },
+            delta: {
+                best: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToBestLap',
+                last: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToSessionLastLap'
+            }
+        },
+        time: {
+           remaining: 'DataCorePlugin.GameRawData.Telemetry.SessionTimeRemain',
+        }
     }
 }

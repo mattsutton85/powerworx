@@ -25,7 +25,14 @@ var PWX = {
             pit: {}
         },
         driver: {},
-        session: {}
+        opponent: {},
+        session: {
+            lap: {
+                time: {},
+                delta: {}
+            },
+            time: {}
+        }
     },
     format: {},
     theme: {}
@@ -122,6 +129,23 @@ _PWXCore.props = {
         white: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.Iswhite',
         yellow: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsYellow',
         yellowWaving: 'DataCorePlugin.GameRawData.Telemetry.SessionFlagsDetails.IsyellowWaving'
+    },
+    session: {
+        lap: {
+            number: 'DataCorePlugin.GameRawData.Telemetry.Lap',
+            limit: 'DataCorePlugin.GameRawData.Telemetry.SessionLapsTotal',
+            time: {
+                best: 'DataCorePlugin.GameRawData.Telemetry.LapBestLapTime',
+                last: 'DataCorePlugin.GameRawData.Telemetry.LapLastLapTime',
+            },
+            delta: {
+                best: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToBestLap',
+                last: 'DataCorePlugin.GameRawData.Telemetry.LapDeltaToSessionLastLap'
+            }
+        },
+        time: {
+           remaining: 'DataCorePlugin.GameRawData.Telemetry.SessionTimeRemain',
+        }
     }
 }
 
@@ -319,6 +343,36 @@ PWX.data.circuit.pit.speed.mph = function () {
 
 
 
-;/* ===== src/global/data/PWX.data.session.js ===== */
+;/* ===== src/global/data/PWX.data.opponent.js ===== */
 
+
+
+;/* ===== src/global/data/PWX.data.session.js ===== */
+PWX.data.session.lap.number = function (){
+    return _PWXCore.parse.number( _PWXCore.props.session.lap.number );
+}
+
+PWX.data.session.lap.limit = function (){
+    return _PWXCore.parse.number( _PWXCore.props.session.lap.limit );
+}
+
+PWX.data.session.lap.time.best = function (){
+    return _PWXCore.parse.string( _PWXCore.props.session.lap.time.best );
+}
+
+PWX.data.session.lap.time.last = function (){
+    return _PWXCore.parse.string( _PWXCore.props.session.lap.time.last );
+}
+
+PWX.data.session.lap.delta.best = function (){
+    return _PWXCore.parse.string( _PWXCore.props.session.lap.delta.best );
+}
+
+PWX.data.session.lap.delta.last = function (){
+    return _PWXCore.parse.string( _PWXCore.props.session.lap.delta.last );
+}
+
+PWX.data.session.time.remaining = function (){
+    return _PWXCore.parse.string( _PWXCore.props.session.time.remaining);
+}
 

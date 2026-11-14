@@ -1,0 +1,3 @@
+/*
+Parsed opponent data
+ */

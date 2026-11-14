@@ -31,7 +31,14 @@ var PWX = {
             pit: {}
         },
         driver: {},
-        session: {}
+        opponent: {},
+        session: {
+            lap: {
+                time: {},
+                delta: {}
+            },
+            time: {}
+        }
     },
     format: {},
     theme: {}
