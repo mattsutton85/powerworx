@@ -1,5 +1,4 @@
-
-/**
+/*
  * Number formatter
  */
 PWX.format.number = function(value, decimals, placeholder) {
@@ -12,8 +11,7 @@ PWX.format.number = function(value, decimals, placeholder) {
     return number.toFixed(decimals);
 };
 
-
-/**
+/*
  * Duration formatter (seconds)
  * M:SS or H:MM:SS
  */
@@ -36,8 +34,7 @@ PWX.format.time = function(value, placeholder) {
     return m + ':' + pad(s);
 };
 
-
-/**
+/*
  * Signed timing delta (seconds)
  */
 PWX.format.delta = function(value, decimals, placeholder) {

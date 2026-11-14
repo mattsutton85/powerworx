@@ -32,10 +32,40 @@ function validateES5(source, filename) {
 }
 
 function readSource(relative) {
-    return fs.readFileSync(
+    const source = fs.readFileSync(
         path.join(root, relative),
         'utf8'
-    ).replace(/^\uFEFF/, '').trim();
+    ).replace(/^\uFEFF/, '');
+
+    const comments = [];
+
+    // Let Acorn identify actual JavaScript comments
+    acorn.parse(source, {
+        ecmaVersion: 5,
+        sourceType: 'script',
+        onComment: (block, text, start, end) => {
+            comments.push({ start, end });
+        }
+    });
+
+    let output = source;
+
+    // Work backwards to preserve character offsets
+    for (let i = comments.length - 1; i >= 0; i--) {
+        const { start, end } = comments[i];
+
+        // Preserve line breaks and token separation
+        const newlines = (
+            source.slice(start, end).match(/\r\n|\r|\n/g) || []
+        ).join('');
+
+        output =
+            output.slice(0, start) +
+            ' ' + newlines +
+            output.slice(end);
+    }
+
+    return output.trim();
 }
 
 // ---------------------------------------
@@ -66,6 +96,11 @@ for (const relative of manifest) {
     seen.add(relative);
     coreFiles.push(relative);
 }
+
+// ---------------------------------------
+// Add the formatter
+
+coreFiles.push( 'src/global/format/PWX.format.js' );
 
 // ---------------------------------------
 // 2. Global data (auto-discovered)
