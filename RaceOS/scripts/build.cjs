@@ -1,10 +1,12 @@
-
- // Build-time Node.js code. NOT included in the SimHub bundle.
 const fs = require('node:fs');
 const path = require('node:path');
 const acorn = require('acorn');
 
 const root = path.resolve(__dirname, '..');
+
+const src = path.join(root, 'src');
+const dist = path.join(root, 'dist');
+
 const manifest = JSON.parse(
     fs.readFileSync(
         path.join(root, 'build.manifest.json'),
@@ -12,87 +14,162 @@ const manifest = JSON.parse(
     )
 );
 
-const dataDir = path.join(root, 'src', 'data');
-const destination = path.join(root, 'dist', 'PWX-V2.js');
+// ---------------------------------------
+// Helpers
+// ---------------------------------------
 
-// Validate core manifest
+function validateES5(source, filename) {
+    try {
+        acorn.parse(source, {
+            ecmaVersion: 5,
+            sourceType: 'script'
+        });
+    } catch (error) {
+        throw new Error(
+            `ES5 validation failed in ${filename}: ${error.message}`
+        );
+    }
+}
+
+function readSource(relative) {
+    return fs.readFileSync(
+        path.join(root, relative),
+        'utf8'
+    ).replace(/^\uFEFF/, '').trim();
+}
+
+// ---------------------------------------
+// 1. Global core (manifest order)
+// ---------------------------------------
+
 if (!Array.isArray(manifest) || manifest.length === 0) {
     throw new Error(
-        'build.manifest.json must contain an ordered list of core files.'
+        'Build manifest must contain an ordered list of core files.'
     );
 }
 
-// Phase 1: Core files in manifest order
-const coreFiles = manifest.map(relative => {
+const coreFiles = [];
+const seen = new Set();
+
+for (const relative of manifest) {
     if (
         typeof relative !== 'string' ||
-        !/^src\/core\/[A-Za-z0-9_/-]+\.js$/.test(relative)
+        !/^src\/global\/core\/[A-Za-z0-9_.-]+\.js$/.test(relative)
     ) {
-        throw new Error(`Invalid core source: ${String(relative)}`);
+        throw new Error(`Invalid core file: ${String(relative)}`);
     }
 
-    return relative;
-});
+    if (seen.has(relative)) {
+        throw new Error(`Duplicate core file: ${relative}`);
+    }
 
-// Phase 2: Discover data files automatically
+    seen.add(relative);
+    coreFiles.push(relative);
+}
+
+// ---------------------------------------
+// 2. Global data (auto-discovered)
+// ---------------------------------------
+
+const dataDir = path.join(src, 'global', 'data');
+
 const dataFiles = fs.readdirSync(dataDir, {
     withFileTypes: true
 })
     .filter(entry =>
         entry.isFile() &&
-        /^PWX\.data\..+\.js$/.test(entry.name)
+        /^PWX\.data\.[A-Za-z0-9_-]+\.js$/.test(entry.name)
     )
-    .map(entry => `src/data/${entry.name}`)
+    .map(entry => `src/global/data/${entry.name}`)
     .sort();
 
-// Core always comes before data
+// ---------------------------------------
+// 3. Build global PWX bundle
+// ---------------------------------------
+
 const files = [...coreFiles, ...dataFiles];
 
-const seen = new Set();
 const sections = [
-    '/* GENERATED FILE - DO NOT EDIT. */',
-    '/* PWX Rig OS V2 | SimHub ECMAScript 5.1 */'
+    '/* GENERATED FILE - DO NOT EDIT */',
+    '/* PWX RaceOS V2 | SimHub ES5 compliant */'
 ];
 
 for (const relative of files) {
-    if (seen.has(relative)) {
-        throw new Error(`Duplicate source: ${relative}`);
-    }
-
-    seen.add(relative);
-
-    const filename = path.join(root, relative);
-
-    const source = fs.readFileSync(filename, 'utf8')
-        .replace(/^\uFEFF/, '')
-        .trim();
+    const source = readSource(relative);
 
     sections.push(
-        `\n/* ===== ${relative} ===== */\n${source}\n;`
+        `\n;/* ===== ${relative} ===== */\n${source}\n`
     );
 }
 
 const output = sections.join('\n') + '\n';
 
-// Validate SimHub ES5 compatibility
-try {
-    acorn.parse(output, {
-        ecmaVersion: 5,
-        sourceType: 'script'
-    });
-} catch (error) {
-    throw new Error(
-        `SimHub ES5 compatibility check failed: ${error.message}`
-    );
-}
+validateES5(output, 'PWX-V2.js');
 
-fs.mkdirSync(path.dirname(destination), {
+const globalDestination = path.join(
+    dist, 'global', 'PWX-V2.js'
+);
+
+fs.mkdirSync(path.dirname(globalDestination), {
     recursive: true
 });
 
-fs.writeFileSync(destination, output, 'utf8');
+fs.writeFileSync(globalDestination, output, 'utf8');
 
-console.log(`Built ${path.relative(root, destination)}`);
-console.log(`  Core modules: ${coreFiles.length}`);
-console.log(`  Data modules: ${dataFiles.length}`);
-console.log(`  Total: ${files.length} (ES5 validated)`);
+// ---------------------------------------
+// 4. Copy system files recursively
+// ---------------------------------------
+
+const systemsSource = path.join(src, 'systems');
+const systemsDestination = path.join(dist, 'systems');
+
+let systemFileCount = 0;
+
+function copyDirectory(source, destination) {
+    fs.mkdirSync(destination, { recursive: true });
+
+    const entries = fs.readdirSync(source, {
+        withFileTypes: true
+    }).sort((a, b) => a.name.localeCompare(b.name));
+
+    for (const entry of entries) {
+        const sourcePath = path.join(source, entry.name);
+        const destinationPath = path.join(destination, entry.name);
+
+        if (entry.isDirectory()) {
+            copyDirectory(sourcePath, destinationPath);
+        } else if (entry.isFile()) {
+
+            // Validate system JavaScript too
+            if (entry.name.endsWith('.js')) {
+                const content = fs.readFileSync(sourcePath, 'utf8');
+                validateES5(content, sourcePath);
+            }
+
+            fs.copyFileSync(sourcePath, destinationPath);
+            systemFileCount++;
+        } else {
+            throw new Error(
+                `Unsupported system entry: ${sourcePath}`
+            );
+        }
+    }
+}
+
+if (fs.existsSync(systemsSource)) {
+    copyDirectory(systemsSource, systemsDestination);
+}
+
+// ---------------------------------------
+// 5. Summary
+// ---------------------------------------
+
+console.log('');
+console.log('PWX RaceOS V2 - Build complete');
+console.log('--------------------------------');
+console.log(`Core modules: ${coreFiles.length}`);
+console.log(`Data modules: ${dataFiles.length}`);
+console.log(`System files: ${systemFileCount}`);
+console.log('ES5 validation: passed');
+console.log('');
+console.log('Output: dist/');

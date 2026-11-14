@@ -1,7 +1,7 @@
-/* GENERATED FILE - DO NOT EDIT. Edit src/ and run npm run build. */
-/* PWX Rig OS V2 | SimHub ECMAScript 5.1 */
+/* GENERATED FILE - DO NOT EDIT */
+/* PWX RaceOS V2 | SimHub ES5 compliant */
 
-/* ===== src/core/PWX.core.js ===== */
+;/* ===== src/global/core/PWX.core.js ===== */
 var PWX = {
     data: {
         car: {
@@ -21,7 +21,9 @@ var PWX = {
             gearbox: {},
             throttle: {}
         },
-        circuit: {},
+        circuit: {
+            pit: {}
+        },
         driver: {},
         session: {}
     },
@@ -38,7 +40,11 @@ _PWXCore.read = function( property ){
 }
 
 
-/* ===== src/core/PWX.core.props.js ===== */
+;/* ===== src/global/core/PWX.core.props.js ===== */
+/*
+SimHub / iRacing telemetry mapping
+*/
+
 _PWXCore.props = {
     car: {
         id: 'DataCorePlugin.GameData.CarID',
@@ -123,7 +129,7 @@ _PWXCore.props = {
 }
 
 
-/* ===== src/core/PWX.core.parse.js ===== */
+;/* ===== src/global/core/PWX.core.parse.js ===== */
 /*
 Simple data parser
  */
@@ -142,7 +148,7 @@ _PWXCore.parse.string = function( property ){
 }
 
 
-/* ===== src/data/PWX.data.car.js ===== */
+;/* ===== src/global/data/PWX.data.car.js ===== */
 /*
 Parsed car telemetry live data
  */
@@ -164,7 +170,8 @@ PWX.data.car.speed.kph = function(){
 }
 
 PWX.data.car.speed.mph = function(){
-    return _PWXCore.parse.number( _PWXCore.props.car.speedKmh ) === null ? null : value * 0.621371;
+    var speed = _PWXCore.parse.number( _PWXCore.props.car.speedKmh )
+    return speed === null ? null : speed * 0.621371;
 }
 
 PWX.data.car.engine.rpm.current = function(){
@@ -232,14 +239,41 @@ PWX.data.car.throttle.percentage = function(){
 }
 
 
-/* ===== src/data/PWX.data.circuit.js ===== */
+;/* ===== src/global/data/PWX.data.circuit.js ===== */
+/*
+Parsed circuit data
+ */
+
+PWX.data.circuit.id = function () {
+    return _PWXCore.parse.string( _PWXCore.props.circuit.id )
+}
+
+PWX.data.circuit.name = function () {
+    return _PWXCore.parse.string( _PWXCore.props.circuit.name )
+}
+
+PWX.data.circuit.length = function () {
+    return _PWXCore.parse.string( _PWXCore.props.circuit.length )
+}
+
+PWX.data.circuit.corners = function () {
+    return _PWXCore.parse.string( _PWXCore.props.circuit.corners )
+}
+
+PWX.data.circuit.pit.speed.kmh = function () {
+    return _PWXCore.parse.number( _PWXCore.props.circuit.pit.speedKmh )
+}
+
+PWX.data.circuit.pit.speed.mph = function () {
+    var speed = _PWXCore.parse.number( _PWXCore.props.circuit.pit.speedKmh )
+    return speed === null ? null : speed * 0.621371;
+}
+
+
+;/* ===== src/global/data/PWX.data.driver.js ===== */
 
 
 
-/* ===== src/data/PWX.data.driver.js ===== */
-
-
-
-/* ===== src/data/PWX.data.session.js ===== */
+;/* ===== src/global/data/PWX.data.session.js ===== */
 
 

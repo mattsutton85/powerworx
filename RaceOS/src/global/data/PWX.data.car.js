@@ -19,7 +19,8 @@ PWX.data.car.speed.kph = function(){
 }
 
 PWX.data.car.speed.mph = function(){
-    return _PWXCore.parse.number( _PWXCore.props.car.speedKmh ) === null ? null : value * 0.621371;
+    var speed = _PWXCore.parse.number( _PWXCore.props.car.speedKmh )
+    return speed === null ? null : speed * 0.621371;
 }
 
 PWX.data.car.engine.rpm.current = function(){

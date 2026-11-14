@@ -1,9 +1,5 @@
 [
-  "src/core/PWX.core.js",
-  "src/core/PWX.core.props.js",
-  "src/core/PWX.core.parse.js",
-  "src/data/PWX.data.car.js",
-  "src/data/PWX.data.circuit.js",
-  "src/data/PWX.data.driver.js",
-  "src/data/PWX.data.session.js"
+  "src/global/core/PWX.core.js",
+  "src/global/core/PWX.core.props.js",
+  "src/global/core/PWX.core.parse.js"
 ]

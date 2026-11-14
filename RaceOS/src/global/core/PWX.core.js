@@ -17,7 +17,9 @@ var PWX = {
             gearbox: {},
             throttle: {}
         },
-        circuit: {},
+        circuit: {
+            pit: {}
+        },
         driver: {},
         session: {}
     },
