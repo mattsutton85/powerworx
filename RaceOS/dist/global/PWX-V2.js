@@ -25,6 +25,9 @@ var PWX = {
             pit: {}
         },
         driver: {},
+        flag: {
+            is: {}
+        },
         opponent: {},
         session: {
             lap: {
@@ -158,6 +161,25 @@ _PWXCore.parse.number = function( property ){
     }
     var number = Number(value);
     return isFinite(number) ? number : null;
+}
+
+_PWXCore.parse.boolean = function( property ){
+    var value = _PWXCore.read( property );
+    if (typeof value === 'boolean') {
+        return value;
+    }
+    if (typeof value === 'number') {
+        if (value === 1) return true;
+        if (value === 0) return false;
+        return null;
+    }
+    if (typeof value === 'string') {
+        value = value.replace(/^\s+|\s+$/g, '').toLowerCase();
+
+        if (value === 'true' || value === '1') return true;
+        if (value === 'false' || value === '0') return false;
+    }
+    return null;
 }
 
 _PWXCore.parse.string = function( property ){
@@ -341,6 +363,90 @@ PWX.data.circuit.pit.speed.mph = function () {
 
 ;/* ===== src/global/data/PWX.data.driver.js ===== */
 
+
+
+;/* ===== src/global/data/PWX.data.flag.js ===== */
+PWX.data.flag.is.black = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.black );
+};
+
+PWX.data.flag.is.blue = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.blue );
+};
+
+PWX.data.flag.is.caution = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.caution );
+};
+
+PWX.data.flag.is.cautionWaving = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.cautionWaving );
+};
+
+PWX.data.flag.is.checkered = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.checkered );
+};
+
+PWX.data.flag.is.crossed = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.crossed );
+};
+
+PWX.data.flag.is.debris = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.debris );
+};
+
+PWX.data.flag.is.disqualify = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.disqualify );
+};
+
+PWX.data.flag.is.lapToGreen = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.lapToGreen );
+};
+
+PWX.data.flag.is.red = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.red );
+};
+
+PWX.data.flag.is.repair = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.repair );
+};
+
+PWX.data.flag.is.white = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.white );
+};
+
+PWX.data.flag.is.yellow = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.yellow );
+};
+
+PWX.data.flag.is.yellowWaving = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.flag.yellowWaving );
+};
+
+var flagPriority = [
+    'red',
+    'disqualify',
+    'black',
+    'repair',
+    'caution',
+    'cautionWaving',
+    'yellowWaving',
+    'yellow',
+    'debris',
+    'lapToGreen',
+    'checkered',
+    'blue',
+    'white',
+    'crossed'
+];
+
+PWX.data.flag.current = function(){
+    for( var flag in flagPriority ){
+        if( PWX.data.flag.is[flag]() ){
+            return flag;
+        }
+    }
+    return 'green';
+}
 
 
 ;/* ===== src/global/data/PWX.data.opponent.js ===== */
