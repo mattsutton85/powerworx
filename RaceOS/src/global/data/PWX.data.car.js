@@ -43,6 +43,9 @@ PWX.data.car.engine.rpm.redline = function(){
     return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.redline )
 }
 
+PWX.data.car.limiter.on = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.car.limiter )
+}
 
 PWX.data.car.engine.rpm.lights = function(){
 

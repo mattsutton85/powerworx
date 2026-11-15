@@ -25,6 +25,7 @@ var PWX = {
             gearbox: {
                 shift: {}
             },
+            limiter: {},
             throttle: {}
         },
         circuit: {
@@ -111,6 +112,7 @@ _PWXCore.props = {
                 blink: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLBlinkRPM'
             }
         },
+        limiter: 'DataCorePlugin.GameData.PitLimiterOn',
         throttle: {
             percentage: 'DataCorePlugin.GameData.Throttle',
         }
@@ -121,7 +123,7 @@ _PWXCore.props = {
         length: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackLength',
         corners: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackNumTurns',
         pit: {
-            speedKmh: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackPitSpeedLimit'
+            speedKmh: 'DataCorePlugin.GameData.PitLimiterSpeed'
         }
     },
     driver: {
@@ -305,6 +307,9 @@ PWX.data.car.engine.rpm.redline = function(){
     return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.redline )
 }
 
+PWX.data.car.limiter.on = function(){
+    return _PWXCore.parse.boolean( _PWXCore.props.car.limiter )
+}
 
 PWX.data.car.engine.rpm.lights = function(){
 
@@ -565,7 +570,7 @@ PWX.data.session.time.remaining = function (){
 
 
 PWX.build = {
-    id: "2026-11-15T18:07:27.119Z",
+    id: "2026-11-15T21:23:14.789Z",
     version: '0.1.0',
     environment: 'development'
 };

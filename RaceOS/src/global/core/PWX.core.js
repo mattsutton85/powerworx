@@ -31,6 +31,7 @@ var PWX = {
             gearbox: {
                 shift: {}
             },
+            limiter: {},
             throttle: {}
         },
         circuit: {

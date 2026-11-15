@@ -53,6 +53,7 @@ _PWXCore.props = {
                 blink: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLBlinkRPM'
             }
         },
+        limiter: 'DataCorePlugin.GameData.PitLimiterOn',
         throttle: {
             percentage: 'DataCorePlugin.GameData.Throttle',
         }
@@ -63,7 +64,7 @@ _PWXCore.props = {
         length: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackLength',
         corners: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackNumTurns',
         pit: {
-            speedKmh: 'DataCorePlugin.GameRawData.SessionData.WeekendInfo.TrackPitSpeedLimit'
+            speedKmh: 'DataCorePlugin.GameData.PitLimiterSpeed'
         }
     },
     driver: {
