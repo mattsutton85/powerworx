@@ -25,8 +25,8 @@ PWXDash.shiftLight = function(index){
         ) % 2 === 0;
         if( !flash ) return off;
         return state.mode === 'shift'
-            ? '#20E779'
-            : '#FF354A';
+            ? '#6cfc17'
+            : '#ff2e2e';
     }
 
     // Not yet illuminated
@@ -36,6 +36,6 @@ PWXDash.shiftLight = function(index){
 
     // Progressive illumination
     return index <= 7
-        ? '#00C9ED'
-        : '#FFC328';
+        ? '#00edff'
+        : '#f3f300';
 };
