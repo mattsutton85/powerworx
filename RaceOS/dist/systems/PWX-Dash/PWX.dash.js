@@ -2,7 +2,9 @@
  * PWX Dash
  */
 
-var PWXDash = {}
+var PWXDash = {
+    panel: {}
+}
 
 PWXDash.speed = function(){
     return PWX.format.number( PWX.data.car.speed.mph(), 0, 0 );
@@ -39,3 +41,13 @@ PWXDash.shiftLight = function(index){
         ? '#00edff'
         : '#f3f300';
 };
+
+PWXDash.panel.border = function(){
+    var flag = PWX.data.flag.current();
+    if( [ 'yellow', 'yellowWaving', 'caution', 'cautionWaving' ].includes( flag )){
+        return PWX.theme.warning;
+    }else if( [ 'red' ].includes( flag ) ){
+        return PWX.theme.danger;
+    }
+    return '#ffffff';
+}
