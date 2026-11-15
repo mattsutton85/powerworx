@@ -9,6 +9,7 @@
  */
 
 var PWX = {
+    build: {},
     data: {
         car: {
             speed: {},

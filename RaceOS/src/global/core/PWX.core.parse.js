@@ -3,8 +3,10 @@ Simple data parser
  */
 
 _PWXCore.parse.number = function( property ){
-    var value = _PWXCore.read( property );
-    if (value === null || value === '') {
+    var value = typeof property === 'number'
+        ? property
+        : _PWXCore.read(property);
+    if (value == null || value === '') {
         return null;
     }
     var number = Number(value);

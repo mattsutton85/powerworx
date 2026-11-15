@@ -3,6 +3,7 @@
 
 ;/* ===== src/global/core/PWX.core.js ===== */
 var PWX = {
+    build: {},
     data: {
         car: {
             speed: {},
@@ -163,8 +164,10 @@ _PWXCore.props = {
 
 ;/* ===== src/global/core/PWX.core.parse.js ===== */
 _PWXCore.parse.number = function( property ){
-    var value = _PWXCore.read( property );
-    if (value === null || value === '') {
+    var value = typeof property === 'number'
+        ? property
+        : _PWXCore.read(property);
+    if (value == null || value === '') {
         return null;
     }
     var number = Number(value);
@@ -201,7 +204,7 @@ PWX.format.number = function(value, decimals, placeholder) {
     placeholder = placeholder == null ? '---' : placeholder;
     var number = _PWXCore.parse.number(value);
     if (number === null) {
-        return placeholder;
+         
     }
     return number.toFixed(decimals);
 };
@@ -489,4 +492,12 @@ PWX.data.session.lap.delta.last = function (){
 PWX.data.session.time.remaining = function (){
     return _PWXCore.parse.string( _PWXCore.props.session.time.remaining);
 }
+
+
+
+PWX.build = {
+    id: "2026-11-15T17:11:15.277Z",
+    version: '0.1.0',
+    environment: 'development'
+};
 

@@ -143,6 +143,19 @@ for (const relative of files) {
     );
 }
 
+const builtAt = new Date().toISOString();
+
+const buildMetadata = `
+
+PWX.build = {
+    id: ${JSON.stringify(builtAt)},
+    version: '0.1.0',
+    environment: 'development'
+};
+`;
+
+sections.push(buildMetadata);
+
 const output = sections.join('\n') + '\n';
 
 validateES5(output, 'PWX-V2.js');

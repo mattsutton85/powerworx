@@ -6,7 +6,7 @@ PWX.format.number = function(value, decimals, placeholder) {
     placeholder = placeholder == null ? '---' : placeholder;
     var number = _PWXCore.parse.number(value);
     if (number === null) {
-        return placeholder;
+        //return placeholder;
     }
     return number.toFixed(decimals);
 };
