@@ -43,6 +43,69 @@ PWX.data.car.engine.rpm.redline = function(){
     return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.redline )
 }
 
+
+PWX.data.car.engine.rpm.lights = function(){
+
+    var total = 16;
+    var rpm = PWX.data.car.engine.rpm.current();
+    // Prefer iRacing's shift target
+    var nativeShift = _PWXCore.parse.number(
+        _PWXCore.props.car.gearbox.shift.point
+    );
+    var source = 'iracing';
+    var target = nativeShift;
+    // Fall back to SimHub's gear-specific redline
+    if( target === null || target <= 0 ){
+        target = _PWXCore.parse.number(
+            _PWXCore.props.car.engine.rpm.redline
+        );
+        source = 'redline';
+    }
+    // No valid telemetry
+    if( rpm === null || target === null || target <= 0 ){
+        return {
+            count: 0,
+            mode: 'off',
+            source: 'none',
+            target: null
+        };
+    }
+    // PWX progressive illumination starts at 75%
+    // of the shift target, regardless of iRacing's
+    // native FirstRPM threshold.
+    var first = target * 0.75;
+    // Native blink threshold, or 100 RPM beyond target
+    var blink = _PWXCore.parse.number(
+        _PWXCore.props.car.gearbox.shift.blink
+    );
+    if( blink === null || blink <= target ){
+        blink = target + 100;
+    }
+    // Progressive illumination
+    var progress = (rpm - first) / (target - first);
+    progress = Math.max(0, Math.min(1, progress));
+    var count = Math.ceil(progress * total);
+    var mode = 'building';
+    if( rpm >= blink ){
+        mode = 'late';
+        count = total;
+    }
+    else if( rpm >= target ){
+        mode = 'shift';
+        count = total;
+    }
+    return {
+        count: count,
+        mode: mode,
+        rpm: rpm,
+        first: first,
+        target: target,
+        blink: blink,
+        source: source
+    };
+};
+
+
 PWX.data.car.engine.oil.temperature = function(){
     return _PWXCore.parse.number( _PWXCore.props.car.engine.oil.temperature )
 }

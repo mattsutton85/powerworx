@@ -21,7 +21,10 @@ var PWX = {
                 water: {}
             },
             brake: {},
-            assists: {},
+            assists: {
+                abs: {},
+                tc: {}
+            },
             fuel: {
                 remaining: {}
             },
@@ -31,7 +34,9 @@ var PWX = {
             throttle: {}
         },
         circuit: {
-            pit: {}
+            pit: {
+                speed: {}
+            }
         },
         driver: {},
         flag: {

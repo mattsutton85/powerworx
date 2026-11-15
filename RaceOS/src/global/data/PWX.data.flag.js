@@ -72,10 +72,11 @@ var flagPriority = [
 ];
 
 PWX.data.flag.current = function(){
-    for( var flag in flagPriority ){
+    for( var i = 0; i < flagPriority.length; i++ ){
+        var flag = flagPriority[i];
         if( PWX.data.flag.is[flag]() ){
             return flag;
         }
     }
     return 'green';
-}
+};

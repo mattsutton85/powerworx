@@ -15,7 +15,10 @@ var PWX = {
                 water: {}
             },
             brake: {},
-            assists: {},
+            assists: {
+                abs: {},
+                tc: {}
+            },
             fuel: {
                 remaining: {}
             },
@@ -25,7 +28,9 @@ var PWX = {
             throttle: {}
         },
         circuit: {
-            pit: {}
+            pit: {
+                speed: {}
+            }
         },
         driver: {},
         flag: {
@@ -100,10 +105,10 @@ _PWXCore.props = {
         gearbox: {
             gear: 'DataCorePlugin.GameData.Gear',
             shift: {
-                first: 'DataCorePlugin.GameData.PlayerCarSLFirstRPM',
-                last: 'DataCorePlugin.GameData.PlayerCarSLLastRPM',
-                point: 'DataCorePlugin.GameData.PlayerCarSLShiftRPM',
-                blink: 'DataCorePlugin.GameData.PlayerCarSLBlinkRPM',
+                first: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLFirstRPM',
+                last:  'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLLastRPM',
+                point: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLShiftRPM',
+                blink: 'DataCorePlugin.GameRawData.Telemetry.PlayerCarSLBlinkRPM'
             }
         },
         throttle: {
@@ -204,7 +209,7 @@ PWX.format.number = function(value, decimals, placeholder) {
     placeholder = placeholder == null ? '---' : placeholder;
     var number = _PWXCore.parse.number(value);
     if (number === null) {
-         
+        return placeholder;
     }
     return number.toFixed(decimals);
 };
@@ -299,6 +304,69 @@ PWX.data.car.engine.rpm.max = function(){
 PWX.data.car.engine.rpm.redline = function(){
     return _PWXCore.parse.number( _PWXCore.props.car.engine.rpm.redline )
 }
+
+
+PWX.data.car.engine.rpm.lights = function(){
+
+    var total = 16;
+    var rpm = PWX.data.car.engine.rpm.current();
+     
+    var nativeShift = _PWXCore.parse.number(
+        _PWXCore.props.car.gearbox.shift.point
+    );
+    var source = 'iracing';
+    var target = nativeShift;
+     
+    if( target === null || target <= 0 ){
+        target = _PWXCore.parse.number(
+            _PWXCore.props.car.engine.rpm.redline
+        );
+        source = 'redline';
+    }
+     
+    if( rpm === null || target === null || target <= 0 ){
+        return {
+            count: 0,
+            mode: 'off',
+            source: 'none',
+            target: null
+        };
+    }
+     
+     
+     
+    var first = target * 0.75;
+     
+    var blink = _PWXCore.parse.number(
+        _PWXCore.props.car.gearbox.shift.blink
+    );
+    if( blink === null || blink <= target ){
+        blink = target + 100;
+    }
+     
+    var progress = (rpm - first) / (target - first);
+    progress = Math.max(0, Math.min(1, progress));
+    var count = Math.ceil(progress * total);
+    var mode = 'building';
+    if( rpm >= blink ){
+        mode = 'late';
+        count = total;
+    }
+    else if( rpm >= target ){
+        mode = 'shift';
+        count = total;
+    }
+    return {
+        count: count,
+        mode: mode,
+        rpm: rpm,
+        first: first,
+        target: target,
+        blink: blink,
+        source: source
+    };
+};
+
 
 PWX.data.car.engine.oil.temperature = function(){
     return _PWXCore.parse.number( _PWXCore.props.car.engine.oil.temperature )
@@ -451,13 +519,14 @@ var flagPriority = [
 ];
 
 PWX.data.flag.current = function(){
-    for( var flag in flagPriority ){
+    for( var i = 0; i < flagPriority.length; i++ ){
+        var flag = flagPriority[i];
         if( PWX.data.flag.is[flag]() ){
             return flag;
         }
     }
     return 'green';
-}
+};
 
 
 ;/* ===== src/global/data/PWX.data.opponent.js ===== */
@@ -496,7 +565,7 @@ PWX.data.session.time.remaining = function (){
 
 
 PWX.build = {
-    id: "2026-11-15T17:11:15.277Z",
+    id: "2026-11-15T18:07:27.119Z",
     version: '0.1.0',
     environment: 'development'
 };
