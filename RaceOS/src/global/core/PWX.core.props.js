@@ -46,6 +46,12 @@ _PWXCore.props = {
         },
         gearbox: {
             gear: 'DataCorePlugin.GameData.Gear',
+            shift: {
+                first: 'DataCorePlugin.GameData.PlayerCarSLFirstRPM',
+                last: 'DataCorePlugin.GameData.PlayerCarSLLastRPM',
+                point: 'DataCorePlugin.GameData.PlayerCarSLShiftRPM',
+                blink: 'DataCorePlugin.GameData.PlayerCarSLBlinkRPM',
+            }
         },
         throttle: {
             percentage: 'DataCorePlugin.GameData.Throttle',
