@@ -57,3 +57,45 @@ return PWX.format.speed(PWX.telemetry.speedMph());
 ## Reference
 
 - https://github.com/SHWotever/SimHub/wiki/Javascript-Formula-Engine
+
+
+## Symlinking to Simhub
+```
+
+$links = @(
+    @{
+        Source = "C:\Powerworx\Simhub\RaceOS\dist\global\PWX-V2.js"
+        Destination = "C:\Program Files (x86)\SimHub\JavaScriptExtensions\PWX-V2.js"
+    },
+    @{
+        Source = "C:\Powerworx\Simhub\RaceOS\dist\systems\PWX-Dash\PWX.dash.js"
+        Destination = "C:\Program Files (x86)\SimHub\DashTemplates\PWX-Dash\JavascriptExtensions\PWX.dash.js"
+    }
+)
+
+foreach ($link in $links) {
+
+    # Confirm the new source exists
+    if (-not (Test-Path -LiteralPath $link.Source -PathType Leaf)) {
+        throw "Source file not found: $($link.Source)"
+    }
+
+    # Remove existing link, but protect real files
+    $existing = Get-Item -LiteralPath $link.Destination -Force -ErrorAction SilentlyContinue
+
+    if ($existing) {
+        if ($existing.LinkType -ne "SymbolicLink") {
+            throw "Destination is not a symbolic link: $($link.Destination)"
+        }
+
+        Remove-Item -LiteralPath $link.Destination -Force
+    }
+
+    # Create new symbolic link
+    New-Item -ItemType SymbolicLink `
+        -Path $link.Destination `
+        -Target $link.Source
+
+}
+
+```
